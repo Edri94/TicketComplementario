@@ -1,0 +1,1487 @@
+﻿Imports System.Data
+Imports System.Data.SqlClient
+Imports System
+Imports System.IO
+Imports System.Text
+Imports System.Threading
+Imports System.Windows.Forms
+Imports System.Data.OleDb
+
+
+Public Class Datasource
+
+    Private sqlstring As String
+
+    '' Funciones desarrolladas por Beatriz Adriana Palacios Sanchez.
+#Region "Funciones GONET Beatriz A Palacios"
+    Sub set_sqlstring()
+        'sqlstring = "data source=" & server & ";initial catalog =" & db & ";User ID=" & user & ";Password=" & pwd & ";"
+
+        Dim l As New Libreria
+        l.CredencialesConexion()
+
+        sqlstring = "data source=" & l.SERVER & ";initial catalog =" & l.DB & ";User ID=" & l.USER & ";Password=" & l.PWD & ";"
+
+        l = Nothing
+
+        'sqlstring = "Data Source=150.100.234.144\INSSQL17;" &
+        '             "Initial Catalog=TICKET;" &
+        '             "User Id=negint;Password=negint"
+
+    End Sub
+
+    Function valida_coneccion_sql() As Boolean
+        Dim ok As Boolean = False
+        set_sqlstring()
+        Dim coneccion As New SqlConnection()
+        coneccion.ConnectionString = sqlstring
+        Try
+            coneccion.Open()
+            If coneccion.State = ConnectionState.Open Then
+                coneccion.Close()
+                ok = True
+            Else
+                coneccion.Close()
+            End If
+        Catch ex As Exception
+            MsgBox("Error al validar la conexion (" & ex.Message & ")")
+            coneccion.Close()
+        End Try
+
+        Return ok
+    End Function
+
+    Function insertar(ByVal querry As String) As Integer
+        Dim conec As SqlConnection = get_coneccion_sql()
+
+        Dim i As Integer = 0
+
+        If valida_coneccion_sql() Then
+            Try
+                conec.Open()
+                Using commando = New SqlCommand(UCase(querry), conec)
+                    commando.CommandTimeout = 2480
+
+                    i = Math.Abs(commando.ExecuteNonQuery())
+                    '  commando.Connection.CreateCommand.ExecuteNonQuery()
+                    ' commando.Dispose()
+
+                End Using
+                If i = 0 Then
+                    Return 0
+                Else
+                    Return i
+                End If
+            Catch ex As Exception
+                conec.Dispose()
+                conec.Close()
+                MsgBox("Error en el query a actualizar o insertar: " + querry + "Descripcion del error: " + ex.Message)
+            End Try
+        Else
+            MsgBox("CONEXION INVALIDA A LA BASE DE DATOS")
+        End If
+
+        Return i
+
+    End Function
+
+    Function Consulta(ByVal query As String, ByVal sFuncion As String) As DataTable
+        Dim connexio As SqlConnection = get_coneccion_sql()
+        Dim adapter As New SqlDataAdapter
+        Dim commando As SqlCommand
+        Dim dt As New DataSet()
+
+
+        If valida_coneccion_sql() Then
+            'MsgBox("Conexion valida a base de datos")
+
+            Try
+                connexio.Open()
+                commando = New SqlCommand(query, connexio)
+                adapter.SelectCommand = commando
+                adapter.Fill(dt, "Consulta")
+                adapter.Dispose()
+                commando.Dispose()
+
+                connexio.Dispose()
+                connexio.Close()
+                commando = Nothing
+                connexio = Nothing
+
+                Return dt.Tables(0)
+
+            Catch exc As Exception
+                Return Nothing
+                MsgBox("Error bd: " & exc.Message & "  ERROR EN FUNCION " & sFuncion & " - QUERY: " & query)
+                connexio.Dispose()
+                connexio.Close()
+                connexio = Nothing
+            End Try
+        Else
+            Return Nothing
+            MsgBox("CONEXION INVALIDA A LA BASE DE DATOS")
+        End If
+
+    End Function
+
+    Function SP(ByVal query As String, ByVal sFuncion As String) As DataTable
+        Dim connexio As SqlConnection = get_coneccion_sql()
+        Dim adapter As SqlDataAdapter
+        Dim dt As New DataSet()
+
+        If valida_coneccion_sql() Then
+            Try
+                connexio.Open()
+
+                adapter = New SqlDataAdapter(query, connexio)
+                adapter.Fill(dt, "SP")
+                adapter.Dispose()
+
+                connexio.Dispose()
+                connexio.Close()
+                connexio = Nothing
+
+                Return dt.Tables(0)
+
+            Catch exc As Exception
+                MsgBox("Error bd: " & exc.Message & "   ERROR EN SP " & sFuncion)
+                connexio.Dispose()
+                connexio.Close()
+                connexio = Nothing
+            End Try
+        Else
+            MsgBox("CONEXION INVALIDA A LA BASE DE DATOS")
+        End If
+
+        Return Nothing
+
+
+    End Function
+
+
+
+#Region "Consulta de cuenta"
+
+    Function validaUser(ByVal slogin As String) As String
+
+        Dim s As String
+
+        s = "SELECT COUNT(usuario) NUM FROM catalogos.dbo.USUARIO WHERE login = '" & slogin & "'"
+
+        Return regresa_count(s, "validaUser")
+
+    End Function
+    Function validaUserB(ByVal slogin As String) As String
+
+        Dim s As String
+
+        s = "SELECT COUNT(usuario) NUM FROM catalogos.dbo.USUARIO where password = 'BLOQUEAR' AND login = '" & slogin & "'"
+
+        Return regresa_count(s, "validaUserB")
+
+    End Function
+    Function validaUserA(ByVal slogin As String) As String
+
+        Dim s As String
+
+        s = "SELECT COUNT(usuario) NUM FROM catalogos.dbo.USUARIO where password = 'ANULADO' AND login = '" & slogin & "'"
+
+        Return regresa_count(s, "validaUserA")
+
+    End Function
+    Function validaPass(ByVal slogin As String, ByVal spass As String) As String
+
+        Dim s As String
+
+        Dim l As New Libreria
+        spass = l.Encrypt(spass)
+        l = Nothing
+
+        s = "SELECT COUNT(usuario) NUM FROM catalogos.dbo.USUARIO where login = '" & slogin & "' and password = '" & spass & "'"
+
+        Return regresa_count(s, "validaPass")
+
+    End Function
+    Function login(ByVal slogin As String, ByVal spass As String) As DataTable
+
+        Dim s As String
+
+        Dim l As New Libreria
+        spass = l.Encrypt(spass)
+        l = Nothing
+
+        s = "SELECT usuario FROM catalogos.dbo.USUARIO where password <> 'BLOQUEAR' and password <> 'ANULADO' AND login = '" & slogin & "' and password = '" & spass & "'"
+
+        Return Consulta(s, "LOGIN")
+
+    End Function
+
+    Function InsertaRegistroGestor(ByVal sUsuario As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = " INSERT INTO CATALOGOS..BITACORA_IDENTIFICACION (tarjeta, fecha_registro,  funcionario, usuario, tipo_log, detalle) values (0, getdate(), 0, " & sUsuario & ", 3, 'Registro Funcionario MNI')"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function ObtenAgencia(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = "Select ag.prefijo_agencia + '-' + cte.cuenta_cliente + ' ' + rtrim(rtrim(nombre_cliente)+ ' ' + rtrim(apellido_paterno)+
+                ' '+rtrim(apellido_materno))+' ('+ag.descripcion_agencia+')', ag.agencia
+                from CATALOGOS..CLIENTE cte,
+                CATALOGOS..AGENCIA ag 
+                where cte.agencia = ag.agencia            
+                and cuenta_cliente = " & sCuenta & "
+                and ag.agencia = 1"
+
+        Return Consulta(s, "ObtenAgencia")
+
+    End Function
+
+    Function ObtenDatosGestor(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = ("Select telefono_funcionario, 
+                fax_funcionario, numero_funcionario, 
+                rtrim(ltrim(nombre_funcionario))+ ' '+
+                rtrim(ltrim(fu.apellido_paterno))+ ' '+
+                rtrim(ltrim(fu.apellido_materno)), 
+                cuenta_houston, isnull(rtrim(ltrim(co.nombre_cot))+ ' '+rtrim(ltrim(co.paterno_cot))+ ' '+ rtrim(ltrim(materno_cot)),'') Cotitular, 
+                fu.funcionario 
+                from CATALOGOS..CLIENTE cte 
+                INNER JOIN FUNCIONARIOS..FUNCIONARIO fu  ON cte.funcionario = fu.funcionario 
+                LEFT JOIN CATALOGOS..COTITULAR co ON cte.cuenta_cliente = co.cuenta_cliente and cte.agencia = co.agencia  
+                where cte.cuenta_cliente = " & sCuenta & "
+                and cte.agencia = 1")
+
+        Return Consulta(s, "ObtenDatosGestor")
+
+    End Function
+
+    Function ObtenPadreRutaGestor(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = ("Select 
+                uo.tipo_unidad_organizacional, 
+                uo.unidad_organizacional_padre, 
+                rtrim(uo.unidad_org_bancomer)+' '+rtrim(uo.descripcion_unidad_organizacio) 
+                From 
+                FUNCIONARIOS..UNIDAD_ORGANIZACIONAL uo, 
+                FUNCIONARIOS..FUNCIONARIO fu, 
+                CATALOGOS..CLIENTE cl 
+                Where fu.unidad_organizacional = uo.unidad_organizacional
+                    and fu.funcionario = cl.funcionario  
+                    and cl.cuenta_cliente = " & sCuenta & "
+                    and cl.agencia = 1")
+
+        Return Consulta(s, "ObtenPadreRutaGestor")
+
+    End Function
+    Function ObtenRutaGestor(ByVal sPadre As String) As DataTable
+        Dim s As String
+
+        s = (" Select 
+            unidad_organizacional_padre, 
+            descripcion_unidad_organizacio, 
+            rtrim(unidad_org_bancomer)+' '+rtrim(descripcion_unidad_organizacio), 
+            unidad_organizacional, 
+            tipo_unidad_organizacional 
+            From 
+            FUNCIONARIOS..UNIDAD_ORGANIZACIONAL 
+            Where unidad_organizacional = " & sPadre & "")
+
+        Return Consulta(s, "ObtenRutaGestor")
+
+    End Function
+
+    Function ObtenProductoContratado(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = (" Select 
+             pc.producto_contratado, 
+             sp.status_producto_global, pr.producto 
+             From
+             TICKET..PRODUCTO_CONTRATADO pc, 
+             TICKET..STATUS_PRODUCTO sp, TICKET..PRODUCTO pr 
+             Where 
+             pc.cuenta_cliente = '" & sCuenta & "'
+             and pc.agencia =  1
+             and pc.status_producto = sp.status_producto 
+             and pc.producto = pr.producto 
+             and pr.producto_global = 9 
+             order by pc.producto")
+
+        Return Consulta(s, "ObtenProductoContratado")
+
+    End Function
+
+    Function ObtenTipoCuenta(ByVal sProductoCont As String) As DataTable
+        Dim s As String
+
+        s = (" Select 
+             descripcion_tipo, T.tipo_cuenta_eje from TICKET..CUENTA_EJE C, TICKET..TIPO_CUENTA_EJE T
+             where producto_contratado = " & sProductoCont & "            
+             and C.tipo_cuenta_eje= T.tipo_cuenta_eje")
+
+        Return Consulta(s, "ObtenTipoCuenta")
+
+    End Function
+
+    Function ObtenProducto(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = (" Select PC.producto_contratado, S.descripcion_status,
+            PC.clave_producto_contratado, P.descripcion_producto
+            from TICKET..PRODUCTO_CONTRATADO PC, TICKET..PRODUCTO P,
+            TICKET..STATUS_PRODUCTO S
+            where PC.cuenta_cliente = '" & sCuenta & "'
+            and PC.agencia=1
+            and PC.producto = P.producto 
+            and S.status_producto = PC.status_producto        
+            and PC.producto <> 3028
+            order by PC.producto_contratado")
+
+        Return Consulta(s, "ObtenProducto")
+
+    End Function
+
+    Function ObtenConcepto(ByVal sProductoCont As String) As DataTable
+        Dim s As String
+
+        s = (" Select descripcion_concepto_definido,valor_concepto
+        from TICKET..CONCEPTO C,TICKET..CONCEPTO_DEFINIDO CD
+		where producto_contratado = " & sProductoCont & "
+		and C.concepto_definido = CD.concepto_definido")
+
+        Return Consulta(s, "ObtenConcepto")
+
+    End Function
+
+    Function ObtenOperaciones(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = (" Select O.operacion, status_nombre = CASE WHEN O.status_operacion=0 THEN 'SIN VALIDAR'
+        WHEN O.status_operacion= 1  THEN 'SIN VALIDAR'
+        WHEN O.status_operacion= 2 THEN 'VALIDADO'
+        WHEN O.status_operacion= 3 THEN 'VALIDADO'
+        WHEN O.status_operacion= 4 THEN 'VALIDADO EQ'
+        WHEN O.status_operacion= 5 THEN 'RECHQZADO EQ'
+        WHEN O.status_operacion= 220 THEN 'SIN VALIDAR'
+        WHEN O.status_operacion= 250 THEN 'CANCELADO'
+        WHEN O.status_operacion= 6 THEN 'COMPLEMENTADO'
+        WHEN O.status_operacion= 12 THEN 'RECHAZADO'
+        WHEN O.status_operacion= 16 THEN 'RECHAZADO' END,
+        OD.descripcion_operacion_definida, O.fecha_captura, O.fecha_operacion, O.monto_operacion    
+        from TICKET..OPERACION O, TICKET..OPERACION_DEFINIDA OD  Where producto_contratado = ( 
+        select  producto_contratado From  TICKET..PRODUCTO_CONTRATADO Where producto = (
+        select producto From TICKET..OPERACION_DEFINIDA Where operacion_definida_global = 100 
+        and  agencia =  1 ) 
+        and cuenta_cliente='" & sCuenta & "' )
+        and O.operacion_definida=OD.operacion_definida and OD.operacion_definida_global=100")
+
+        Return Consulta(s, "ObtenOperaciones")
+
+    End Function
+
+    Function ObtenStatusOperacion(ByVal sProductoCont As String) As Integer
+        Dim s As String
+        Dim status As Integer
+        Dim dtStatus As DataTable
+
+        s = (" Select status_operacion
+        from TICKET..OPERACION O, TICKET..OPERACION_DEFINIDA OD
+        where producto_contratado = " & sProductoCont & "
+        And O.operacion_definida = OD.operacion_definida 
+        And OD.operacion_definida_global = 100")
+
+        dtStatus = Consulta(s, "ObtenStatusOperacion")
+
+        status = Convert.ToInt16(dtStatus.Rows(0).Item(0))
+
+        Return status
+
+    End Function
+    Function ObtenTipoOperacion(ByVal sOperacion As Integer) As DataTable
+        Dim s As String
+
+        s = (" Select Case AG.prefijo_agencia +'-'+PC.cuenta_cliente, 
+        OD.operacion_definida_global, 
+        OP.linea, 
+        OP.operacion_definida 
+        FROM 
+        TICKET..PRODUCTO_CONTRATADO PC,
+        TICKET..OPERACION OP, 
+        TICKET..OPERACION_DEFINIDA OD,
+        CATALOGOS..AGENCIA AG 
+        WHERE 
+        OP.operacion = " & sOperacion & "
+         And OP.producto_contratado = PC.producto_contratado
+         And OP.operacion_definida = OD.operacion_definida
+         And AG.agencia = PC.agencia
+         And PC.agencia  = 1")
+
+        Return Consulta(s, "ObtenTipoOperacion")
+
+    End Function
+
+#End Region
+
+#Region "Apertura de cuenta"
+
+    Function ActualizaConsecutivos(ByVal sCampo As String, ByVal sValor As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "UPDATE TICKET..CONSECUTIVOS SET " & sCampo & " = " & sValor
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+    Function InsertaCliente(ByVal sCuenta_cliente As String, ByVal sNombre As String, ByVal sFuncionario As String, ByVal sTipoCliente As String, ByVal sCuentaeje As String, ByVal sMnemonico As String, ByVal sShortName As String, ByVal sFechaCtaEje As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into 
+          CATALOGOS..CLIENTE (
+          cuenta_cliente, 
+          nombre_cliente, 
+          fecha_alta, 
+          funcionario,
+          tipo_cliente, 
+          apellido_paterno, 
+          apellido_materno, 
+          persona_moral, 
+          cuenta_modificada, 
+          cuenta_eje_pesos, 
+          mnemonico, 
+          documentacion, 
+          agencia, 
+          tiene_chequera, 
+          cuenta_houston, 
+          funcionario_pesos, 
+          fecha_cuenta_pesos,
+          func_pesos,
+          shortname  
+          ) values (
+          " & sCuenta_cliente & ",
+          '" & sNombre & "',   
+          getdate(),    
+          '" & sFuncionario & "',   
+          '" & sTipoCliente & "',    
+          null, 
+          null, 
+          1,    
+          1,    
+          '" & sCuentaeje & "', 
+          '" & sMnemonico & "',  
+          0,    
+          1 ,   
+          1 ,   
+          null, 
+          0,    
+          '" & sFechaCtaEje & "',
+          '',   
+          '" & sShortName & "')"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function InsertaClienteFideicomiso(ByVal sCuenta_cliente As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into 
+          CATALOGOS..CLIENTE_FIDEICOMISO (
+          agencia,
+          cuenta_cliente, 
+          fecha_alta, 
+          fecha_baja, 
+          estatus,
+          tipo_operacion
+          ) values (
+          1,
+          '" & sCuenta_cliente & "',   
+          getdate(),    
+          null,   
+          1,    
+          'A')"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function InsertaProductoContratado(ByVal sCuenta_cliente As String) As DataTable
+
+        Dim Query As String
+
+        Query = "Insert into 
+          TICKET..PRODUCTO_CONTRATADO (
+          producto,
+          cuenta_cliente, 
+          clave_producto_contratado, 
+          fecha_contratacion, 
+          fecha_vencimiento,
+          status_producto,
+          agencia
+          ) values (
+          (select producto from TICKET..status_producto where agencia = 1 and rtrim(descripcion_status) = 'Activa'),
+          '" & sCuenta_cliente & "',   
+          '',    
+          getdate(),
+          null,   
+          (select status_producto from TICKET..status_producto where agencia = 1 and rtrim(descripcion_status) = 'Activa'),    
+          1)
+
+          SELECT @@IDENTITY"
+
+        Return Consulta(Query, "InsertaProductoContratado")
+
+    End Function
+
+    Function InsertaCuentaEje(ByVal iProductoContratado As Integer, ByVal sTipoCuentaEje As Integer) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into 
+          TICKET..CUENTA_EJE (
+          producto_contratado,
+          tipo_cuenta_eje
+          ) values (
+          " & iProductoContratado & ",
+          " & sTipoCuentaEje & ")"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+    Function InsertaOperacion(ByVal iProductoContratado As Integer, ByVal iOperacionDefinida As Integer, ByVal sLinea As String, ByVal sGrabadora As String, ByVal sFuncionario As String, ByVal sContacto As String) As DataTable
+
+        Dim Query As String
+
+        Query = "Insert into TICKET..OPERACION (
+          producto_contratado, 
+          operacion_definida, 
+          fecha_captura, 
+          status_operacion, 
+          fecha_operacion, 
+          monto_operacion, 
+          usuario_captura, 
+          usuario_valida, 
+          linea, 
+          funcionario, 
+          contacto, 
+          grabadora
+          ) values (
+          " & iProductoContratado & ",   
+          " & iOperacionDefinida & ",    
+          getdate(),          
+          1,                            
+          CAST(getdate() AS VARCHAR(12)),
+          0,                            
+          629,               
+          null,                         
+          " & sLinea & ",       
+          " & sFuncionario & ",              
+          '" & sContacto & "',          
+          " & sGrabadora & " )
+
+          SELECT @@IDENTITY"
+
+        Return Consulta(Query, "InsertaOperacion")
+
+    End Function
+    Function InsertaConcepto(ByVal sProductoContratado As String, ByVal sConcepto As String) As Integer
+
+        Dim Query As String
+
+        Query = "   Insert into TICKET..CONCEPTO (
+          producto_contratado, concepto_definido, 
+          valor_concepto
+          ) values (" & sProductoContratado & "," & sConcepto & ",0)"
+
+        Return insertar(Query)
+
+    End Function
+    Function ObtenerOperacionDefinida() As DataTable
+        Dim s As String
+        s = ("  Select operacion_definida 
+              From TICKET..OPERACION_DEFINIDA
+              Where
+               producto = (Select producto From TICKET..status_producto Where agencia = 1 And RTrim(descripcion_status) = 'Activa')
+               And operacion_definida_global = 100")
+
+        Return Consulta(s, "ObtenerOperacionDefinida")
+
+    End Function
+
+    Function ObtenerConcepto() As DataTable
+        Dim s As String
+        s = ("  Select concepto_definido 
+              From TICKET..CONCEPTO_DEFINIDO 
+              Where
+               producto =  (select producto from TICKET..status_producto where agencia = 1 and rtrim(descripcion_status) = 'Activa')
+               and rtrim(descripcion_concepto_definido) = 'Saldo en Cuenta Eje'")
+
+        Return Consulta(s, "ObtenerConcepto")
+
+    End Function
+
+    Function Preposiciones() As DataTable
+        Dim s As String
+        s = ("  Select pre_texto From CATALOGOS..PREPOSICION Where pre_status <> 9")
+
+        Return Consulta(s, "Preposiciones")
+
+    End Function
+    Function TipoSociedad() As DataTable
+        Dim s As String
+        s = ("  Select tipo_sociedad From CATALOGOS..TIPO_SOCIEDAD")
+
+        Return Consulta(s, "TipoSociedad")
+
+    End Function
+
+    Function Unico(ByVal sField As String, ByVal sTexto As String) As DataTable
+        Dim s As String
+        s = ("  Select Count ( * ) From CATALOGOS..CLIENTE Where " & sField & " = '" & sTexto & "'")
+
+        Return Consulta(s, "Unico")
+
+    End Function
+
+
+    Function ObtenerConsecutivoCte(ByVal sCampoConsecutivo As String) As DataTable
+        Dim s As String
+
+        s = ("  Select " & sCampoConsecutivo & "
+              From
+              TICKET..CONSECUTIVOS")
+
+        Return Consulta(s, "ObtenerConsecutivoCte")
+
+    End Function
+
+    Function DatosUnidadOrg(ByVal iFuncionario As Integer) As DataTable
+        Dim s As String
+
+        s = ("  Select A.nombre_funcionario,
+                A.apellido_paterno,
+                A.apellido_materno,
+                B.unidad_org_bancomer
+                From FUNCIONARIOS..FUNCIONARIO A, FUNCIONARIOS..UNIDAD_ORGANIZACIONAL B
+                Where A.unidad_organizacional = B.unidad_organizacional
+                And FUNCIONARIO = " & iFuncionario)
+
+        Return Consulta(s, "DatosUnidadOrg")
+
+    End Function
+
+    Function DatosApertura(ByVal sProductoCont As String) As DataTable
+        Dim s As String
+
+        s = ("  Select numero_funcionario,              --'0
+          CT.apellido_paterno,                          --'1
+          CT.apellido_materno,                          --'2
+          nombre_cliente,                               --'3
+          persona_moral,                                --'4
+          tipo_cliente,                                 --'5
+          cuenta_eje_pesos,                             --'6
+          convert(char(10),fecha_cuenta_pesos,105),     --'7
+          nombre_cliente,                               --'8
+          PC.cuenta_cliente,                            --'9
+          rtrim(nombre_funcionario)+' '+rtrim(FU.apellido_paterno)+' '+rtrim(FU.apellido_materno), 
+          CT.funcionario                                --'11          
+          From 
+          TICKET..PRODUCTO_CONTRATADO PC,
+          CATALOGOS..CLIENTE CT, 
+          FUNCIONARIOS..FUNCIONARIO FU 
+          Where
+           PC.cuenta_cliente = CT.cuenta_cliente
+           And PC.agencia = CT.agencia
+           And PC.producto_contratado =  " & sProductoCont & "
+           And FU.funcionario = CT.funcionario")
+
+        Return Consulta(s, "DatosApertura")
+
+    End Function
+
+    Function DatosAgencia(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = ("  Select AG.prefijo_agencia+'-'+CT.cuenta_cliente+' '
+          +rtrim(rtrim(nombre_cliente)+' '+rtrim(apellido_paterno)+' '
+          +rtrim(apellido_materno))+' ('
+          +AG.descripcion_agencia+')', 
+          PC.producto_contratado 
+          From 
+          CATALOGOS..CLIENTE CT, 
+          CATALOGOS..AGENCIA AG, 
+          TICKET..PRODUCTO_CONTRATADO PC 
+          Where
+           PC.producto in (2009,3009,8009)
+           and PC.cuenta_cliente = CT.cuenta_cliente
+           and PC.agencia = CT.agencia
+           and CT.agencia = AG.agencia           
+           and PC.cuenta_cliente = '" & sCuenta & "'
+           and AG.agencia = 1 ")
+
+        Return Consulta(s, "DatosAgencia")
+
+    End Function
+
+    Function ExisteCuenta(ByVal sCuenta As String) As DataTable
+        Dim s As String
+
+        s = ("Select cuenta_cliente 
+              From 
+              CATALOGOS..CLIENTE 
+              where
+              cuenta_cliente = '" & sCuenta & "'
+              and agencia = 1 ")
+
+        Return Consulta(s, "ExisteCuenta")
+
+    End Function
+
+    Function DatosTipoCliente() As DataTable
+        Dim s As String
+
+        s = (" SELECT 0 As tipo_cliente, '' As descripcion_tipo_cliente
+            UNION
+            SELECT tipo_cliente, descripcion_tipo_cliente FROM CATALOGOS..TIPO_CLIENTE ")
+
+        Return Consulta(s, "DatosTipoCliente")
+
+    End Function
+    Function DatosGestores(ByVal sNombre As String) As DataTable
+        Dim s As String
+
+        s = (" sp_busca_func_dolares 'N', '%" & sNombre & "%' ")
+
+        Return SP(s, "DatosGestores")
+
+    End Function
+    Function FechaSistema() As String
+        Dim DtHoy As DataTable
+
+        Dim s As String
+
+        s = (" SELECT CONVERT(CHAR(10),fecha_sistema,105) FROM TICKET..PARAMETROS ")
+
+        DtHoy = Consulta(s, "FechaSistema")
+
+        Return DtHoy.Rows(0).Item(0)
+
+    End Function
+
+    Function ValorParametro(ByVal sParametro As String) As DataTable
+        Dim s As String
+
+        s = (" SELECT valor FROM TICKET..PARAMETRIZACION WHERE codigo = '" & sParametro & "'")
+
+        Return Consulta(s, "ValorParametro")
+
+    End Function
+    Function ValorParametroAP(ByVal sParametro As String) As DataTable
+        Dim s As String
+
+        s = (" SELECT valor FROM TICKET..PARAMETRIZACION WHERE codigo = '" & sParametro & "'")
+
+        Return Consulta(s, "ValorParametroAP")
+
+    End Function
+
+    Function ValidaBanca(ByVal sParametro As String)
+        Dim s As String
+
+        s = (" SELECT id_division FROM TICKET..CUENTA_BCA_CR WHERE cuenta = '" & sParametro & "'")
+
+        Return Consulta(s, "ValidaBanca")
+    End Function
+
+    Function SPGestor(ByVal sID As String, ByVal sNombre As String) As DataTable
+        Dim s As String
+
+        s = (" sp_busca_func_dolares '" & sID & "','" & sNombre & "' ")
+
+        Return Consulta(s, "SPGestor")
+
+    End Function
+
+#End Region
+
+#Region "Complemento de Apertura"
+    ' Carga de datos de operaciones por validar (status = 1)
+    Function OperacionesPorComplementar() As DataTable
+        Dim s As String
+        s = ("  select PC.cuenta_cliente as [CUENTA], OP.OPERACION AS [TICKET], TCE.descripcion_tipo AS [CUENTAEJE]
+                FROM TICKET..OPERACION OP 
+                INNER JOIN TICKET..PRODUCTO_CONTRATADO PC ON OP.producto_contratado = PC.producto_contratado
+                INNER JOIN CATALOGOS..CLIENTE C ON PC.cuenta_cliente = C.cuenta_cliente
+                INNER JOIN TICKET..CUENTA_EJE CE ON CE.producto_contratado = PC.producto_contratado
+                INNER JOIN TICKET..TIPO_CUENTA_EJE TCE ON CE.tipo_cuenta_eje =TCE.tipo_cuenta_eje
+                where status_operacion = 1 and year(fecha_operacion) =2019")
+
+        Return Consulta(s, "OperacionesPorComplementar")
+
+    End Function
+    ' Carga de datos de la operacion
+    Function LoadCuentaParte1(ByVal iTicket As Integer) As DataTable
+        Dim s As String
+        s = ("     Select 
+                   OP.linea,                               
+                   OP.grabadora,                           
+                   PC.producto_contratado,                 
+                   PC.cuenta_cliente,                      
+                   OP.fecha_captura,                       
+                   convert(char(10),OP.fecha_captura,108)  
+                   From 
+                   TICKET..OPERACION OP, 
+                   TICKET..PRODUCTO_CONTRATADO PC 
+                   Where PC.producto_contratado = OP.producto_contratado                   
+                   and OP.operacion =  " & iTicket & "")
+
+        Return Consulta(s, "LoadCuentaParte1")
+
+    End Function
+    ' Carga de datos de Cliente
+    Function LoadCuentaParte2(ByVal sCuenta As String) As DataTable
+        Dim s As String
+        s = ("  Select rtrim(nombre_cliente),               
+                  ISNULL(calle,'') as calle,                                
+                  ISNULL(cp_cliente,'') as cp_cliente,                           
+                  ISNULL(telefono_cliente,'') as telefono_cliente,                     
+                  ISNULL(fax_cliente,'') as fax_cliente,                          
+                  convert(char(10),fecha_alta,105),     
+                  ISNULL(ubicacion,'') as ubicacion,                            
+                  ISNULL(func_pesos,'') as func_pesos,                           
+                  ISNULL(apellido_paterno,'') as apellido_paterno,                     
+                  ISNULL(apellido_materno,'') as apellido_materno,                     
+                  ISNULL(colonia_cliente,'') as colonia_cliente,                      
+                  ISNULL(cuenta_mancomunada,'') as cuenta_mancomunada,                   
+                  ISNULL(no_ext,'') as no_ext,                               
+                  ISNULL(no_int,'') as no_int,                               
+                  ISNULL(componente,'') as componente,                           
+                  ISNULL(rfc,'') as rfc,                                  
+                  ISNULL(direccion_cliente,'') as direccion_cliente,                    
+                  persona_moral,
+                  cuenta_eje_pesos as cuentaPesos,
+                  fecha_cuenta_pesos as fechacuentaPesos 
+                  From 
+                  CATALOGOS..CLIENTE 
+                  Where
+                   cuenta_cliente = '" & sCuenta & "'
+                   and agencia = 1")
+
+        Return Consulta(s, "LoadCuentaParte2")
+
+    End Function
+    ' Carga de datos de Direccion Envio
+    Function LoadCuentaParte3(ByVal sCuenta As String) As DataTable
+        Dim s As String
+        s = ("  Select ISNULL(calle_envio,'') as calle_envio,        
+                ISNULL(cp_cliente,'') as cp_cliente,                           
+                ISNULL(colonia_cliente,'') as colonia_cliente,                      
+                ISNULL(ubicacion,'') as ubicacion,                            
+                ISNULL(no_ext_envio,'') as no_ext_envio,                         
+                ISNULL(no_int_envio,'') as no_int_envio,                         
+                ISNULL(componente_envio,'') as componente_envio,                    
+                ISNULL(direccion_cliente,'') as direccion_cliente, 
+                ISNULL(del_o_municipio_envio,'') as del_o_municipio_envio    
+                From
+                CATALOGOS..DIRECCION_ENVIO 
+                Where
+                cuenta_cliente = '" & sCuenta & "'
+                and agencia = 1")
+
+        Return Consulta(s, "LoadCuentaParte3")
+
+    End Function
+    Function DatosUbicacion() As DataTable
+        Dim s As String
+        s = ("  Select 0 AS ubicacion, '' AS descripcion
+	            UNION
+	            SELECT * FROM
+	            (Select U.ubicacion, 
+                rtrim(U.descripcion_ubicacion)+', '+rtrim(U2.descripcion_ubicacion)  as descripcion
+                From 
+                FUNCIONARIOS..UBICACION U, 
+                FUNCIONARIOS..UBICACION U2 
+                Where
+                U.tipo_ubicacion = 4 
+                and U.ubicacion_padre = U2.ubicacion
+                ) A
+	            order by descripcion")
+
+        Return Consulta(s, "DatosUbicacion")
+
+    End Function
+
+    Function ExisteDireccion(ByVal sCuenta As String) As DataTable
+        Dim s As String
+        s = ("  Select Count ( * ) From CATALOGOS..DIRECCION_ENVIO 
+                Where
+                cuenta_cliente = '" & sCuenta & "'
+                and agencia = 1 ")
+
+        Return Consulta(s, "ExisteDireccion")
+
+    End Function
+    Function ActualizaDatosComp(datos As ECliente) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Update CATALOGOS.dbo.CLIENTE Set 
+               calle = '" & datos.Calle & "', 
+               no_ext = '" & datos.NoExt & "',   
+               no_int = '" & datos.NoInt & "', 
+               componente = '" & datos.Componente & "', 
+               colonia_cliente = '" & datos.ColoniaCte & "', 
+               del_o_municipio = '" & datos.Del_o_mun & "', 
+               cp_cliente = '" & datos.CPCte & "', 
+               telefono_cliente = '" & datos.TelefonoCte & "', 
+               fax_cliente = '" & datos.FaxCte & "', 
+               rfc = '" & datos.RFC & "', 
+               ubicacion =  '" & datos.Ubicacion & "', 
+               func_pesos = '" & datos.FunPesos & "', 
+               cuenta_mancomunada =  0 , 
+               cuenta_modificada = 1 
+               where
+               cuenta_cliente = '" & datos.Cuenta & "'
+               and agencia =  1"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function InsertaDireccionEnvio(datos As EDireccionEnv) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "   Insert into CATALOGOS..DIRECCION_ENVIO 
+                   (agencia, cuenta_cliente, 
+                   cp_cliente, colonia_cliente, 
+                   ubicacion, calle_envio, 
+                   no_ext_envio, no_int_envio, 
+                   componente_envio, del_o_municipio_envio) 
+                   values 
+                   (1, 
+                   '" & datos.Cuenta & "', 
+                   '" & UCase(datos.CPCte) & "', 
+                   '" & UCase(datos.ColoniaCte) & "', 
+                   " & datos.Ubicacion & " ,
+	               '" & UCase(datos.Calle) & "', 
+                   '" & UCase(datos.NoExt) & "',
+                   '" & UCase(datos.NoInt) & "',
+                   '" & UCase(datos.Componente) & "',       
+                   '" & datos.Del_o_mun & "')"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function ActualizaDireccionEnvio(datos As EDireccionEnv) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "    Update CATALOGOS.dbo.DIRECCION_ENVIO set
+                    calle_envio = '" & UCase(datos.Calle) & "',
+                    no_ext_envio = '" & UCase(datos.NoExt) & "',       
+                    no_int_envio = '" & UCase(datos.NoInt) & "',      
+                    componente_envio = '" & UCase(datos.Componente) & "',       
+                    colonia_cliente = '" & UCase(datos.ColoniaCte) & "',
+                    del_o_municipio_envio = '" & datos.Del_o_mun & "', 
+                    cp_cliente = '" & UCase(datos.CPCte) & "',
+                    ubicacion = " & datos.Ubicacion & "
+                    Where
+                    cuenta_cliente = '" & datos.Cuenta & "'
+                    and agencia = 1"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function ActualizaOperacion(ByVal iTicket As Integer, ByVal sUsuario As String) As Integer
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = " Update TICKET..OPERACION set 
+                  usuario_valida = " & sUsuario & ", 
+                  status_operacion = 6 
+                  where operacion = " & iTicket
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function InsertaEventoOperacion(ByVal iTicket As Integer, ByVal sUsuario As String) As Integer
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into TICKET..EVENTO_OPERACION 
+                  (operacion, fecha_evento, status_operacion, 
+                   comentario_evento, usuario) 
+                   values 
+                   (" & iTicket & ", getdate(),6, 'Complemento Contingencia Apertura'," & sUsuario & ")"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+#End Region
+
+
+#Region "Captura de Autorizados"
+    Function ObtieneAutorizados(ByVal sCuenta As String) As DataTable
+        Dim s As String
+        s = ("  Select autorizado AS AUTORIZADO,
+               ltrim(nombre_aut + ' ' + IsNull(paterno_aut, Space(0)) + ' ' + IsNull(materno_aut, Space(0))) NOMBRE                
+               From 
+               CATALOGOS..AUTORIZADO 
+               Where
+               cuenta_cliente = '" & sCuenta & "'
+               and agencia = 1")
+
+        Return Consulta(s, "ObtieneAutorizados")
+
+    End Function
+
+    Function ExisteAutorizado(datos As EAutorizado) As DataTable
+        Dim nombreCompleto As String
+        nombreCompleto = datos.Nombre & " " & datos.Paterno & " " & datos.Materno
+
+        Dim s As String
+        s = ("  Select autorizado 
+                  From 
+                  CATALOGOS..AUTORIZADO 
+                  Where
+                   nombre_aut = '" & datos.Nombre & "' and 
+                   paterno_aut = '" & datos.Paterno & "'  and 
+                   materno_aut = '" & datos.Materno & "'
+                   and cuenta_cliente = '" & datos.Cuenta & "'
+                   and agencia = 1
+                   or nombre_aut = '" & nombreCompleto & "'
+                   or ltrim(IsNull(nombre_aut, Space(0)) + IsNull(paterno_aut, Space(0)) + IsNull(materno_aut, Space(0))) 
+                   = '" & datos.Nombre & datos.Paterno & datos.Materno & "'")
+
+        Return Consulta(s, "ExisteAutorizado")
+
+    End Function
+
+    Function InsertaAutorizado(datos As EAutorizado, ByVal sUsuario As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into CATALOGOS..AUTORIZADO 
+                (cuenta_cliente,agencia,nombre_aut,paterno_aut,materno_aut, fecha_alta, usuario)
+                VALUES 
+                    ('" & datos.Cuenta & "', 
+                     1, 
+                   '" & UCase(datos.Nombre) & "', 
+                   '" & UCase(datos.Paterno) & "', 
+                   '" & UCase(datos.Materno) & "',GETDATE()," & sUsuario & ")"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function EliminaAutorizado(autorizado As Integer) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = " DELETE CATALOGOS..AUTORIZADO Where autorizado = " & autorizado
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+#End Region
+
+#Region "Captura de Apoderados"
+    Function ObtieneApoderados(ByVal sCuenta As String) As DataTable
+        Dim s As String
+        s = ("  Select apoderado AS APODERADO,
+               ltrim(nombre_apo + ' ' + IsNull(paterno_apo, Space(0)) + ' ' + IsNull(materno_apo, Space(0))) NOMBRE                
+               From 
+               CATALOGOS..APODERADO 
+               Where
+               cuenta_cliente = '" & sCuenta & "'
+               and agencia = 1")
+
+        Return Consulta(s, "ObtieneApoderados")
+
+    End Function
+
+    Function ExisteApoderado(datos As EApoderado) As DataTable
+        Dim nombreCompleto As String
+        nombreCompleto = datos.Nombre & " " & datos.Paterno & " " & datos.Materno
+
+        Dim s As String
+        s = ("  Select apoderado 
+                  'From 
+                  CATALOGOS..APODERADO 
+                  Where
+                   nombre_apo = '" & datos.Nombre & "' and 
+                   paterno_apo = '" & datos.Paterno & "'  and 
+                   materno_apo = '" & datos.Materno & "'
+                   and cuenta_cliente = '" & datos.Cuenta & "'
+                   and agencia = 1
+                   or nombre_apo = '" & nombreCompleto & "'
+                   or ltrim(IsNull(nombre_apo, Space(0)) + IsNull(paterno_apo, Space(0)) + IsNull(materno_apo, Space(0))) 
+                   = '" & datos.Nombre & datos.Paterno & datos.Materno & "'")
+
+        Return Consulta(s, "ExisteAutorizado")
+
+    End Function
+
+    Function InsertaApoderado(datos As EApoderado, ByVal sUsuario As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into CATALOGOS..APODERADO 
+                (cuenta_cliente,agencia,nombre_apo,paterno_apo,materno_apo, fecha_alta, usuario)
+                VALUES 
+                    ('" & datos.Cuenta & "', 
+                     1, 
+                   '" & UCase(datos.Nombre) & "', 
+                   '" & UCase(datos.Paterno) & "', 
+                   '" & UCase(datos.Materno) & "',GETDATE()," & sUsuario & ")"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function EliminaApoderado(apoderado As Integer) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = " DELETE CATALOGOS..APODERADO Where apoderado = " & apoderado
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+#End Region
+
+#Region "Captura de Beneficiarios"
+    Function ObtieneBeneficiarios(ByVal sCuenta As String) As DataTable
+
+        Dim s As String
+        s = ("  Select beneficiario AS BENEFICIARIO,
+               ltrim(nombre_benef + ' ' + IsNull(paterno_benef, Space(0)) + ' ' + IsNull(materno_benef, Space(0))) NOMBRE                
+               From 
+               CATALOGOS..BENEFICIARIO 
+               Where
+               cuenta_cliente = '" & sCuenta & "'
+               and agencia = 1")
+
+        Return Consulta(s, "ObtieneBeneficiarios")
+
+    End Function
+
+    Function ExisteBeneficiario(datos As EBeneficiario) As DataTable
+        Dim nombreCompleto As String
+        nombreCompleto = datos.Nombre & " " & datos.Paterno & " " & datos.Materno
+
+        Dim s As String
+        s = ("  Select apoderado 
+                  'From 
+                  CATALOGOS..APODERADO 
+                  Where
+                   nombre_benef = '" & datos.Nombre & "' and 
+                   paterno_benef = '" & datos.Paterno & "'  and 
+                   materno_benef = '" & datos.Materno & "'
+                   and cuenta_cliente = '" & datos.Cuenta & "'
+                   and agencia = 1
+                   or nombre_benef = '" & nombreCompleto & "'
+                   or ltrim(IsNull(nombre_benef, Space(0)) + IsNull(paterno_benef, Space(0)) + IsNull(materno_benef, Space(0))) 
+                   = '" & datos.Nombre & datos.Paterno & datos.Materno & "'")
+
+        Return Consulta(s, "ExisteBeneficiario")
+
+    End Function
+    Function InsertaBeneficiario(datos As EBeneficiario, ByVal sUsuario As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into CATALOGOS..BENEFICIARIO 
+                (cuenta_cliente,agencia,nombre_benef,paterno_benef,materno_benef, fecha_alta, usuario)
+                VALUES 
+                    ('" & datos.Cuenta & "', 
+                     1, 
+                   '" & UCase(datos.Nombre) & "', 
+                   '" & UCase(datos.Paterno) & "', 
+                   '" & UCase(datos.Materno) & "',GETDATE()," & sUsuario & ")"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+    Function EliminaBeneficiario(beneficiario As Integer) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = " DELETE CATALOGOS..BENEFICIARIO Where beneficiario = " & beneficiario
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+#End Region
+
+#Region "Captura de Cotitulares"
+    Function ObtieneCotitulares(ByVal sCuenta As String) As DataTable
+        Dim s As String
+        s = ("  Select cotitular AS COTITULAR,
+               ltrim(nombre_cot + ' ' + IsNull(paterno_cot, Space(0)) + ' ' + IsNull(materno_cot, Space(0))) NOMBRE                
+               From 
+               CATALOGOS..COTITULAR 
+               Where
+               cuenta_cliente = '" & sCuenta & "'
+               and agencia = 1")
+
+        Return Consulta(s, "ObtieneCotitulares")
+
+    End Function
+    Function ExisteCotitular(datos As ECotitular) As DataTable
+        Dim nombreCompleto As String
+        nombreCompleto = datos.Nombre & " " & datos.Paterno & " " & datos.Materno
+
+        Dim s As String
+        s = ("  Select cotitular 
+                  From 
+                  CATALOGOS..COTITULAR 
+                  Where
+                   nombre_cot = '" & datos.Nombre & "' and 
+                   paterno_cot = '" & datos.Paterno & "'  and 
+                   materno_cot = '" & datos.Materno & "'
+                   and cuenta_cliente = '" & datos.Cuenta & "'
+                   and agencia = 1
+                   or nombre_cot = '" & nombreCompleto & "'
+                   or ltrim(IsNull(nombre_cot, Space(0)) + IsNull(paterno_cot, Space(0)) + IsNull(materno_cot, Space(0))) 
+                   = '" & datos.Nombre & datos.Paterno & datos.Materno & "'")
+
+        Return Consulta(s, "ExisteCotitular")
+
+    End Function
+
+    Function InsertaCotitular(datos As ECotitular, ByVal sUsuario As String) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into CATALOGOS..COTITULAR 
+                (cuenta_cliente,agencia,nombre_cot,paterno_cot,materno_cot, fecha_alta, usuario)
+                VALUES 
+                    ('" & datos.Cuenta & "', 
+                     1, 
+                   '" & UCase(datos.Nombre) & "', 
+                   '" & UCase(datos.Paterno) & "', 
+                   '" & UCase(datos.Materno) & "',GETDATE()," & sUsuario & ")"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+    Function EliminaCotitular(cotitular As Integer) As Integer
+
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = " DELETE CATALOGOS..COTITULAR Where cotitular = " & cotitular
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+#End Region
+
+#Region "ValidaApertura"
+    ' Carga de datos de operaciones preparados para validar (status = 6)
+    Function OperacionesPorValidar() As DataTable
+        Dim s As String
+        s = ("  select PC.cuenta_cliente as [CUENTA], OP.OPERACION AS [TICKET], TCE.descripcion_tipo AS [CUENTAEJE]
+                FROM TICKET..OPERACION OP 
+                INNER JOIN TICKET..PRODUCTO_CONTRATADO PC ON OP.producto_contratado = PC.producto_contratado
+                INNER JOIN CATALOGOS..CLIENTE C ON PC.cuenta_cliente = C.cuenta_cliente
+                INNER JOIN TICKET..CUENTA_EJE CE ON CE.producto_contratado = PC.producto_contratado
+                INNER JOIN TICKET..TIPO_CUENTA_EJE TCE ON CE.tipo_cuenta_eje =TCE.tipo_cuenta_eje
+                where status_operacion = 6 and year(fecha_operacion) =2019")
+
+        Return Consulta(s, "OperacionesPorValidar")
+
+    End Function
+
+    Function ExisteDepositosAnteriores(ByVal sProductoContratado As String) As DataTable
+        Dim s As String
+        s = ("  Select Count ( * ) 
+                From TICKET..OPERACION OP, 
+                TICKET..OPERACION_DEFINIDA OD 
+                Where 
+                OP.operacion_definida = OD.operacion_definida And 
+                OP.producto_contratado =  " & sProductoContratado & "  And 
+                OD.operacion_definida_global In 
+                ( 580, 583, 584, 585, 587, 597, 589, 591, 592 ) And 
+                OP.status_operacion <> 250 And 
+                OP.fecha_operacion < GETDATE() ")
+
+        Return Consulta(s, "ExisteDepositosAnteriores")
+
+    End Function
+    Function ValidaOperacion(ByVal iTicket As Integer, ByVal sUsuario As String) As Integer
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = " Update TICKET..OPERACION set 
+                  usuario_valida = " & sUsuario & ", 
+                  status_operacion = 2 
+                  where operacion = " & iTicket
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+
+    Function InsertaEventoOperacionVal(ByVal iTicket As Integer, ByVal sUsuario As String) As Integer
+        Dim Query As String
+        Dim Registro As Integer
+
+        Query = "Insert into TICKET..EVENTO_OPERACION 
+                  (operacion, fecha_evento, status_operacion, 
+                   comentario_evento, usuario) 
+                   values 
+                   (" & iTicket & ", getdate(),2, 'Validación de Apertura'," & sUsuario & ")"
+
+        Registro = insertar(Query)
+
+        Return Registro
+
+    End Function
+#End Region
+
+
+#End Region
+
+#Region "Reportes GONET Beatriz A Palacios"
+
+    Function ObtieneOperacionesMT103(ByVal sFecha As String) As DataTable
+
+        Dim s As String
+        s = ("  Select OP.operacion, case RS.status_envio when 1 then 'Si' else 'No' end as enviado
+                From TICKET..REPORTE_SWIFT_MT103 RS, TICKET..OPERACION_DEFINIDA OD,
+                TICKET..OPERACION OP 
+                Where RS.operacion = OP.operacion and
+                OP.operacion_definida = OD.operacion_definida and
+                OD.agencia in (1 ) and
+                OP.status_operacion <> 250 and
+                OP.fecha_operacion = '" & sFecha & "'")
+
+        Return Consulta(s, "ObtieneOperacionesMT103")
+
+    End Function
+
+#End Region
+
+    Function regresa_count(ByVal query As String, ByVal funcion As String) As String
+        set_sqlstring()
+        Dim coneccion As New SqlConnection()
+        coneccion.ConnectionString = sqlstring
+        Dim col As String = ""
+        Try
+            coneccion.Open()
+            If coneccion.State = ConnectionState.Open Then
+                Using command As SqlCommand = New SqlCommand(query, coneccion)
+                    col = Convert.ToInt32(command.ExecuteScalar())
+                End Using
+                coneccion.Close()
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error en funcion " & funcion & ": " & ex.Message)
+            Err.Clear()
+            coneccion.Close()
+        End Try
+        Return col
+    End Function
+
+    Function get_coneccion_sql() As SqlConnection
+
+        set_sqlstring()
+        Dim coneccion As New SqlConnection()
+        coneccion.ConnectionString = sqlstring
+        Try
+            coneccion.Open()
+            If coneccion.State = ConnectionState.Open Then
+                ' coneccion.Dispose()
+                coneccion.Close()
+                Return coneccion
+                Exit Function
+            Else
+                coneccion.Dispose()
+                coneccion.Close()
+                Return Nothing
+                Exit Function
+            End If
+        Catch ex As Exception
+            coneccion.Dispose()
+            coneccion.Close()
+            Return Nothing
+            Exit Function
+        End Try
+        coneccion.Dispose()
+        coneccion.Close()
+        Return coneccion
+        Exit Function
+    End Function
+
+End Class
