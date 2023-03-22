@@ -875,6 +875,39 @@ VerificaDiasFeriados:
         Base2Long = X
     End Function
 
+#Region "SQL injection"
+    Public Function ValidaCamposFormulario(ControlesFormulario As Control.ControlCollection) As Boolean
+        For Each ControlForm As Control In ControlesFormulario
+            If TypeOf ControlForm Is GroupBox Or TypeOf ControlForm Is Panel Then
+                For Each ControlForm2 As Control In ControlForm.Controls
+                    If TypeOf ControlForm2 Is TextBox Or TypeOf ControlForm2 Is ComboBox Or TypeOf ControlForm2 Is DateTimePicker Then
+                        MsgBox("objeto: " & ControlForm2.Name & " Texto: " & ControlForm2.Text)
+                        If sqlValidation(ControlForm2.Text) = False Then
+                            MsgBox("Se detectaron comandos no validos, favor de validar con el administrador del sistema.")
+                            Return False
+                        End If
+                    End If
+                Next
+            ElseIf TypeOf ControlForm Is TextBox Or TypeOf ControlForm Is ComboBox Or TypeOf ControlForm Is DateTimePicker Then
+                MsgBox("objeto: " & ControlForm.Name & " Texto: " & ControlForm.Text)
+                If sqlValidation(ControlForm.Text) = False Then
+                    MsgBox("Se detectaron comandos no validos, favor de validar con el administrador del sistema.")
+                    Return False
+                End If
+            End If
+        Next
+        Return True
+    End Function
+    Public Function sqlValidation(dato As String) As Boolean
+        dato = dato.ToUpper
+        If dato.Contains("SELECT") Or dato.Contains("FROM") Or dato.Contains("CREATE") Or dato.Contains("DROP") Or dato.Contains("DELETE") Or dato.Contains("INSERT") Or dato.Contains("UPDATE") Or dato.Contains("GRANT") Or dato.Contains("ALTER") Or dato.Contains("TRUNCATE") Or dato.Contains("WHERE") Or dato.Contains("RENAME") Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
+#End Region
+
 
     Public Const LOCALE_USER_DEFAULT = &H400 'presentar información del usuario
     Declare Function GetLocaleInfo Lib "kernel32" Alias "GetLocaleInfoA" (ByVal Locale As Long, ByVal LCType As Long, ByVal lpLCData As String, ByVal cchData As Long) As Long

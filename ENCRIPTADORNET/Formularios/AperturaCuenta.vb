@@ -78,8 +78,12 @@ Public Class AperturaCuenta
         Dim iOperacionDefinida As Integer
         Dim iOperacion As Integer
         ''**** Parametro de entrada para el insert ...Fin ********************************
-
         Try
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+
             If Not DatosCorrectos() Then
                 Exit Sub
             End If
@@ -1177,20 +1181,6 @@ Public Class AperturaCuenta
     Private Sub TXGestor_TextChanged(sender As Object, e As EventArgs) Handles TXGestor.TextChanged
 
     End Sub
-
-    Private Sub grMuestraNuevaCuenta_Enter(sender As Object, e As EventArgs) Handles grMuestraNuevaCuenta.Enter
-
-    End Sub
-
-
-
-
-
-
-
-
-
-
 
 #End Region
 End Class
