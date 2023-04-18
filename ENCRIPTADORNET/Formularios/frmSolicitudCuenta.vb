@@ -66,6 +66,12 @@ Public Class frmSolicitudCuenta
         Dim columnas As Integer = Me.dgvFiltro.Columns.Count
         Dim filas As Integer = Me.dgvFiltro.Rows.Count
         Dim total As Integer = columnas * filas
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If filas > 0 Then
             Me.ProgressBar1.Value = 20
             If filas > 1000 Then
@@ -144,7 +150,12 @@ Public Class frmSolicitudCuenta
     End Function
 
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Cursor = System.Windows.Forms.Cursors.WaitCursor
         lblStatus.Text = "Buscando solicitudes..."
         Me.CargarDatos()

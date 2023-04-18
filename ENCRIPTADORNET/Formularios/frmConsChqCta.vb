@@ -11,7 +11,12 @@
         Dim iCol As Integer = 0
 
         If Not DatosCompletos() Then Exit Sub
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Cursor = System.Windows.Forms.Cursors.WaitCursor 'Screen.MousePointer = vbHourglass
         lblStatus.Text = "Buscando solicitudes..."
         gs_Sql = "Select "
@@ -298,7 +303,12 @@
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
         Dim objLibreria As New Libreria
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If chkStatus.Checked = True Then
             ls_Formula = "{CHEQUERAS.status_chequera} = " & cmbStatus.SelectedIndex 'cmbStatus.ItemData(cmbStatus.ListIndex)
             ls_Formula = ls_Formula & " and {PRODUCTO_CONTRATADO.agencia} = " & cmbAgencias.SelectedValue 'lstAgencias.ItemData(lstAgencias.ListIndex)

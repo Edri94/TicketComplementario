@@ -111,7 +111,12 @@
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
         Dim lsAmbiente As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         On Error GoTo errImprimir
 
         Dim lngTotRegs As Long

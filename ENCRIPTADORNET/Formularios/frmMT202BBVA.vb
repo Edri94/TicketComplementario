@@ -86,7 +86,12 @@ Public Class frmMT202BBVA
         Dim dtRespConsulta As New DataTable()
         Dim ln_Respuesta As Byte
         Dim ln_Suma As Long = -1
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         dtRespConsulta = objDatasource.RealizaConsulta("SELECT convert(char(5),getdate(),14)")
         gs_HoraSistema = dtRespConsulta.Rows(0).Item(0).ToString
 

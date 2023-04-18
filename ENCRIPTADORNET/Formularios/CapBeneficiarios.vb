@@ -13,7 +13,12 @@
         Dim EBen As New EBeneficiario
         Dim Reg As Integer
         Dim ExisteBen As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub
@@ -53,7 +58,12 @@
         Dim idBeneficiario As Integer
         Dim Reg As Integer
         Dim nombre As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             gvBeneficiarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
@@ -98,7 +108,12 @@
         Dim EBen As New EBeneficiario
         Dim idBeneficiario As Integer
         Dim Reg As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub

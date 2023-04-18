@@ -333,7 +333,12 @@ Public Class frmManntoCuenta
     End Sub
 
     Private Sub txtCuenta_LostFocus(sender As Object, e As EventArgs) Handles txtCuenta.LostFocus
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If txtCuenta.Text <> "" Then
             If EncontroMantenimientos() Then
                 '1 - Habilita controles
@@ -1312,7 +1317,12 @@ Public Class frmManntoCuenta
         Dim dtDatos As DataTable
         Dim Respuesta As Integer
         Dim sTablaError As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If DatosCorrectos <> True Then Exit Sub
 
         If ModificacionCTA Then

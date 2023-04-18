@@ -18,6 +18,12 @@
     Private Sub txtTicket_LostFocus(sender As Object, e As EventArgs) Handles txtTicket.LostFocus
         Dim lnStatusOperacion As Long
         Dim dtRespConsulta As DataTable
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         cmdCancelar.Enabled = False
         txtComentario.Enabled = False
         If Trim(txtTicket.Text) = "" Then Exit Sub
@@ -113,6 +119,12 @@
         Dim Cadena, Caracter, Pos
         Dim dtRespConsulta As DataTable
         'Se valida que no existan "saltos de linea" en la cadena a guardar PHILGMS1 20080729
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Caracter = Chr(13)
         Cadena = txtComentario.Text
         Pos = InStr(1, Cadena, Caracter, 1)

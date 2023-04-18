@@ -67,7 +67,12 @@
         Dim lnMonto As Long
         Dim d As New DataSourceModCancelaCtas
         Dim dtBuscaTicket As DataTable
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If Val(txtTicket.Text) = 0 Then Exit Sub
         If Len(txtTicket.Text) < 7 Then Exit Sub
         lsMensaje = ""
@@ -163,7 +168,12 @@
         Dim dtBuscaTicket As DataTable
         Dim regActualiza As Integer
         Dim InsEventoOper As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If txtComentario.Text.Trim = "" Then     'No hay comentario de bloqueo / desbloqueo
             MsgBox("Es necesario indicar el motivo de la cancelación. ", vbInformation, "Cancelación.")
             txtComentario.Focus()

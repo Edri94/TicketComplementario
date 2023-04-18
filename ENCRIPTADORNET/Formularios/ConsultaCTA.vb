@@ -161,10 +161,13 @@
         End Try
 
     End Sub
-
-
-
     Private Sub btAutorizados_Click(sender As Object, e As EventArgs) Handles btAutorizados.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             Dim fVerAutorizados As New VerAutorizados()
             sCta = txConsulta.Text.ToString().Trim()
@@ -183,6 +186,12 @@
     End Sub
 
     Private Sub btBeneficiario_Click(sender As Object, e As EventArgs) Handles btBeneficiario.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             sCta = txConsulta.Text.ToString().Trim()
             If sCta > 0 Then
@@ -223,6 +232,12 @@
     End Sub
 
     Private Sub btCotitulares_Click(sender As Object, e As EventArgs) Handles btCotitulares.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             Dim fVerCotitulares As New VerCotitulares()
             CuentaCompApertura = FCuentaCliente
@@ -544,7 +559,12 @@
         Dim dtCot As DataTable
         Dim dtApo As DataTable
         Dim objData As New Datasource
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'If Not IsNumeric(e.KeyChar) Then
         'e.Handled = True
 
@@ -775,7 +795,6 @@
         Return True
 
     End Function
-
 #End Region
 
 End Class

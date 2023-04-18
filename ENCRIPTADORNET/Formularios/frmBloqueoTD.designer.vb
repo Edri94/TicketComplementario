@@ -22,6 +22,7 @@ Partial Class frmBloqueoTD
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBloqueoTD))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmdBloquear = New System.Windows.Forms.Button()
         Me.cmdSalir = New System.Windows.Forms.Button()
@@ -386,6 +387,7 @@ Partial Class frmBloqueoTD
         Me.ClientSize = New System.Drawing.Size(960, 658)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmBloqueoTD"
         Me.Text = "Bloqueo / Desbloqueo de Time Deposits"
         Me.GroupBox1.ResumeLayout(False)

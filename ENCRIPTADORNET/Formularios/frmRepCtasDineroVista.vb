@@ -21,6 +21,12 @@
 
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
         Cursor = System.Windows.Forms.Cursors.WaitCursor
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If validaDatos() Then
             cmdImprimir.Enabled = True 'False ---------------- RACB 24-05-2021
             'inicializa grid
@@ -167,7 +173,12 @@
         'Saldos a la vista cuentas 000
         opcionReporte = 1
         RepOperativa.ShowDialog()
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
 
     End Sub
 

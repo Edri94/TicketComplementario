@@ -89,6 +89,12 @@
 
     End Sub
     Private Sub btAceptar_Click(sender As Object, e As EventArgs) Handles btAceptar.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
 
             If MsgBox("Esta seguro de validar el complemento de la apertura con numero de Ticket " & FTicket & ". ¿Desea Continuar?", vbYesNo + vbQuestion + vbDefaultButton2, "Complemento") <> vbYes Then Exit Sub
@@ -179,6 +185,12 @@
 
     End Sub
     Private Sub btAutorizados_Click(sender As Object, e As EventArgs) Handles btAutorizados.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             Dim fCapAutorizados As New CapAutorizados()
             CuentaCompApertura = FCuentaCliente
@@ -196,6 +208,12 @@
 
     End Sub
     Private Sub btBeneficiario_Click(sender As Object, e As EventArgs) Handles btBeneficiario.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If IsNothing(FPersonaMoral) Then
                 MsgBox("Debe seleccionar una cuenta.", vbInformation, "Actualización datos complemento")
@@ -236,6 +254,12 @@
 
     End Sub
     Private Sub btCotitulares_Click(sender As Object, e As EventArgs) Handles btCotitulares.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             Dim fCapCotitulares As New CapCotitulares()
 

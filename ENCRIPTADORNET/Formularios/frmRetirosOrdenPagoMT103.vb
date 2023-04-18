@@ -487,6 +487,12 @@ Public Class frmRetirosOrdenPagoMT103
     End Function
 
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If iFormularioOrigen = 1 Then
             If txtOperacion.Text = "" Then
                 GuardarTicket()
@@ -511,9 +517,9 @@ Public Class frmRetirosOrdenPagoMT103
                 End If
             Else
                 MsgBox("Requieres indicar un ticket")
-                End If
             End If
-            BuscarOperacionesPendientes()
+        End If
+        BuscarOperacionesPendientes()
         'Llama a la Pantalla de Compra de Time Deposit
         'If lb_StatusOpera.CapturaTD = True Then
         '    If MsgBox("¿Desea concertar la compra de un Time Deposit en este momento?", vbQuestion + vbYesNo, "Compra de Time Deposit") = vbYes Then
@@ -2980,6 +2986,12 @@ VerificaFecha:
         Dim lsMotivo As String
         Dim dtRespConsulta As DataTable
         If iUsuarioCaptura <> usuario Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             If txtOperacion.Text <> "" Then
                 iTicketGenerado = txtOperacion.Text
                 lsOpOrigen = 0
@@ -3195,6 +3207,12 @@ VerificaFecha:
     End Sub
     Private Sub cmdActualizar_Click(sender As Object, e As EventArgs) Handles cmdActualizar.Click
         If txtOperacion.Text <> "" Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             If iFormularioOrigen = 1 Then
                 iTicketGenerado = txtOperacion.Text
                 If objDatasource.insertar(GuardarDatosVista()) > 0 Then

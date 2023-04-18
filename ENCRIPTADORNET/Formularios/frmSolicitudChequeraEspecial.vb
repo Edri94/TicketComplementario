@@ -130,6 +130,12 @@ Public Class frmSolicitudChequeraEspecial
     Private Sub btAceptar_Click(sender As Object, e As EventArgs) Handles btAceptar.Click
         'False indica que no es una solicitud Errónea y se deber verificar los datos
         RegistraChequera("Solicitud de Chequera", False)
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
     End Sub
 
 
@@ -143,6 +149,12 @@ Public Class frmSolicitudChequeraEspecial
     End Sub
 
     Private Sub btSolError_Click(sender As Object, e As EventArgs) Handles btSolError.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If btSolError.Text = "Solicitud Errónea" Then
             btCancelar.Visible = True
             btAceptar.Enabled = False
@@ -648,8 +660,13 @@ Public Class frmSolicitudChequeraEspecial
         ''Try
 
         Dim sFechaIni As String
-            Dim sFechaFin As String
-
+        Dim sFechaFin As String
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         sFechaIni = DateAdd("d", 0, dtpFechaIni.Text)
             sFechaFin = DateAdd("d", 1, dtpFechaFin.Text)
 

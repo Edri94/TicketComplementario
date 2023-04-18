@@ -37,7 +37,12 @@ Public Class frmRepTDOvernight
         Dim lsAmbiente As String = ""
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         ls_Rango = ""
         ln_NumOps = 0
         'For ln_Items = 1 To lstDatos.ListItems.Count
@@ -133,6 +138,12 @@ Public Class frmRepTDOvernight
 
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
         Dim dtRespConsulta As DataTable
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If Trim(dtpFecha.Text) = "" Then
             MsgBox("Es necesario indicar la fecha del operación.", vbInformation, "Fecha Faltante")
             dtpFecha.Focus()

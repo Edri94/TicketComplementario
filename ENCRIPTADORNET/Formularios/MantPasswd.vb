@@ -14,7 +14,12 @@
     Private Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
         Dim ls_Password As String
         Dim NumAplicacion As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         ls_Password = Trim(txtNvoPasswd.Text)
         NumAplicacion = "9"
         'dbBeginTran

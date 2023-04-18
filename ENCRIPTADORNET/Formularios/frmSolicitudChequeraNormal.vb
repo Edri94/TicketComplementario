@@ -136,6 +136,12 @@ Public Class frmSolicitudChequeraNormal
     End Sub
     Private Sub btAceptar_Click(sender As Object, e As EventArgs) Handles btAceptar.Click
         'False indica que no es una solicitud Errónea y se deber verificar los datos
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         RegistraChequera("Solicitud de Chequera", False)
     End Sub
 
@@ -149,6 +155,12 @@ Public Class frmSolicitudChequeraNormal
     End Sub
 
     Private Sub btSolError_Click(sender As Object, e As EventArgs) Handles btSolError.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If btSolError.Text = "Solicitud Errónea" Then
             btCancelar.Visible = True
             btAceptar.Enabled = False

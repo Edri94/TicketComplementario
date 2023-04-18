@@ -13,7 +13,12 @@
         Dim EApo As New EApoderado
         Dim Reg As Integer
         Dim ExisteApo As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub
@@ -54,7 +59,12 @@
         Dim idApoderado As Integer
         Dim Reg As Integer
         Dim nombre As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             gvApoderados.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
@@ -97,7 +107,12 @@
         Dim EApo As New EApoderado
         Dim idApoderado As Integer
         Dim Reg As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub

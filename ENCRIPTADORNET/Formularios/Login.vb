@@ -16,7 +16,12 @@ Public Class Login
         Dim sPermiso1 As String
         Dim sPermiso2 As String
         Dim sPermiso3 As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         bLogin = False
 
         If My.Computer.Network.IsAvailable = False Then

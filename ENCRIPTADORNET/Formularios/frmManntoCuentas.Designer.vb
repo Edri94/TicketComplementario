@@ -22,6 +22,7 @@ Partial Class frmManntoCuentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmManntoCuentas))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmdSalir = New System.Windows.Forms.Button()
         Me.cmdImprimir = New System.Windows.Forms.Button()
@@ -270,6 +271,7 @@ Partial Class frmManntoCuentas
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1257, 711)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmManntoCuentas"
         Me.Text = "Reporte de Mantenimiento de Cuentas CED"

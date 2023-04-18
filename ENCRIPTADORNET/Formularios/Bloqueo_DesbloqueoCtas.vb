@@ -60,6 +60,12 @@
     End Sub
 
     Private Sub txtCuenta_Leave(sender As Object, e As EventArgs) Handles txtCuenta.Leave
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'revisa si el dato es correcto
 
         If txtCuenta.Text <> String.Empty Then
@@ -537,6 +543,13 @@
             Dim dRegistro As Integer
             Dim lsHora As String = ""
 
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
+
             If Not DatosCompletos() Then
                 Exit Sub
             End If
@@ -897,6 +910,10 @@
     End Sub
     '--- RACB10/03/2021
     Private Sub txtCuenta_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles txtCuenta.KeyPress
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
         If AscW(e.KeyChar) = CInt(Keys.Enter) Then
             'revisa si el dato es correcto
 
@@ -945,7 +962,6 @@
             End If
         End If
     End Sub
-
 
 #End Region
 

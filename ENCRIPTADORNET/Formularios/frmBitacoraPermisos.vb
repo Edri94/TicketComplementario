@@ -44,6 +44,12 @@
     Private Sub cmdImprime_Click(sender As Object, e As EventArgs) Handles cmdImprime.Click
         Dim objModPermisos As modPermisos = New modPermisos()
         Dim sTituloReporte As String
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If dtpFechaInicio.Value.Date > dtpFechaFin.Value.Date Then
             MsgBox("La fecha final debe ser mayor o igual a la fecha incial.", vbInformation, "Fecha Invalida")
             dtpFechaFin.Focus()

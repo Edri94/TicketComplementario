@@ -186,7 +186,12 @@
         Dim lsAmbiente As String = ""
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         mnFuncMove = 0
         mnUOrgMove = 0
         If Trim(cmbNombre.Text) = "" Or cmbNombre.SelectedIndex = -1 Then
@@ -284,7 +289,12 @@
         Dim lsAmbiente As String = ""
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If cmbNombre.Text = "" Then
             MsgBox("Seleccione una unidad organizacional.", vbInformation, "Unidad Organizacional")
             Exit Sub
@@ -370,6 +380,12 @@
         Dim lsAmbiente As String = ""
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If DirectCast(cmbNombre.DataSource, System.Data.DataTable).Rows.Count Then
             If UCase(UCase(UCase(Trim(DirectCast(cmbNombre.SelectedItem, System.Data.DataRowView).Row.ItemArray(1))))) = "" Then
                 MsgBox("Seleccione una unidad organizacional.", vbInformation, "Unidad Organizacional")
@@ -475,6 +491,12 @@ errImprime:
     End Sub
     Private Sub cmdAgregar_Click(sender As Object, e As EventArgs) Handles cmdAgregar.Click
         If cmbNombre.SelectedIndex >= 0 And cmbTipoUnidad.SelectedValue = 3 Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             Dim lsNumUnidad As String
             Dim lsBancomer As String
             Dim lsNombre As String
@@ -718,6 +740,12 @@ errImprime:
     End Sub
     Private Sub cmdArbol_Click(sender As Object, e As EventArgs) Handles cmdArbol.Click
         If cmbTipoUnidad.SelectedValue = 4 Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             If MsgBox("¿Desea actualizar la información de la unidad organizacional?", vbYesNo + vbQuestion, "Salir de consulta de unidades") = vbYes Then
                 gsSql = "UPDATE FUNCIONARIOS..UNIDAD_ORGANIZACIONAL "
                 'gsSql = gsSql & "SET unidad_organizacional = " & txtNumUnidad.Text & ","
@@ -802,6 +830,12 @@ errImprime:
     End Sub
     Private Sub cmdNivelAtras_Click(sender As Object, e As EventArgs) Handles cmdNivelAtras.Click
         If txtNumUnidad.Text > 2 Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             Dim CRPadre = cmbNombre.DataSource.Rows(0).Item(5)
             txtNumUnidad.Text = CRPadre
             Buscar()
@@ -809,15 +843,21 @@ errImprime:
     End Sub
     Private Sub txtNumUnidad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNumUnidad.KeyPress
         If e.KeyChar = Convert.ToChar(Keys.Enter) Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             Buscar()
         End If
     End Sub
     Private Sub Buscar()
         pbCarga.Visible = True
         pbCarga.Maximum = 5
-        System.Threading.Thread.Sleep(1000)
+        pbCarga.Refresh()
         pbCarga.Value = 1
-        System.Threading.Thread.Sleep(3000)
+        pbCarga.Refresh()
         If cmbNombre.Text = "" And txtNumUnidad.Text = "" Then
             MsgBox("Se requiere ingresar Nombre o CR para iniciar la busqueda", vbInformation, "Falta Información")
             Exit Sub

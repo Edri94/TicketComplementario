@@ -10,6 +10,12 @@
     End Sub
 
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Cursor = System.Windows.Forms.Cursors.WaitCursor
         Me.dgvFuncCtasConSin.DataSource = ""
         iHayRegistros = 0
@@ -57,6 +63,12 @@
     End Function
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If iHayRegistros > 0 Then
             opcionReporte = 11    'reporte de funcionarios con y sin cuentas ced
             RepOperativa.ShowDialog()

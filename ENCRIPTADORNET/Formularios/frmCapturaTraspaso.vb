@@ -34,6 +34,12 @@ Public Class frmCapturaTraspaso
         Try
             Dim d As New Datasource
             Dim sRegistro As String
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             If frmCaptura.VerificarHrValida(3) = True Then
                 If btAgregar.Text = "&Nueva" Then
                     btAgregar.Text = "&Agregar"
@@ -137,6 +143,12 @@ Guardar:
             dtpFechaOperacion.Text = Date.Now.Date.ToString("dd-MM-yyyy")
             grbDocto.Visible = False
         End If
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
     End Sub
     Private Sub dtpFechaOperacion_Leave(sender As Object, e As EventArgs) Handles dtpFechaOperacion.Leave
         Dim ls_fechaoperacion As String
@@ -144,6 +156,12 @@ Guardar:
     End Sub
     Private Sub dtpFechaOperacion_CloseUp(sender As Object, e As EventArgs) Handles dtpFechaOperacion.CloseUp
         Dim ls_fechaoperacion As String
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         ls_fechaoperacion = dtpFechaOperacion.Text
         If txCuenta.Text = "" Then
             If txTicket.Text = "" Then
@@ -176,7 +194,12 @@ Guardar:
     End Sub
 
     Private Sub txTicket_Leave(sender As Object, e As EventArgs) Handles txTicket.Leave
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If txTicket.Text <> "" Then
             If IsNumeric(Trim(txTicket.Text)) Then
                 Format(txTicket.Text, "0000000")
@@ -192,6 +215,4 @@ Guardar:
     Private Sub btCerrar_MouseEnter(sender As Object, e As EventArgs) Handles btCerrar.MouseEnter
         mb_Salir = True
     End Sub
-
-
 End Class

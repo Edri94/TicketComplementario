@@ -12,6 +12,12 @@
     End Sub
 
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Cursor = System.Windows.Forms.Cursors.WaitCursor
         'limpiamos el control del grid
         dgvDepositosRetiros.DataSource = ""
@@ -30,7 +36,12 @@
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
         Dim iMontoIni As Integer = 0
         Dim iMontoFin As Integer = 0
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         fe_Inicio = Trim(txtFechaIni.Text)
         fe_Fin = Trim(txtFechaFin.Text)
         iMontoIni = Trim(txtMontoIni.Text)

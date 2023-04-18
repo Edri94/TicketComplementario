@@ -79,11 +79,12 @@ Public Class AperturaCuenta
         Dim iOperacion As Integer
         ''**** Parametro de entrada para el insert ...Fin ********************************
         Try
+            '------------------------------------------------------- RACB 22/03/2023
             Dim objGlobal As New Cursors
             If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
                 Exit Sub
             End If
-
+            '------------------------------------------------------- RACB 22/03/2023
             If Not DatosCorrectos() Then
                 Exit Sub
             End If
@@ -172,6 +173,12 @@ Public Class AperturaCuenta
     End Sub
 
     Private Sub txNombre_Leave(sender As Object, e As EventArgs) Handles txNombre.Leave
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'Se coloca una cuenta cliente propuesta para la apertura.
         If txNombre.Text <> String.Empty Then
             Dim d As New Datasource
@@ -983,7 +990,12 @@ Public Class AperturaCuenta
     End Sub
 
     Private Sub TXGestor_Leave(sender As Object, e As EventArgs) Handles TXGestor.Leave
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If TXGestor.Text <> String.Empty Then
             Dim d As New Datasource
             Dim l As New Libreria
@@ -1054,6 +1066,12 @@ Public Class AperturaCuenta
     End Sub
 
     Private Sub TXConcertador_Leave(sender As Object, e As EventArgs) Handles TXConcertador.Leave
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If TXConcertador.Text <> String.Empty Then
             Dim d As New Datasource
             Dim dtDatosGestor As New DataTable

@@ -43,6 +43,12 @@
         cmbPlaza.SelectedIndex = -1
     End Sub
     Private Sub cmdContinuar_Click(sender As Object, e As EventArgs) Handles cmdContinuar.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If cmbTipoFuente.SelectedIndex < 0 Or cmbFuente.SelectedIndex < 0 Or cmbPlaza.SelectedIndex < 0 Then
             MsgBox("Se requiere seleccionar una opción en cada lista", vbCritical, "Falta Información")
         Else

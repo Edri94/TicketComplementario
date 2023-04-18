@@ -28,7 +28,12 @@
         Dim gs_sqlOK As String
         Dim d As New Datasource
         Dim iHayRegistros As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Cursor = System.Windows.Forms.Cursors.WaitCursor
 
         'revisa si hay operaciones de la fecha que se ingreso
@@ -207,7 +212,12 @@
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
         Dim SFechaIniPar As String
         Dim SFechaFinPar As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         fe_Inicio = txtFechaIni.Text
         'realiza la extracción de la información - Fecha Inicio
         opcionReporte = 13    'reporte de Cuentas con Saldo Sobregiro

@@ -57,7 +57,13 @@
         Dim ls_Password As String
         Dim l As New Libreria
         If cmdGuardar.Text = "&Guardar" Then
-            If DatosCompletos = False Then Exit Sub
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
+            If DatosCompletos() = False Then Exit Sub
 IniciaTrans:
             'dbBeginTran
             'ShowWaitCursor
@@ -135,7 +141,7 @@ IniciaTrans:
                 gs_Sql = gs_Sql & " values ('" & Trim(UCase(txtLogin.Text)) & "', "
                 gs_Sql = gs_Sql & "'" & l.Encryption(1, ls_Password) & "', "
                 gs_Sql = gs_Sql & "getdate(), '"
-                gs_Sql = gs_Sql & gnGetComputerName & "')"
+                gs_Sql = gs_Sql & gnGetComputerName() & "')"
                 'dbExecQuery gs_Sql
                 If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then 'If dbError Then
                     'dbEndQuery

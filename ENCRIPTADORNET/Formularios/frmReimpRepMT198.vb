@@ -49,7 +49,12 @@ Public Class frmReimpRepMT198
         Dim dblContador As Double
         Dim dtRespConsulta As DataTable
         'Screen.MousePointer = vbHourglass
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'If cboAgencias.SelectedIndex > 0 And IsDate(dtpFecha.Text) Then
         If cboAgencias.SelectedIndex > 0 And IsDate(dtpFecha.Text) Then
 
@@ -528,7 +533,12 @@ erropDefXTicket:
         Dim lsAmbiente As String = ""
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'Screen.MousePointer = vbHourglass
         lblTotalOperaciones.Visible = False
         pbGenArch.Maximum = 100

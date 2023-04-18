@@ -685,4 +685,8 @@
         Me.Dispose()
         Me.Close()
     End Sub
+
+    Private Sub cmdConsultar_Click(sender As Object, e As EventArgs) Handles cmdConsultar.Click
+
+    End Sub
 End Class

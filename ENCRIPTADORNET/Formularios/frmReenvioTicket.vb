@@ -103,7 +103,12 @@
             MsgBox("Requiere escribir el motivo del reenvío de esta operacion", vbInformation)
             Exit Sub
         End If
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         BtnVisible(False)
         pgbCarga.Maximum = 6
         pgbCarga.Value = 0

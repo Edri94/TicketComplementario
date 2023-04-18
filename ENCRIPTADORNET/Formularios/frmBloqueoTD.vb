@@ -68,7 +68,12 @@ Public Class frmBloqueoTD
         Dim lnMonto As Long
         Dim d As New DataSourceModCancelaCtas
         Dim dtBuscaTicket As DataTable
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If Val(txtTicket.Text) = 0 Then Exit Sub
         If Len(txtTicket.Text) < 7 Then Exit Sub
         lsMensaje = ""
@@ -230,7 +235,12 @@ Public Class frmBloqueoTD
         Dim dtBuscaTicket As DataTable
         Dim regActualiza As Integer
         Dim insEventoProd As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         strTit = ""
         If GnStatusProducto = 8003 Then 'Activo, puede bloquerse
             strTit = "Bloquear"

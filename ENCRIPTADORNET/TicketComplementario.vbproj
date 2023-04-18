@@ -1056,6 +1056,9 @@
     <EmbeddedResource Include="Formularios\frmComplementoAICED.resx">
       <DependentUpon>frmComplementoAICED.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConsDepsRets.resx">
+      <DependentUpon>frmConsDepsRets.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmFunc.resx">
       <DependentUpon>frmFunc.vb</DependentUpon>
     </EmbeddedResource>

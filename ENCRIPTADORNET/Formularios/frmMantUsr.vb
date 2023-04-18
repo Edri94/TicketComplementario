@@ -59,6 +59,12 @@ Public Class frmMantUsr
     Private Sub cmbUsuarios_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUsuarios.SelectedIndexChanged
         Dim lnIndex As Byte
         Dim dtRespConsulta1 As DataTable
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If cmbUsuarios.DataSource IsNot Nothing Then
             cmdAceptar.Enabled = False
             cmdElimina.Enabled = False
@@ -170,6 +176,12 @@ Public Class frmMantUsr
     End Sub
     Private Sub cmdElimina_Click(sender As Object, e As EventArgs) Handles cmdElimina.Click
         Dim iRegistrosAfectados As Integer
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If MsgBox("¿Esta seguro de eliminar al Usuario " & Trim(txtNombre.Text) & "?", vbYesNo + vbQuestion, "Usuarios...") = vbYes Then
 Elimina:
             'ShowWaitCursor
@@ -206,6 +218,12 @@ Elimina:
         If DatosCompletos() = False Then
             Exit Sub
         End If
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
 Guarda:
         'ShowWaitCursor
         iUsuarioSelec = cmbUsuarios.SelectedValue
@@ -301,6 +319,12 @@ Guarda:
     Private Sub cmdReactivar_Click(sender As Object, e As EventArgs) Handles cmdReactivar.Click
         'On Error GoTo ErrReactivar
         Try
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
 actualiza:
             'ShowWaitCursor
             gsSql = "Update CATALOGOS..USUARIO set "
@@ -434,6 +458,12 @@ actualiza:
         '    End If
         'End If
         If cmbUsuarios.SelectedValue > 0 Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
 actualiza:
             'ShowWaitCursor
             Dim strPassword As String

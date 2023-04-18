@@ -15,7 +15,12 @@
         Dim EAut As New EAutorizado
         Dim Reg As Integer
         Dim ExisteAut As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub
@@ -56,7 +61,12 @@
         Dim idAutorizado As Integer
         Dim Reg As Integer
         Dim nombre As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             gvAutorizados.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
@@ -100,7 +110,12 @@
         Dim EAut As New EAutorizado
         Dim idAutorizado As Integer
         Dim Reg As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub

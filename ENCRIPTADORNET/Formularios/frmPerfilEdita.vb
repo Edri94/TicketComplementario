@@ -164,6 +164,12 @@
     End Sub
     Private Sub cmbPerfiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPerfiles.SelectedIndexChanged
         'Dim i As Integer
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Dim arComentarios() As String = ms_Cambios.Split(",")
         'LimpiaChecks Me
         mb_CambioComentario = False
@@ -305,6 +311,12 @@
         Dim ls_AutorizaAnt As String
         Dim ls_FechaAnt As String
         Dim NumRegistros As Integer
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         GuardaStatusAutorizaciones()
         If cmbPerfiles.SelectedIndex > -1 And cmbPerfiles.Items.Count > 0 Then
             If gb_CambioAutorizacion Then
@@ -442,6 +454,12 @@ ActualizaPerfil:
         Dim ln_Indice As Integer
         Dim dtRespuesta As DataTable
         Dim NumRegistros As Integer
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'Busca si el perfil esta asignado a algun usuario
         gs_Sql = "SELECT count(PU.usuario) FROM CATALOGOS..PERMISOS_X_USUARIO_HEXA PU, "
         gs_Sql = gs_Sql & "CATALOGOS..PERFIL_HEXA PF, CATALOGOS..USUARIO US "
@@ -521,6 +539,12 @@ EliminaPerfil:
         Dim i As Integer
         Dim dtRespuesta As DataTable
         Dim NumRegistros As Integer
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If cmdAgregar.Text = "&Nuevo" Then
             cmdActualizar.Enabled = False
             cmdEliminar.Enabled = False

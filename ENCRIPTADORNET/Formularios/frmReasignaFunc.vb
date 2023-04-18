@@ -18,6 +18,12 @@
                 LimpiaDatos()
             End If
         End If
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
     End Sub
     Private Sub txtCuenta_LostFocus(sender As Object, e As EventArgs) Handles txtCuenta.LostFocus
         If Trim(txtCuenta.Text) = "" Then
@@ -26,6 +32,12 @@
         If cmbCuentas.Items.Count > 0 Then
             Exit Sub
         End If
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'Screen.MousePointer = vbHourglass
         'BAGO-EDS-10/MZO/06. Uso de IsNull en concatenación de cadenas
         gs_Sql = "Select AG.prefijo_agencia, "
@@ -122,6 +134,12 @@
         If cmbCuentas.Items.Count = 0 Then
             Exit Sub
         End If
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         pgbProgreso.Visible = True
         pgbProgreso.Maximum = 10
         pgbProgreso.Value = 2
@@ -280,6 +298,12 @@
         End If
     End Sub
     Private Sub cmbFuncs_Click(sender As Object, e As EventArgs) Handles cmbFuncs.SelectedIndexChanged
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If bControcombo Then
             pgbProgreso.Visible = True
             pgbProgreso.Maximum = 10
@@ -458,6 +482,12 @@
     Private Sub cmdAsignar_Click(sender As Object, e As EventArgs) Handles cmdAsignar.Click
         Dim lsPrefijo As String
         Dim lsSufijo As String
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         pgbProgreso.Visible = True
         pgbProgreso.Maximum = 10
         If Val(txtCuenta.Text) = 0 Then     'No hay cuenta

@@ -39,6 +39,7 @@ Partial Class frmUnidadOrg
         Me.txtNumUnidad = New System.Windows.Forms.TextBox()
         Me.txtPadres = New System.Windows.Forms.TextBox()
         Me.pnlEdicion = New System.Windows.Forms.GroupBox()
+        Me.chkAreaInterna = New System.Windows.Forms.CheckBox()
         Me.chkEstrategica = New System.Windows.Forms.CheckBox()
         Me.cmdBorrar = New System.Windows.Forms.Button()
         Me.cmdAgregar = New System.Windows.Forms.Button()
@@ -49,7 +50,6 @@ Partial Class frmUnidadOrg
         Me.cmdReporte2 = New System.Windows.Forms.Button()
         Me.cmdCierra = New System.Windows.Forms.Button()
         Me.chkAnuladoss = New System.Windows.Forms.CheckBox()
-        Me.chkAreaInterna = New System.Windows.Forms.CheckBox()
         Me.fraDatos.SuspendLayout()
         CType(Me.dgvFuncionarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlEdicion.SuspendLayout()
@@ -223,6 +223,17 @@ Partial Class frmUnidadOrg
         Me.pnlEdicion.TabIndex = 0
         Me.pnlEdicion.TabStop = False
         '
+        'chkAreaInterna
+        '
+        Me.chkAreaInterna.AutoSize = True
+        Me.chkAreaInterna.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkAreaInterna.Location = New System.Drawing.Point(141, 32)
+        Me.chkAreaInterna.Name = "chkAreaInterna"
+        Me.chkAreaInterna.Size = New System.Drawing.Size(122, 24)
+        Me.chkAreaInterna.TabIndex = 23
+        Me.chkAreaInterna.Text = "Área interna"
+        Me.chkAreaInterna.UseVisualStyleBackColor = True
+        '
         'chkEstrategica
         '
         Me.chkEstrategica.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -328,17 +339,6 @@ Partial Class frmUnidadOrg
         Me.chkAnuladoss.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.chkAnuladoss.UseVisualStyleBackColor = True
         Me.chkAnuladoss.Visible = False
-        '
-        'chkAreaInterna
-        '
-        Me.chkAreaInterna.AutoSize = True
-        Me.chkAreaInterna.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkAreaInterna.Location = New System.Drawing.Point(141, 32)
-        Me.chkAreaInterna.Name = "chkAreaInterna"
-        Me.chkAreaInterna.Size = New System.Drawing.Size(122, 24)
-        Me.chkAreaInterna.TabIndex = 23
-        Me.chkAreaInterna.Text = "Área interna"
-        Me.chkAreaInterna.UseVisualStyleBackColor = True
         '
         'frmUnidadOrg
         '

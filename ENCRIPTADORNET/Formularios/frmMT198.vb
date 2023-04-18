@@ -180,7 +180,12 @@ Public Class frmMT198
         On Error GoTo errPorEnviar
         Dim nOperaciones As Long
         Dim sExtra As String '* 12
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'Limpiamos variables para correccion del nombre en pestañas del excel
         Erase arrnomOpEnLista
         nomOpEnLista = ""
@@ -611,6 +616,12 @@ errPorEnviar:
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
         Dim LsFormula As String = ""
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         pbMT198.Value = 1
         bEncabezados = True
         'Se disparan lo eventos de busqueda de operaciones

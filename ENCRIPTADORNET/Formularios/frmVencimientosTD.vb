@@ -47,6 +47,12 @@ Public Class frmVencimientosTD
         Dim lsAmbiente As String = ""
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If lstAgencia.SelectedIndex < 1 Then
             MsgBox("Falta indicar la agencia.", vbInformation, "Agencia")
             lstAgencia.Focus()

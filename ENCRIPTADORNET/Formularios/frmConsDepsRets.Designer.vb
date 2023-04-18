@@ -22,6 +22,7 @@ Partial Class frmConsDepsRets
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsDepsRets))
         Me.lblNumOperacion = New System.Windows.Forms.Label()
         Me.lblTicket = New System.Windows.Forms.Label()
         Me.lblTitMonto = New System.Windows.Forms.Label()
@@ -121,9 +122,10 @@ Partial Class frmConsDepsRets
         Me.lblNumOperacion.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblNumOperacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumOperacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumOperacion.Location = New System.Drawing.Point(146, 29)
+        Me.lblNumOperacion.Location = New System.Drawing.Point(219, 45)
+        Me.lblNumOperacion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumOperacion.Name = "lblNumOperacion"
-        Me.lblNumOperacion.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumOperacion.Size = New System.Drawing.Size(140, 26)
         Me.lblNumOperacion.TabIndex = 4
         Me.lblNumOperacion.Text = "                            "
         Me.lblNumOperacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -133,9 +135,10 @@ Partial Class frmConsDepsRets
         Me.lblTicket.AutoSize = True
         Me.lblTicket.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTicket.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTicket.Location = New System.Drawing.Point(33, 31)
+        Me.lblTicket.Location = New System.Drawing.Point(50, 48)
+        Me.lblTicket.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTicket.Name = "lblTicket"
-        Me.lblTicket.Size = New System.Drawing.Size(42, 15)
+        Me.lblTicket.Size = New System.Drawing.Size(64, 22)
         Me.lblTicket.TabIndex = 5
         Me.lblTicket.Text = "Ticket:"
         '
@@ -144,9 +147,10 @@ Partial Class frmConsDepsRets
         Me.lblTitMonto.AutoSize = True
         Me.lblTitMonto.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTitMonto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitMonto.Location = New System.Drawing.Point(33, 55)
+        Me.lblTitMonto.Location = New System.Drawing.Point(50, 85)
+        Me.lblTitMonto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTitMonto.Name = "lblTitMonto"
-        Me.lblTitMonto.Size = New System.Drawing.Size(65, 15)
+        Me.lblTitMonto.Size = New System.Drawing.Size(93, 22)
         Me.lblTitMonto.TabIndex = 7
         Me.lblTitMonto.Text = "Monto del:"
         '
@@ -155,9 +159,10 @@ Partial Class frmConsDepsRets
         Me.lblMonto.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblMonto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMonto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMonto.Location = New System.Drawing.Point(146, 53)
+        Me.lblMonto.Location = New System.Drawing.Point(219, 82)
+        Me.lblMonto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonto.Name = "lblMonto"
-        Me.lblMonto.Size = New System.Drawing.Size(93, 17)
+        Me.lblMonto.Size = New System.Drawing.Size(140, 26)
         Me.lblMonto.TabIndex = 6
         Me.lblMonto.Text = "                            "
         Me.lblMonto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -167,9 +172,10 @@ Partial Class frmConsDepsRets
         Me.lblFecha.AutoSize = True
         Me.lblFecha.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFecha.Location = New System.Drawing.Point(33, 79)
+        Me.lblFecha.Location = New System.Drawing.Point(50, 122)
+        Me.lblFecha.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFecha.Name = "lblFecha"
-        Me.lblFecha.Size = New System.Drawing.Size(105, 15)
+        Me.lblFecha.Size = New System.Drawing.Size(155, 22)
         Me.lblFecha.TabIndex = 9
         Me.lblFecha.Text = "Fecha de captura:"
         '
@@ -178,9 +184,10 @@ Partial Class frmConsDepsRets
         Me.lblFechaCaptura.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblFechaCaptura.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblFechaCaptura.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaCaptura.Location = New System.Drawing.Point(146, 77)
+        Me.lblFechaCaptura.Location = New System.Drawing.Point(219, 118)
+        Me.lblFechaCaptura.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaCaptura.Name = "lblFechaCaptura"
-        Me.lblFechaCaptura.Size = New System.Drawing.Size(93, 17)
+        Me.lblFechaCaptura.Size = New System.Drawing.Size(140, 26)
         Me.lblFechaCaptura.TabIndex = 8
         Me.lblFechaCaptura.Text = "                            "
         Me.lblFechaCaptura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -190,9 +197,10 @@ Partial Class frmConsDepsRets
         Me.lblDestCausa.AutoSize = True
         Me.lblDestCausa.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblDestCausa.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDestCausa.Location = New System.Drawing.Point(33, 103)
+        Me.lblDestCausa.Location = New System.Drawing.Point(50, 158)
+        Me.lblDestCausa.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDestCausa.Name = "lblDestCausa"
-        Me.lblDestCausa.Size = New System.Drawing.Size(100, 15)
+        Me.lblDestCausa.Size = New System.Drawing.Size(148, 22)
         Me.lblDestCausa.TabIndex = 11
         Me.lblDestCausa.Text = "Destino o Causa:"
         '
@@ -201,9 +209,10 @@ Partial Class frmConsDepsRets
         Me.lblDestino.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblDestino.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDestino.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDestino.Location = New System.Drawing.Point(146, 101)
+        Me.lblDestino.Location = New System.Drawing.Point(219, 155)
+        Me.lblDestino.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDestino.Name = "lblDestino"
-        Me.lblDestino.Size = New System.Drawing.Size(198, 17)
+        Me.lblDestino.Size = New System.Drawing.Size(297, 26)
         Me.lblDestino.TabIndex = 10
         Me.lblDestino.Text = "                                                               "
         Me.lblDestino.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -213,9 +222,10 @@ Partial Class frmConsDepsRets
         Me.lblTStatus0.AutoSize = True
         Me.lblTStatus0.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTStatus0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTStatus0.Location = New System.Drawing.Point(33, 127)
+        Me.lblTStatus0.Location = New System.Drawing.Point(50, 195)
+        Me.lblTStatus0.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTStatus0.Name = "lblTStatus0"
-        Me.lblTStatus0.Size = New System.Drawing.Size(108, 15)
+        Me.lblTStatus0.Size = New System.Drawing.Size(167, 22)
         Me.lblTStatus0.TabIndex = 13
         Me.lblTStatus0.Text = "Status Doc. vs. Tkt."
         '
@@ -224,9 +234,10 @@ Partial Class frmConsDepsRets
         Me.lblConcilia.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblConcilia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblConcilia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblConcilia.Location = New System.Drawing.Point(146, 125)
+        Me.lblConcilia.Location = New System.Drawing.Point(219, 192)
+        Me.lblConcilia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblConcilia.Name = "lblConcilia"
-        Me.lblConcilia.Size = New System.Drawing.Size(198, 17)
+        Me.lblConcilia.Size = New System.Drawing.Size(297, 26)
         Me.lblConcilia.TabIndex = 12
         Me.lblConcilia.Text = "                                                               "
         Me.lblConcilia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -236,9 +247,10 @@ Partial Class frmConsDepsRets
         Me.lblTStatus1.AutoSize = True
         Me.lblTStatus1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTStatus1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTStatus1.Location = New System.Drawing.Point(33, 151)
+        Me.lblTStatus1.Location = New System.Drawing.Point(50, 232)
+        Me.lblTStatus1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTStatus1.Name = "lblTStatus1"
-        Me.lblTStatus1.Size = New System.Drawing.Size(114, 15)
+        Me.lblTStatus1.Size = New System.Drawing.Size(173, 22)
         Me.lblTStatus1.TabIndex = 15
         Me.lblTStatus1.Text = "Status Doc. vs. Sop."
         '
@@ -247,9 +259,10 @@ Partial Class frmConsDepsRets
         Me.lblDocvsSop.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblDocvsSop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDocvsSop.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDocvsSop.Location = New System.Drawing.Point(146, 149)
+        Me.lblDocvsSop.Location = New System.Drawing.Point(219, 229)
+        Me.lblDocvsSop.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDocvsSop.Name = "lblDocvsSop"
-        Me.lblDocvsSop.Size = New System.Drawing.Size(198, 17)
+        Me.lblDocvsSop.Size = New System.Drawing.Size(297, 26)
         Me.lblDocvsSop.TabIndex = 14
         Me.lblDocvsSop.Text = "                                                               "
         Me.lblDocvsSop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -259,9 +272,10 @@ Partial Class frmConsDepsRets
         Me.lblFechaOp.AutoSize = True
         Me.lblFechaOp.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblFechaOp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaOp.Location = New System.Drawing.Point(250, 79)
+        Me.lblFechaOp.Location = New System.Drawing.Point(375, 122)
+        Me.lblFechaOp.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaOp.Name = "lblFechaOp"
-        Me.lblFechaOp.Size = New System.Drawing.Size(121, 15)
+        Me.lblFechaOp.Size = New System.Drawing.Size(178, 22)
         Me.lblFechaOp.TabIndex = 19
         Me.lblFechaOp.Text = "Fecha de Operación:"
         '
@@ -270,9 +284,10 @@ Partial Class frmConsDepsRets
         Me.lblFechaOperacion.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblFechaOperacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblFechaOperacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaOperacion.Location = New System.Drawing.Point(370, 77)
+        Me.lblFechaOperacion.Location = New System.Drawing.Point(555, 118)
+        Me.lblFechaOperacion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaOperacion.Name = "lblFechaOperacion"
-        Me.lblFechaOperacion.Size = New System.Drawing.Size(93, 17)
+        Me.lblFechaOperacion.Size = New System.Drawing.Size(140, 26)
         Me.lblFechaOperacion.TabIndex = 18
         Me.lblFechaOperacion.Text = "                            "
         Me.lblFechaOperacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -282,9 +297,10 @@ Partial Class frmConsDepsRets
         Me.lblCuenta.AutoSize = True
         Me.lblCuenta.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCuenta.Location = New System.Drawing.Point(250, 31)
+        Me.lblCuenta.Location = New System.Drawing.Point(375, 48)
+        Me.lblCuenta.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCuenta.Name = "lblCuenta"
-        Me.lblCuenta.Size = New System.Drawing.Size(114, 15)
+        Me.lblCuenta.Size = New System.Drawing.Size(166, 22)
         Me.lblCuenta.TabIndex = 17
         Me.lblCuenta.Text = "Número de Cuenta:"
         '
@@ -293,9 +309,10 @@ Partial Class frmConsDepsRets
         Me.lblNumCuenta.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblNumCuenta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumCuenta.Location = New System.Drawing.Point(370, 29)
+        Me.lblNumCuenta.Location = New System.Drawing.Point(555, 45)
+        Me.lblNumCuenta.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumCuenta.Name = "lblNumCuenta"
-        Me.lblNumCuenta.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumCuenta.Size = New System.Drawing.Size(140, 26)
         Me.lblNumCuenta.TabIndex = 16
         Me.lblNumCuenta.Text = "                            "
         Me.lblNumCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -305,9 +322,10 @@ Partial Class frmConsDepsRets
         Me.lbldisco.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lbldisco.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lbldisco.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbldisco.Location = New System.Drawing.Point(436, 151)
+        Me.lbldisco.Location = New System.Drawing.Point(654, 232)
+        Me.lbldisco.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldisco.Name = "lbldisco"
-        Me.lbldisco.Size = New System.Drawing.Size(146, 17)
+        Me.lbldisco.Size = New System.Drawing.Size(219, 26)
         Me.lbldisco.TabIndex = 20
         Me.lbldisco.Text = "Digitalización                     "
         Me.lbldisco.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -340,9 +358,11 @@ Partial Class frmConsDepsRets
         Me.GroupBox1.Controls.Add(Me.lblNumPlaza)
         Me.GroupBox1.Controls.Add(Me.lblTCR)
         Me.GroupBox1.Controls.Add(Me.lblNumCR)
-        Me.GroupBox1.Location = New System.Drawing.Point(36, 174)
+        Me.GroupBox1.Location = New System.Drawing.Point(54, 268)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(546, 194)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(819, 298)
         Me.GroupBox1.TabIndex = 21
         Me.GroupBox1.TabStop = False
         '
@@ -351,9 +371,10 @@ Partial Class frmConsDepsRets
         Me.lblUsuarioCapt.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblUsuarioCapt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblUsuarioCapt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuarioCapt.Location = New System.Drawing.Point(144, 161)
+        Me.lblUsuarioCapt.Location = New System.Drawing.Point(216, 248)
+        Me.lblUsuarioCapt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUsuarioCapt.Name = "lblUsuarioCapt"
-        Me.lblUsuarioCapt.Size = New System.Drawing.Size(327, 17)
+        Me.lblUsuarioCapt.Size = New System.Drawing.Size(490, 26)
         Me.lblUsuarioCapt.TabIndex = 49
         Me.lblUsuarioCapt.Text = "                                                                                 " &
     "                         "
@@ -364,9 +385,10 @@ Partial Class frmConsDepsRets
         Me.lblFuncionario.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblFuncionario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblFuncionario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFuncionario.Location = New System.Drawing.Point(144, 141)
+        Me.lblFuncionario.Location = New System.Drawing.Point(216, 217)
+        Me.lblFuncionario.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFuncionario.Name = "lblFuncionario"
-        Me.lblFuncionario.Size = New System.Drawing.Size(327, 17)
+        Me.lblFuncionario.Size = New System.Drawing.Size(490, 26)
         Me.lblFuncionario.TabIndex = 48
         Me.lblFuncionario.Text = "                                                                                 " &
     "                         "
@@ -377,9 +399,10 @@ Partial Class frmConsDepsRets
         Me.lblBPIGO.AutoSize = True
         Me.lblBPIGO.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblBPIGO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBPIGO.Location = New System.Drawing.Point(16, 123)
+        Me.lblBPIGO.Location = New System.Drawing.Point(24, 189)
+        Me.lblBPIGO.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblBPIGO.Name = "lblBPIGO"
-        Me.lblBPIGO.Size = New System.Drawing.Size(111, 15)
+        Me.lblBPIGO.Size = New System.Drawing.Size(162, 22)
         Me.lblBPIGO.TabIndex = 47
         Me.lblBPIGO.Text = "Número de Gestor:"
         '
@@ -388,9 +411,10 @@ Partial Class frmConsDepsRets
         Me.lblNumFuncionario.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblNumFuncionario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumFuncionario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumFuncionario.Location = New System.Drawing.Point(144, 121)
+        Me.lblNumFuncionario.Location = New System.Drawing.Point(216, 186)
+        Me.lblNumFuncionario.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumFuncionario.Name = "lblNumFuncionario"
-        Me.lblNumFuncionario.Size = New System.Drawing.Size(96, 17)
+        Me.lblNumFuncionario.Size = New System.Drawing.Size(144, 26)
         Me.lblNumFuncionario.TabIndex = 46
         Me.lblNumFuncionario.Text = "                             "
         Me.lblNumFuncionario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -400,9 +424,10 @@ Partial Class frmConsDepsRets
         Me.lblOtroDocto.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblOtroDocto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblOtroDocto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOtroDocto.Location = New System.Drawing.Point(144, 101)
+        Me.lblOtroDocto.Location = New System.Drawing.Point(216, 155)
+        Me.lblOtroDocto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblOtroDocto.Name = "lblOtroDocto"
-        Me.lblOtroDocto.Size = New System.Drawing.Size(177, 17)
+        Me.lblOtroDocto.Size = New System.Drawing.Size(266, 26)
         Me.lblOtroDocto.TabIndex = 45
         Me.lblOtroDocto.Text = "                                                        "
         Me.lblOtroDocto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -412,9 +437,10 @@ Partial Class frmConsDepsRets
         Me.lblSucursal.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblSucursal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSucursal.Location = New System.Drawing.Point(209, 61)
+        Me.lblSucursal.Location = New System.Drawing.Point(314, 94)
+        Me.lblSucursal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSucursal.Name = "lblSucursal"
-        Me.lblSucursal.Size = New System.Drawing.Size(225, 17)
+        Me.lblSucursal.Size = New System.Drawing.Size(338, 26)
         Me.lblSucursal.TabIndex = 44
         Me.lblSucursal.Text = "                                                                        "
         Me.lblSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -424,9 +450,10 @@ Partial Class frmConsDepsRets
         Me.lblPlaza.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblPlaza.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblPlaza.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPlaza.Location = New System.Drawing.Point(209, 41)
+        Me.lblPlaza.Location = New System.Drawing.Point(314, 63)
+        Me.lblPlaza.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPlaza.Name = "lblPlaza"
-        Me.lblPlaza.Size = New System.Drawing.Size(225, 17)
+        Me.lblPlaza.Size = New System.Drawing.Size(338, 26)
         Me.lblPlaza.TabIndex = 43
         Me.lblPlaza.Text = "                                                                        "
         Me.lblPlaza.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -436,9 +463,10 @@ Partial Class frmConsDepsRets
         Me.lblCR.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblCR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblCR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCR.Location = New System.Drawing.Point(209, 21)
+        Me.lblCR.Location = New System.Drawing.Point(314, 32)
+        Me.lblCR.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCR.Name = "lblCR"
-        Me.lblCR.Size = New System.Drawing.Size(225, 17)
+        Me.lblCR.Size = New System.Drawing.Size(338, 26)
         Me.lblCR.TabIndex = 42
         Me.lblCR.Text = "                                                                        "
         Me.lblCR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -448,9 +476,10 @@ Partial Class frmConsDepsRets
         Me.lblTMoneda.AutoSize = True
         Me.lblTMoneda.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTMoneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTMoneda.Location = New System.Drawing.Point(323, 123)
+        Me.lblTMoneda.Location = New System.Drawing.Point(484, 189)
+        Me.lblTMoneda.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTMoneda.Name = "lblTMoneda"
-        Me.lblTMoneda.Size = New System.Drawing.Size(56, 15)
+        Me.lblTMoneda.Size = New System.Drawing.Size(79, 22)
         Me.lblTMoneda.TabIndex = 41
         Me.lblTMoneda.Text = "Moneda:"
         '
@@ -459,9 +488,10 @@ Partial Class frmConsDepsRets
         Me.lblMoneda.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblMoneda.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMoneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMoneda.Location = New System.Drawing.Point(440, 121)
+        Me.lblMoneda.Location = New System.Drawing.Point(660, 186)
+        Me.lblMoneda.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMoneda.Name = "lblMoneda"
-        Me.lblMoneda.Size = New System.Drawing.Size(93, 17)
+        Me.lblMoneda.Size = New System.Drawing.Size(140, 26)
         Me.lblMoneda.TabIndex = 40
         Me.lblMoneda.Text = "                            "
         Me.lblMoneda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -471,9 +501,10 @@ Partial Class frmConsDepsRets
         Me.lblFolioCheque.AutoSize = True
         Me.lblFolioCheque.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblFolioCheque.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFolioCheque.Location = New System.Drawing.Point(323, 103)
+        Me.lblFolioCheque.Location = New System.Drawing.Point(484, 158)
+        Me.lblFolioCheque.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFolioCheque.Name = "lblFolioCheque"
-        Me.lblFolioCheque.Size = New System.Drawing.Size(111, 15)
+        Me.lblFolioCheque.Size = New System.Drawing.Size(165, 22)
         Me.lblFolioCheque.TabIndex = 39
         Me.lblFolioCheque.Text = "No. Folio / Cheque:"
         '
@@ -482,9 +513,10 @@ Partial Class frmConsDepsRets
         Me.lblNumExtra.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblNumExtra.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumExtra.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumExtra.Location = New System.Drawing.Point(440, 101)
+        Me.lblNumExtra.Location = New System.Drawing.Point(660, 155)
+        Me.lblNumExtra.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumExtra.Name = "lblNumExtra"
-        Me.lblNumExtra.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumExtra.Size = New System.Drawing.Size(140, 26)
         Me.lblNumExtra.TabIndex = 38
         Me.lblNumExtra.Text = "                            "
         Me.lblNumExtra.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -494,9 +526,10 @@ Partial Class frmConsDepsRets
         Me.lblFicha.AutoSize = True
         Me.lblFicha.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblFicha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFicha.Location = New System.Drawing.Point(323, 83)
+        Me.lblFicha.Location = New System.Drawing.Point(484, 128)
+        Me.lblFicha.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFicha.Name = "lblFicha"
-        Me.lblFicha.Size = New System.Drawing.Size(90, 15)
+        Me.lblFicha.Size = New System.Drawing.Size(135, 22)
         Me.lblFicha.TabIndex = 37
         Me.lblFicha.Text = "No. Ficha CED:"
         '
@@ -505,9 +538,10 @@ Partial Class frmConsDepsRets
         Me.lblCed.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblCed.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblCed.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCed.Location = New System.Drawing.Point(440, 81)
+        Me.lblCed.Location = New System.Drawing.Point(660, 125)
+        Me.lblCed.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCed.Name = "lblCed"
-        Me.lblCed.Size = New System.Drawing.Size(93, 17)
+        Me.lblCed.Size = New System.Drawing.Size(140, 26)
         Me.lblCed.TabIndex = 36
         Me.lblCed.Text = "                            "
         Me.lblCed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -517,9 +551,10 @@ Partial Class frmConsDepsRets
         Me.lblUsr.AutoSize = True
         Me.lblUsr.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblUsr.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsr.Location = New System.Drawing.Point(16, 163)
+        Me.lblUsr.Location = New System.Drawing.Point(24, 251)
+        Me.lblUsr.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUsr.Name = "lblUsr"
-        Me.lblUsr.Size = New System.Drawing.Size(121, 15)
+        Me.lblUsr.Size = New System.Drawing.Size(177, 22)
         Me.lblUsr.TabIndex = 35
         Me.lblUsr.Text = "Usuario que capturó:"
         '
@@ -528,9 +563,10 @@ Partial Class frmConsDepsRets
         Me.lblFunc.AutoSize = True
         Me.lblFunc.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFunc.Location = New System.Drawing.Point(16, 143)
+        Me.lblFunc.Location = New System.Drawing.Point(24, 220)
+        Me.lblFunc.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFunc.Name = "lblFunc"
-        Me.lblFunc.Size = New System.Drawing.Size(46, 15)
+        Me.lblFunc.Size = New System.Drawing.Size(69, 22)
         Me.lblFunc.TabIndex = 33
         Me.lblFunc.Text = "Gestor:"
         '
@@ -539,9 +575,10 @@ Partial Class frmConsDepsRets
         Me.lblOtroDoc.AutoSize = True
         Me.lblOtroDoc.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblOtroDoc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOtroDoc.Location = New System.Drawing.Point(16, 103)
+        Me.lblOtroDoc.Location = New System.Drawing.Point(24, 158)
+        Me.lblOtroDoc.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblOtroDoc.Name = "lblOtroDoc"
-        Me.lblOtroDoc.Size = New System.Drawing.Size(100, 15)
+        Me.lblOtroDoc.Size = New System.Drawing.Size(146, 22)
         Me.lblOtroDoc.TabIndex = 31
         Me.lblOtroDoc.Text = "Otro Documento:"
         '
@@ -550,9 +587,10 @@ Partial Class frmConsDepsRets
         Me.lblTitDocto.AutoSize = True
         Me.lblTitDocto.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTitDocto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitDocto.Location = New System.Drawing.Point(16, 83)
+        Me.lblTitDocto.Location = New System.Drawing.Point(24, 128)
+        Me.lblTitDocto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTitDocto.Name = "lblTitDocto"
-        Me.lblTitDocto.Size = New System.Drawing.Size(66, 15)
+        Me.lblTitDocto.Size = New System.Drawing.Size(101, 22)
         Me.lblTitDocto.TabIndex = 29
         Me.lblTitDocto.Text = "Tipo de ... :"
         '
@@ -561,9 +599,10 @@ Partial Class frmConsDepsRets
         Me.lblDocumento.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblDocumento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDocumento.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDocumento.Location = New System.Drawing.Point(144, 81)
+        Me.lblDocumento.Location = New System.Drawing.Point(216, 125)
+        Me.lblDocumento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDocumento.Name = "lblDocumento"
-        Me.lblDocumento.Size = New System.Drawing.Size(177, 17)
+        Me.lblDocumento.Size = New System.Drawing.Size(266, 26)
         Me.lblDocumento.TabIndex = 28
         Me.lblDocumento.Text = "                                                        "
         Me.lblDocumento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -573,9 +612,10 @@ Partial Class frmConsDepsRets
         Me.lblTSuc.AutoSize = True
         Me.lblTSuc.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTSuc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTSuc.Location = New System.Drawing.Point(16, 63)
+        Me.lblTSuc.Location = New System.Drawing.Point(24, 97)
+        Me.lblTSuc.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTSuc.Name = "lblTSuc"
-        Me.lblTSuc.Size = New System.Drawing.Size(58, 15)
+        Me.lblTSuc.Size = New System.Drawing.Size(85, 22)
         Me.lblTSuc.TabIndex = 27
         Me.lblTSuc.Text = "Sucursal:"
         '
@@ -584,9 +624,10 @@ Partial Class frmConsDepsRets
         Me.lblNumSucursal.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblNumSucursal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumSucursal.Location = New System.Drawing.Point(144, 61)
+        Me.lblNumSucursal.Location = New System.Drawing.Point(216, 94)
+        Me.lblNumSucursal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumSucursal.Name = "lblNumSucursal"
-        Me.lblNumSucursal.Size = New System.Drawing.Size(48, 17)
+        Me.lblNumSucursal.Size = New System.Drawing.Size(72, 26)
         Me.lblNumSucursal.TabIndex = 26
         Me.lblNumSucursal.Text = "             "
         Me.lblNumSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -596,9 +637,10 @@ Partial Class frmConsDepsRets
         Me.lblTPlaza.AutoSize = True
         Me.lblTPlaza.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTPlaza.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTPlaza.Location = New System.Drawing.Point(16, 43)
+        Me.lblTPlaza.Location = New System.Drawing.Point(24, 66)
+        Me.lblTPlaza.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTPlaza.Name = "lblTPlaza"
-        Me.lblTPlaza.Size = New System.Drawing.Size(41, 15)
+        Me.lblTPlaza.Size = New System.Drawing.Size(59, 22)
         Me.lblTPlaza.TabIndex = 25
         Me.lblTPlaza.Text = "Plaza:"
         '
@@ -607,9 +649,10 @@ Partial Class frmConsDepsRets
         Me.lblNumPlaza.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblNumPlaza.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumPlaza.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumPlaza.Location = New System.Drawing.Point(144, 41)
+        Me.lblNumPlaza.Location = New System.Drawing.Point(216, 63)
+        Me.lblNumPlaza.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumPlaza.Name = "lblNumPlaza"
-        Me.lblNumPlaza.Size = New System.Drawing.Size(48, 17)
+        Me.lblNumPlaza.Size = New System.Drawing.Size(72, 26)
         Me.lblNumPlaza.TabIndex = 24
         Me.lblNumPlaza.Text = "             "
         Me.lblNumPlaza.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -619,9 +662,10 @@ Partial Class frmConsDepsRets
         Me.lblTCR.AutoSize = True
         Me.lblTCR.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTCR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTCR.Location = New System.Drawing.Point(16, 23)
+        Me.lblTCR.Location = New System.Drawing.Point(24, 35)
+        Me.lblTCR.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTCR.Name = "lblTCR"
-        Me.lblTCR.Size = New System.Drawing.Size(127, 15)
+        Me.lblTCR.Size = New System.Drawing.Size(188, 22)
         Me.lblTCR.TabIndex = 23
         Me.lblTCR.Text = "Centro Regional (CR):"
         '
@@ -630,9 +674,10 @@ Partial Class frmConsDepsRets
         Me.lblNumCR.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblNumCR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumCR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumCR.Location = New System.Drawing.Point(144, 21)
+        Me.lblNumCR.Location = New System.Drawing.Point(216, 32)
+        Me.lblNumCR.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumCR.Name = "lblNumCR"
-        Me.lblNumCR.Size = New System.Drawing.Size(48, 17)
+        Me.lblNumCR.Size = New System.Drawing.Size(72, 26)
         Me.lblNumCR.TabIndex = 22
         Me.lblNumCR.Text = "             "
         Me.lblNumCR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -670,9 +715,11 @@ Partial Class frmConsDepsRets
         Me.GroupBox2.Controls.Add(Me.lblmonto_docto)
         Me.GroupBox2.Controls.Add(Me.lblMonedaDocto0)
         Me.GroupBox2.Controls.Add(Me.lblnum_docto)
-        Me.GroupBox2.Location = New System.Drawing.Point(47, 674)
+        Me.GroupBox2.Location = New System.Drawing.Point(70, 1037)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(611, 205)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Size = New System.Drawing.Size(916, 315)
         Me.GroupBox2.TabIndex = 50
         Me.GroupBox2.TabStop = False
         '
@@ -682,9 +729,10 @@ Partial Class frmConsDepsRets
         Me.lblMonedaDocto5.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMonedaDocto5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMonedaDocto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMonedaDocto5.Location = New System.Drawing.Point(489, 159)
+        Me.lblMonedaDocto5.Location = New System.Drawing.Point(734, 245)
+        Me.lblMonedaDocto5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonedaDocto5.Name = "lblMonedaDocto5"
-        Me.lblMonedaDocto5.Size = New System.Drawing.Size(93, 17)
+        Me.lblMonedaDocto5.Size = New System.Drawing.Size(152, 24)
         Me.lblMonedaDocto5.TabIndex = 66
         Me.lblMonedaDocto5.Text = "                            "
         Me.lblMonedaDocto5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -695,9 +743,10 @@ Partial Class frmConsDepsRets
         Me.lblMonedaDocto4.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMonedaDocto4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMonedaDocto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMonedaDocto4.Location = New System.Drawing.Point(489, 135)
+        Me.lblMonedaDocto4.Location = New System.Drawing.Point(734, 208)
+        Me.lblMonedaDocto4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonedaDocto4.Name = "lblMonedaDocto4"
-        Me.lblMonedaDocto4.Size = New System.Drawing.Size(93, 17)
+        Me.lblMonedaDocto4.Size = New System.Drawing.Size(152, 24)
         Me.lblMonedaDocto4.TabIndex = 65
         Me.lblMonedaDocto4.Text = "                            "
         Me.lblMonedaDocto4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -708,9 +757,10 @@ Partial Class frmConsDepsRets
         Me.lblMonedaDocto3.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMonedaDocto3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMonedaDocto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMonedaDocto3.Location = New System.Drawing.Point(489, 113)
+        Me.lblMonedaDocto3.Location = New System.Drawing.Point(734, 174)
+        Me.lblMonedaDocto3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonedaDocto3.Name = "lblMonedaDocto3"
-        Me.lblMonedaDocto3.Size = New System.Drawing.Size(93, 17)
+        Me.lblMonedaDocto3.Size = New System.Drawing.Size(152, 24)
         Me.lblMonedaDocto3.TabIndex = 64
         Me.lblMonedaDocto3.Text = "                            "
         Me.lblMonedaDocto3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -721,9 +771,10 @@ Partial Class frmConsDepsRets
         Me.lblMonedaDocto2.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMonedaDocto2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMonedaDocto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMonedaDocto2.Location = New System.Drawing.Point(489, 90)
+        Me.lblMonedaDocto2.Location = New System.Drawing.Point(734, 138)
+        Me.lblMonedaDocto2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonedaDocto2.Name = "lblMonedaDocto2"
-        Me.lblMonedaDocto2.Size = New System.Drawing.Size(93, 17)
+        Me.lblMonedaDocto2.Size = New System.Drawing.Size(152, 24)
         Me.lblMonedaDocto2.TabIndex = 63
         Me.lblMonedaDocto2.Text = "                            "
         Me.lblMonedaDocto2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -734,9 +785,10 @@ Partial Class frmConsDepsRets
         Me.lblMonedaDocto1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMonedaDocto1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMonedaDocto1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMonedaDocto1.Location = New System.Drawing.Point(489, 68)
+        Me.lblMonedaDocto1.Location = New System.Drawing.Point(734, 105)
+        Me.lblMonedaDocto1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonedaDocto1.Name = "lblMonedaDocto1"
-        Me.lblMonedaDocto1.Size = New System.Drawing.Size(93, 17)
+        Me.lblMonedaDocto1.Size = New System.Drawing.Size(152, 24)
         Me.lblMonedaDocto1.TabIndex = 62
         Me.lblMonedaDocto1.Text = "                            "
         Me.lblMonedaDocto1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -747,9 +799,10 @@ Partial Class frmConsDepsRets
         Me.lblDescDocto5.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblDescDocto5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDescDocto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescDocto5.Location = New System.Drawing.Point(240, 159)
+        Me.lblDescDocto5.Location = New System.Drawing.Point(360, 245)
+        Me.lblDescDocto5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDescDocto5.Name = "lblDescDocto5"
-        Me.lblDescDocto5.Size = New System.Drawing.Size(225, 17)
+        Me.lblDescDocto5.Size = New System.Drawing.Size(372, 24)
         Me.lblDescDocto5.TabIndex = 61
         Me.lblDescDocto5.Text = "                                                                        "
         Me.lblDescDocto5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -760,9 +813,10 @@ Partial Class frmConsDepsRets
         Me.lblDescDocto4.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblDescDocto4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDescDocto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescDocto4.Location = New System.Drawing.Point(240, 135)
+        Me.lblDescDocto4.Location = New System.Drawing.Point(360, 208)
+        Me.lblDescDocto4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDescDocto4.Name = "lblDescDocto4"
-        Me.lblDescDocto4.Size = New System.Drawing.Size(225, 17)
+        Me.lblDescDocto4.Size = New System.Drawing.Size(372, 24)
         Me.lblDescDocto4.TabIndex = 60
         Me.lblDescDocto4.Text = "                                                                        "
         Me.lblDescDocto4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -773,9 +827,10 @@ Partial Class frmConsDepsRets
         Me.lblDescDocto3.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblDescDocto3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDescDocto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescDocto3.Location = New System.Drawing.Point(240, 113)
+        Me.lblDescDocto3.Location = New System.Drawing.Point(360, 174)
+        Me.lblDescDocto3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDescDocto3.Name = "lblDescDocto3"
-        Me.lblDescDocto3.Size = New System.Drawing.Size(225, 17)
+        Me.lblDescDocto3.Size = New System.Drawing.Size(372, 24)
         Me.lblDescDocto3.TabIndex = 59
         Me.lblDescDocto3.Text = "                                                                        "
         Me.lblDescDocto3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -786,9 +841,10 @@ Partial Class frmConsDepsRets
         Me.lblDescDocto2.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblDescDocto2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDescDocto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescDocto2.Location = New System.Drawing.Point(240, 90)
+        Me.lblDescDocto2.Location = New System.Drawing.Point(360, 138)
+        Me.lblDescDocto2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDescDocto2.Name = "lblDescDocto2"
-        Me.lblDescDocto2.Size = New System.Drawing.Size(225, 17)
+        Me.lblDescDocto2.Size = New System.Drawing.Size(372, 24)
         Me.lblDescDocto2.TabIndex = 58
         Me.lblDescDocto2.Text = "                                                                        "
         Me.lblDescDocto2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -799,9 +855,10 @@ Partial Class frmConsDepsRets
         Me.lblDescDocto1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblDescDocto1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDescDocto1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescDocto1.Location = New System.Drawing.Point(240, 68)
+        Me.lblDescDocto1.Location = New System.Drawing.Point(360, 105)
+        Me.lblDescDocto1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDescDocto1.Name = "lblDescDocto1"
-        Me.lblDescDocto1.Size = New System.Drawing.Size(225, 17)
+        Me.lblDescDocto1.Size = New System.Drawing.Size(372, 24)
         Me.lblDescDocto1.TabIndex = 57
         Me.lblDescDocto1.Text = "                                                                        "
         Me.lblDescDocto1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -812,9 +869,10 @@ Partial Class frmConsDepsRets
         Me.lblMontoDocto5.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMontoDocto5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMontoDocto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMontoDocto5.Location = New System.Drawing.Point(122, 159)
+        Me.lblMontoDocto5.Location = New System.Drawing.Point(183, 245)
+        Me.lblMontoDocto5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMontoDocto5.Name = "lblMontoDocto5"
-        Me.lblMontoDocto5.Size = New System.Drawing.Size(96, 17)
+        Me.lblMontoDocto5.Size = New System.Drawing.Size(157, 24)
         Me.lblMontoDocto5.TabIndex = 56
         Me.lblMontoDocto5.Text = "                             "
         Me.lblMontoDocto5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -825,9 +883,10 @@ Partial Class frmConsDepsRets
         Me.lblMontoDocto4.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMontoDocto4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMontoDocto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMontoDocto4.Location = New System.Drawing.Point(125, 135)
+        Me.lblMontoDocto4.Location = New System.Drawing.Point(188, 208)
+        Me.lblMontoDocto4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMontoDocto4.Name = "lblMontoDocto4"
-        Me.lblMontoDocto4.Size = New System.Drawing.Size(96, 17)
+        Me.lblMontoDocto4.Size = New System.Drawing.Size(157, 24)
         Me.lblMontoDocto4.TabIndex = 55
         Me.lblMontoDocto4.Text = "                             "
         Me.lblMontoDocto4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -838,9 +897,10 @@ Partial Class frmConsDepsRets
         Me.lblMontoDocto3.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMontoDocto3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMontoDocto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMontoDocto3.Location = New System.Drawing.Point(125, 113)
+        Me.lblMontoDocto3.Location = New System.Drawing.Point(188, 174)
+        Me.lblMontoDocto3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMontoDocto3.Name = "lblMontoDocto3"
-        Me.lblMontoDocto3.Size = New System.Drawing.Size(96, 17)
+        Me.lblMontoDocto3.Size = New System.Drawing.Size(157, 24)
         Me.lblMontoDocto3.TabIndex = 54
         Me.lblMontoDocto3.Text = "                             "
         Me.lblMontoDocto3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -851,9 +911,10 @@ Partial Class frmConsDepsRets
         Me.lblMontoDocto2.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMontoDocto2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMontoDocto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMontoDocto2.Location = New System.Drawing.Point(125, 90)
+        Me.lblMontoDocto2.Location = New System.Drawing.Point(188, 138)
+        Me.lblMontoDocto2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMontoDocto2.Name = "lblMontoDocto2"
-        Me.lblMontoDocto2.Size = New System.Drawing.Size(96, 17)
+        Me.lblMontoDocto2.Size = New System.Drawing.Size(157, 24)
         Me.lblMontoDocto2.TabIndex = 53
         Me.lblMontoDocto2.Text = "                             "
         Me.lblMontoDocto2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -864,9 +925,10 @@ Partial Class frmConsDepsRets
         Me.lblMontoDocto1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMontoDocto1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMontoDocto1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMontoDocto1.Location = New System.Drawing.Point(125, 68)
+        Me.lblMontoDocto1.Location = New System.Drawing.Point(188, 105)
+        Me.lblMontoDocto1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMontoDocto1.Name = "lblMontoDocto1"
-        Me.lblMontoDocto1.Size = New System.Drawing.Size(96, 17)
+        Me.lblMontoDocto1.Size = New System.Drawing.Size(157, 24)
         Me.lblMontoDocto1.TabIndex = 52
         Me.lblMontoDocto1.Text = "                             "
         Me.lblMontoDocto1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -877,9 +939,10 @@ Partial Class frmConsDepsRets
         Me.lblNumDocto5.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblNumDocto5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumDocto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumDocto5.Location = New System.Drawing.Point(18, 159)
+        Me.lblNumDocto5.Location = New System.Drawing.Point(27, 245)
+        Me.lblNumDocto5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumDocto5.Name = "lblNumDocto5"
-        Me.lblNumDocto5.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumDocto5.Size = New System.Drawing.Size(152, 24)
         Me.lblNumDocto5.TabIndex = 51
         Me.lblNumDocto5.Text = "                            "
         Me.lblNumDocto5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -890,9 +953,10 @@ Partial Class frmConsDepsRets
         Me.lblNumDocto4.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblNumDocto4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumDocto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumDocto4.Location = New System.Drawing.Point(21, 135)
+        Me.lblNumDocto4.Location = New System.Drawing.Point(32, 208)
+        Me.lblNumDocto4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumDocto4.Name = "lblNumDocto4"
-        Me.lblNumDocto4.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumDocto4.Size = New System.Drawing.Size(152, 24)
         Me.lblNumDocto4.TabIndex = 50
         Me.lblNumDocto4.Text = "                            "
         Me.lblNumDocto4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -903,9 +967,10 @@ Partial Class frmConsDepsRets
         Me.lblNumDocto3.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblNumDocto3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumDocto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumDocto3.Location = New System.Drawing.Point(18, 113)
+        Me.lblNumDocto3.Location = New System.Drawing.Point(27, 174)
+        Me.lblNumDocto3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumDocto3.Name = "lblNumDocto3"
-        Me.lblNumDocto3.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumDocto3.Size = New System.Drawing.Size(152, 24)
         Me.lblNumDocto3.TabIndex = 49
         Me.lblNumDocto3.Text = "                            "
         Me.lblNumDocto3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -916,9 +981,10 @@ Partial Class frmConsDepsRets
         Me.lblNumDocto2.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblNumDocto2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumDocto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumDocto2.Location = New System.Drawing.Point(19, 90)
+        Me.lblNumDocto2.Location = New System.Drawing.Point(28, 138)
+        Me.lblNumDocto2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumDocto2.Name = "lblNumDocto2"
-        Me.lblNumDocto2.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumDocto2.Size = New System.Drawing.Size(152, 24)
         Me.lblNumDocto2.TabIndex = 48
         Me.lblNumDocto2.Text = "                            "
         Me.lblNumDocto2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -929,9 +995,10 @@ Partial Class frmConsDepsRets
         Me.lblNumDocto1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblNumDocto1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumDocto1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumDocto1.Location = New System.Drawing.Point(18, 68)
+        Me.lblNumDocto1.Location = New System.Drawing.Point(27, 105)
+        Me.lblNumDocto1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumDocto1.Name = "lblNumDocto1"
-        Me.lblNumDocto1.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumDocto1.Size = New System.Drawing.Size(152, 24)
         Me.lblNumDocto1.TabIndex = 47
         Me.lblNumDocto1.Text = "                            "
         Me.lblNumDocto1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -942,9 +1009,10 @@ Partial Class frmConsDepsRets
         Me.lblMontoDocto0.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMontoDocto0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMontoDocto0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMontoDocto0.Location = New System.Drawing.Point(125, 46)
+        Me.lblMontoDocto0.Location = New System.Drawing.Point(188, 71)
+        Me.lblMontoDocto0.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMontoDocto0.Name = "lblMontoDocto0"
-        Me.lblMontoDocto0.Size = New System.Drawing.Size(96, 17)
+        Me.lblMontoDocto0.Size = New System.Drawing.Size(157, 24)
         Me.lblMontoDocto0.TabIndex = 46
         Me.lblMontoDocto0.Text = "                             "
         Me.lblMontoDocto0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -955,9 +1023,10 @@ Partial Class frmConsDepsRets
         Me.lblDescDocto0.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblDescDocto0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblDescDocto0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescDocto0.Location = New System.Drawing.Point(240, 46)
+        Me.lblDescDocto0.Location = New System.Drawing.Point(360, 71)
+        Me.lblDescDocto0.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDescDocto0.Name = "lblDescDocto0"
-        Me.lblDescDocto0.Size = New System.Drawing.Size(225, 17)
+        Me.lblDescDocto0.Size = New System.Drawing.Size(372, 24)
         Me.lblDescDocto0.TabIndex = 43
         Me.lblDescDocto0.Text = "                                                                        "
         Me.lblDescDocto0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -967,9 +1036,10 @@ Partial Class frmConsDepsRets
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.SystemColors.ControlLight
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(79, 187)
+        Me.Label10.Location = New System.Drawing.Point(118, 288)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(39, 15)
+        Me.Label10.Size = New System.Drawing.Size(56, 22)
         Me.Label10.TabIndex = 41
         Me.Label10.Text = "Total"
         '
@@ -979,9 +1049,10 @@ Partial Class frmConsDepsRets
         Me.lblTotalMontos.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblTotalMontos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblTotalMontos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalMontos.Location = New System.Drawing.Point(125, 185)
+        Me.lblTotalMontos.Location = New System.Drawing.Point(188, 285)
+        Me.lblTotalMontos.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalMontos.Name = "lblTotalMontos"
-        Me.lblTotalMontos.Size = New System.Drawing.Size(93, 17)
+        Me.lblTotalMontos.Size = New System.Drawing.Size(152, 24)
         Me.lblTotalMontos.TabIndex = 40
         Me.lblTotalMontos.Text = "                            "
         Me.lblTotalMontos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -991,9 +1062,10 @@ Partial Class frmConsDepsRets
         Me.lblTipoMoneda.AutoSize = True
         Me.lblTipoMoneda.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblTipoMoneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTipoMoneda.Location = New System.Drawing.Point(486, 21)
+        Me.lblTipoMoneda.Location = New System.Drawing.Point(729, 32)
+        Me.lblTipoMoneda.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTipoMoneda.Name = "lblTipoMoneda"
-        Me.lblTipoMoneda.Size = New System.Drawing.Size(53, 15)
+        Me.lblTipoMoneda.Size = New System.Drawing.Size(74, 22)
         Me.lblTipoMoneda.TabIndex = 29
         Me.lblTipoMoneda.Text = "Moneda"
         '
@@ -1002,9 +1074,10 @@ Partial Class frmConsDepsRets
         Me.lbldesc_docto.AutoSize = True
         Me.lbldesc_docto.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lbldesc_docto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbldesc_docto.Location = New System.Drawing.Point(246, 21)
+        Me.lbldesc_docto.Location = New System.Drawing.Point(369, 32)
+        Me.lbldesc_docto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldesc_docto.Name = "lbldesc_docto"
-        Me.lbldesc_docto.Size = New System.Drawing.Size(130, 15)
+        Me.lbldesc_docto.Size = New System.Drawing.Size(190, 22)
         Me.lbldesc_docto.TabIndex = 27
         Me.lbldesc_docto.Text = "Descripción del Docto."
         '
@@ -1014,9 +1087,10 @@ Partial Class frmConsDepsRets
         Me.lblNumDocto0.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblNumDocto0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblNumDocto0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumDocto0.Location = New System.Drawing.Point(18, 46)
+        Me.lblNumDocto0.Location = New System.Drawing.Point(27, 71)
+        Me.lblNumDocto0.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumDocto0.Name = "lblNumDocto0"
-        Me.lblNumDocto0.Size = New System.Drawing.Size(93, 17)
+        Me.lblNumDocto0.Size = New System.Drawing.Size(152, 24)
         Me.lblNumDocto0.TabIndex = 26
         Me.lblNumDocto0.Text = "                            "
         Me.lblNumDocto0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1026,9 +1100,10 @@ Partial Class frmConsDepsRets
         Me.lblmonto_docto.AutoSize = True
         Me.lblmonto_docto.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblmonto_docto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblmonto_docto.Location = New System.Drawing.Point(122, 18)
+        Me.lblmonto_docto.Location = New System.Drawing.Point(183, 28)
+        Me.lblmonto_docto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblmonto_docto.Name = "lblmonto_docto"
-        Me.lblmonto_docto.Size = New System.Drawing.Size(97, 15)
+        Me.lblmonto_docto.Size = New System.Drawing.Size(141, 22)
         Me.lblmonto_docto.TabIndex = 25
         Me.lblmonto_docto.Text = "Monto de Docto."
         '
@@ -1038,9 +1113,10 @@ Partial Class frmConsDepsRets
         Me.lblMonedaDocto0.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblMonedaDocto0.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblMonedaDocto0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMonedaDocto0.Location = New System.Drawing.Point(489, 46)
+        Me.lblMonedaDocto0.Location = New System.Drawing.Point(734, 71)
+        Me.lblMonedaDocto0.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonedaDocto0.Name = "lblMonedaDocto0"
-        Me.lblMonedaDocto0.Size = New System.Drawing.Size(93, 17)
+        Me.lblMonedaDocto0.Size = New System.Drawing.Size(152, 24)
         Me.lblMonedaDocto0.TabIndex = 24
         Me.lblMonedaDocto0.Text = "                            "
         Me.lblMonedaDocto0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1050,18 +1126,20 @@ Partial Class frmConsDepsRets
         Me.lblnum_docto.AutoSize = True
         Me.lblnum_docto.BackColor = System.Drawing.SystemColors.ControlLight
         Me.lblnum_docto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblnum_docto.Location = New System.Drawing.Point(16, 18)
+        Me.lblnum_docto.Location = New System.Drawing.Point(24, 28)
+        Me.lblnum_docto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblnum_docto.Name = "lblnum_docto"
-        Me.lblnum_docto.Size = New System.Drawing.Size(92, 15)
+        Me.lblnum_docto.Size = New System.Drawing.Size(134, 22)
         Me.lblnum_docto.TabIndex = 23
         Me.lblnum_docto.Text = "Núm. de Docto."
         '
         'cmdCierra
         '
         Me.cmdCierra.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCierra.Location = New System.Drawing.Point(511, 430)
+        Me.cmdCierra.Location = New System.Drawing.Point(766, 662)
+        Me.cmdCierra.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdCierra.Name = "cmdCierra"
-        Me.cmdCierra.Size = New System.Drawing.Size(75, 27)
+        Me.cmdCierra.Size = New System.Drawing.Size(112, 42)
         Me.cmdCierra.TabIndex = 67
         Me.cmdCierra.Text = "Cerrar"
         Me.cmdCierra.UseVisualStyleBackColor = True
@@ -1069,9 +1147,10 @@ Partial Class frmConsDepsRets
         'lblTitulo
         '
         Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitulo.Location = New System.Drawing.Point(6, 3)
+        Me.lblTitulo.Location = New System.Drawing.Point(9, 5)
+        Me.lblTitulo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(602, 20)
+        Me.lblTitulo.Size = New System.Drawing.Size(903, 31)
         Me.lblTitulo.TabIndex = 68
         Me.lblTitulo.Text = "Consulta de Operaciones"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1081,9 +1160,10 @@ Partial Class frmConsDepsRets
         Me.lblRec.AutoSize = True
         Me.lblRec.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblRec.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRec.Location = New System.Drawing.Point(477, 31)
+        Me.lblRec.Location = New System.Drawing.Point(716, 48)
+        Me.lblRec.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblRec.Name = "lblRec"
-        Me.lblRec.Size = New System.Drawing.Size(69, 15)
+        Me.lblRec.Size = New System.Drawing.Size(101, 22)
         Me.lblRec.TabIndex = 70
         Me.lblRec.Text = "Grabadora:"
         Me.lblRec.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1093,9 +1173,10 @@ Partial Class frmConsDepsRets
         Me.lblGrabadora.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblGrabadora.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblGrabadora.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGrabadora.Location = New System.Drawing.Point(552, 29)
+        Me.lblGrabadora.Location = New System.Drawing.Point(828, 45)
+        Me.lblGrabadora.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblGrabadora.Name = "lblGrabadora"
-        Me.lblGrabadora.Size = New System.Drawing.Size(30, 17)
+        Me.lblGrabadora.Size = New System.Drawing.Size(45, 26)
         Me.lblGrabadora.TabIndex = 69
         Me.lblGrabadora.Text = "       "
         Me.lblGrabadora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1105,9 +1186,10 @@ Partial Class frmConsDepsRets
         Me.lblLineaTel.AutoSize = True
         Me.lblLineaTel.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblLineaTel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLineaTel.Location = New System.Drawing.Point(445, 55)
+        Me.lblLineaTel.Location = New System.Drawing.Point(668, 85)
+        Me.lblLineaTel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLineaTel.Name = "lblLineaTel"
-        Me.lblLineaTel.Size = New System.Drawing.Size(68, 15)
+        Me.lblLineaTel.Size = New System.Drawing.Size(104, 22)
         Me.lblLineaTel.TabIndex = 72
         Me.lblLineaTel.Text = "         Línea:"
         Me.lblLineaTel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1117,9 +1199,10 @@ Partial Class frmConsDepsRets
         Me.lblLinea.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblLinea.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblLinea.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLinea.Location = New System.Drawing.Point(552, 53)
+        Me.lblLinea.Location = New System.Drawing.Point(828, 82)
+        Me.lblLinea.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLinea.Name = "lblLinea"
-        Me.lblLinea.Size = New System.Drawing.Size(30, 17)
+        Me.lblLinea.Size = New System.Drawing.Size(45, 26)
         Me.lblLinea.TabIndex = 71
         Me.lblLinea.Text = "       "
         Me.lblLinea.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1129,9 +1212,10 @@ Partial Class frmConsDepsRets
         Me.lblStatusTicket.AutoSize = True
         Me.lblStatusTicket.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblStatusTicket.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatusTicket.Location = New System.Drawing.Point(430, 103)
+        Me.lblStatusTicket.Location = New System.Drawing.Point(645, 158)
+        Me.lblStatusTicket.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStatusTicket.Name = "lblStatusTicket"
-        Me.lblStatusTicket.Size = New System.Drawing.Size(79, 15)
+        Me.lblStatusTicket.Size = New System.Drawing.Size(120, 22)
         Me.lblStatusTicket.TabIndex = 73
         Me.lblStatusTicket.Text = "Status Ticket:"
         '
@@ -1140,9 +1224,10 @@ Partial Class frmConsDepsRets
         Me.pnlCancelada.BackColor = System.Drawing.SystemColors.ButtonShadow
         Me.pnlCancelada.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pnlCancelada.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.pnlCancelada.Location = New System.Drawing.Point(396, 125)
+        Me.pnlCancelada.Location = New System.Drawing.Point(594, 192)
+        Me.pnlCancelada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.pnlCancelada.Name = "pnlCancelada"
-        Me.pnlCancelada.Size = New System.Drawing.Size(147, 17)
+        Me.pnlCancelada.Size = New System.Drawing.Size(220, 26)
         Me.pnlCancelada.TabIndex = 74
         Me.pnlCancelada.Text = "Operación Cancelada"
         Me.pnlCancelada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1150,9 +1235,10 @@ Partial Class frmConsDepsRets
         'cmdConsultar
         '
         Me.cmdConsultar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdConsultar.Location = New System.Drawing.Point(604, 341)
+        Me.cmdConsultar.Location = New System.Drawing.Point(906, 525)
+        Me.cmdConsultar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdConsultar.Name = "cmdConsultar"
-        Me.cmdConsultar.Size = New System.Drawing.Size(75, 27)
+        Me.cmdConsultar.Size = New System.Drawing.Size(112, 42)
         Me.cmdConsultar.TabIndex = 75
         Me.cmdConsultar.Text = "Consultar"
         Me.cmdConsultar.UseVisualStyleBackColor = True
@@ -1161,9 +1247,10 @@ Partial Class frmConsDepsRets
         'Alchemy
         '
         Me.Alchemy.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Alchemy.Location = New System.Drawing.Point(604, 314)
+        Me.Alchemy.Location = New System.Drawing.Point(906, 483)
+        Me.Alchemy.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Alchemy.Name = "Alchemy"
-        Me.Alchemy.Size = New System.Drawing.Size(75, 27)
+        Me.Alchemy.Size = New System.Drawing.Size(112, 42)
         Me.Alchemy.TabIndex = 76
         Me.Alchemy.Text = "Alchemy"
         Me.Alchemy.UseVisualStyleBackColor = True
@@ -1172,9 +1259,10 @@ Partial Class frmConsDepsRets
         'cmdDigital
         '
         Me.cmdDigital.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdDigital.Location = New System.Drawing.Point(604, 287)
+        Me.cmdDigital.Location = New System.Drawing.Point(906, 442)
+        Me.cmdDigital.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdDigital.Name = "cmdDigital"
-        Me.cmdDigital.Size = New System.Drawing.Size(75, 27)
+        Me.cmdDigital.Size = New System.Drawing.Size(112, 42)
         Me.cmdDigital.TabIndex = 77
         Me.cmdDigital.Text = "Digitalización"
         Me.cmdDigital.UseVisualStyleBackColor = True
@@ -1183,9 +1271,10 @@ Partial Class frmConsDepsRets
         'cmdImprimir
         '
         Me.cmdImprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdImprimir.Location = New System.Drawing.Point(604, 369)
+        Me.cmdImprimir.Location = New System.Drawing.Point(906, 568)
+        Me.cmdImprimir.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdImprimir.Name = "cmdImprimir"
-        Me.cmdImprimir.Size = New System.Drawing.Size(75, 27)
+        Me.cmdImprimir.Size = New System.Drawing.Size(112, 42)
         Me.cmdImprimir.TabIndex = 78
         Me.cmdImprimir.Text = "Imprimir"
         Me.cmdImprimir.UseVisualStyleBackColor = True
@@ -1197,10 +1286,12 @@ Partial Class frmConsDepsRets
         Me.dgvDocumentos.AllowUserToDeleteRows = False
         Me.dgvDocumentos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.dgvDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDocumentos.Location = New System.Drawing.Point(39, 382)
+        Me.dgvDocumentos.Location = New System.Drawing.Point(58, 588)
+        Me.dgvDocumentos.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dgvDocumentos.Name = "dgvDocumentos"
         Me.dgvDocumentos.ReadOnly = True
-        Me.dgvDocumentos.Size = New System.Drawing.Size(454, 125)
+        Me.dgvDocumentos.RowHeadersWidth = 62
+        Me.dgvDocumentos.Size = New System.Drawing.Size(681, 192)
         Me.dgvDocumentos.TabIndex = 79
         '
         'lblTotal
@@ -1208,9 +1299,10 @@ Partial Class frmConsDepsRets
         Me.lblTotal.AutoSize = True
         Me.lblTotal.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(171, 514)
+        Me.lblTotal.Location = New System.Drawing.Point(256, 791)
+        Me.lblTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(37, 15)
+        Me.lblTotal.Size = New System.Drawing.Size(56, 22)
         Me.lblTotal.TabIndex = 50
         Me.lblTotal.Text = "Total:"
         '
@@ -1220,19 +1312,20 @@ Partial Class frmConsDepsRets
         Me.lblTotalMonto.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lblTotalMonto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblTotalMonto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalMonto.Location = New System.Drawing.Point(215, 512)
+        Me.lblTotalMonto.Location = New System.Drawing.Point(322, 788)
+        Me.lblTotalMonto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalMonto.Name = "lblTotalMonto"
-        Me.lblTotalMonto.Size = New System.Drawing.Size(96, 17)
+        Me.lblTotalMonto.Size = New System.Drawing.Size(157, 24)
         Me.lblTotalMonto.TabIndex = 50
         Me.lblTotalMonto.Text = "                             "
         Me.lblTotalMonto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmConsDepsRets
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(620, 539)
+        Me.ClientSize = New System.Drawing.Size(1048, 829)
         Me.Controls.Add(Me.lblTotalMonto)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.dgvDocumentos)
@@ -1267,6 +1360,8 @@ Partial Class frmConsDepsRets
         Me.Controls.Add(Me.lblTicket)
         Me.Controls.Add(Me.lblNumOperacion)
         Me.Controls.Add(Me.Alchemy)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmConsDepsRets"
         Me.Text = "frmConsDepsRets"
         Me.GroupBox1.ResumeLayout(False)

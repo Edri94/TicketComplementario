@@ -13,7 +13,12 @@
         Dim ECot As New ECotitular
         Dim Reg As Integer
         Dim ExisteCot As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub
@@ -54,7 +59,12 @@
         Dim idCotitular As Integer
         Dim Reg As Integer
         Dim nombre As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         gvCotitulares.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
         If gvCotitulares.Rows.Count > 0 Then
@@ -91,7 +101,12 @@
         Dim ECot As New ECotitular
         Dim idCotitular As Integer
         Dim Reg As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             If Not DatosCorrectos() Then
                 Exit Sub

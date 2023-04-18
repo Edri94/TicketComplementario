@@ -591,7 +591,12 @@ Fin:
     End Sub
 
     Private Sub cmdActualiza_Click(sender As Object, e As EventArgs) Handles cmdActualiza.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If mb_CambioDoc = True Then
             If chkDocFecha.Checked = True Then
                 If Trim(txtDocFecha0.Text) = "" Then            'Fecha Inicial

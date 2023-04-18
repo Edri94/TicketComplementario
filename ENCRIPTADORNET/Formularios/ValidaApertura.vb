@@ -173,6 +173,12 @@
 
     Private Sub btAutorizados_Click(sender As Object, e As EventArgs) Handles btAutorizados.Click
         Try
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             Dim fVerAutorizados As New VerAutorizados()
             CuentaCompApertura = FCuentaCliente
 
@@ -191,6 +197,12 @@
 
     Private Sub btBeneficiario_Click(sender As Object, e As EventArgs) Handles btBeneficiario.Click
         Try
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             If IsNothing(FPersonaMoral) Then
                 MsgBox("Debe seleccionar una cuenta.", vbInformation, "Actualización datos complemento")
                 Exit Sub
@@ -228,6 +240,12 @@
 
     Private Sub btCotitulares_Click(sender As Object, e As EventArgs) Handles btCotitulares.Click
         Try
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             Dim fVerCotitulares As New VerCotitulares()
             CuentaCompApertura = FCuentaCliente
 

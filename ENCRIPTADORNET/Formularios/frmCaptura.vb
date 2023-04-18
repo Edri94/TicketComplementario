@@ -197,6 +197,12 @@ Public Class frmCaptura
     End Sub
 
     Private Sub dllTipoFuente_DropDown(sender As Object, e As EventArgs) Handles dllTipoFuente.DropDown
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         gvOperaciones.Enabled = True
         If dtpFechaCaptura.Text = Date.Now.ToString("dd/MM/yyyy") Then
             If dllTipoFuente.SelectedIndex <> -1 Then
@@ -210,7 +216,12 @@ Public Class frmCaptura
     Private Sub dllTipoFuente_DropDownClosed(sender As Object, e As EventArgs) Handles dllTipoFuente.DropDownClosed
         Dim d As New Datasource
         Dim dtDatoBbvab As DataTable
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If dllTipoFuente.SelectedIndex <> -1 Or dllTipoFuente.Text <> "" Then
             LimpiaCampos()
             mnNewNode = 0
@@ -376,6 +387,12 @@ Public Class frmCaptura
     End Sub
 
     Private Sub btCancelar_Click(sender As Object, e As EventArgs) Handles btCancelar.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         CancelaNuevoReg()
     End Sub
 
@@ -392,7 +409,12 @@ Public Class frmCaptura
         Dim lsSoporte As String
         Dim lnTipoInstrumento As Integer
         Const iticketNodisp As Integer = 0
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             'Verifica si el Horario de Operación es aún válido.
             If VerificarHrValida(1) = True Then
@@ -700,7 +722,12 @@ GuardaSoporte:
 
         LimpiaCampos()
         txNumDoc.Text = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         gvOperaciones.DataSource = Nothing
         If cbDocto.Checked = True Then
             btAgregar.Enabled = False
@@ -750,6 +777,12 @@ GuardaSoporte:
             gvOperaciones.DataSource = Nothing
             dllTipoFuente.SelectedIndex = -1
         End If
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
     End Sub
     Private Sub txRetNumCheque_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txRetNumCheque.KeyPress
         If Not IsNumeric(e.KeyChar) And Not e.KeyChar = Convert.ToChar(Keys.Back) Then
@@ -829,6 +862,12 @@ GuardaSoporte:
         End If
     End Sub
     Private Sub txDocIni_Leave(sender As Object, e As EventArgs) Handles txDocIni.Leave
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If Trim(txDocIni.Text) <> "" Then
             If cbDocto.Checked = True Then
                 If BuscarDatosDocumento() = False Then Exit Sub
@@ -895,7 +934,12 @@ GuardaSoporte:
         'Calsificación del tipo de soporte obligatorio, opcional, equivalente
         Dim sClasifTipoSoporte As String
         sClasifTipoSoporte = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If mnTipoOp = 0 Then
             sTipoInstrumento = dllDepTipoInstrumento.SelectedValue
         Else
@@ -1281,13 +1325,24 @@ GuardaSoporte:
         End Select
     End Function
     Private Sub btAgregarSoporte_Click(sender As Object, e As EventArgs) Handles btAgregarSoporte.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         btAgregarSoporte.Enabled = False
         mnNewNode = 1
         LimpiaCampos()
         AgregarRegistro()
     End Sub
     Private Sub btAgregar_Click(sender As Object, e As EventArgs) Handles btAgregar.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If dllTipoFuente.SelectedIndex <> -1 Then
             LimpiaCampos()
             AgregarRegistro()
@@ -2086,6 +2141,12 @@ GuardaSoporte:
         Dim lsTipo As String
         Dim lsMantDoc As String
         Dim sSoporte As String
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         lsTipo = ""
         lsMantDoc = ""
         sSoporte = Convert.ToString(gvOperaciones.CurrentRow.Cells(3).Value)
@@ -2215,7 +2276,12 @@ GuardaSoporte:
     Private Sub dllRetSucursal_Leave(sender As Object, e As EventArgs) Handles dllRetSucursal.Leave
         Dim d As New Datasource
         Dim dtDatosSucursal As DataTable
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If (Trim(txRetPlaza.Text) <> "" And Trim(txRetSucursal.Text) = "" And mn_Bbvab = 0) _
              Or (Trim(txRetSucursal.Text) = "" And mn_Bbvab = 1) Then
             dtDatosSucursal = d.ListaSucursal(dllRetSucursal.Text, mn_Bbvab, txRetPlaza.Text, txRetSucursal.Text, 0)
@@ -2311,7 +2377,12 @@ GuardaSoporte:
     Private Sub dllDepSucursal_Leave(sender As Object, e As EventArgs) Handles dllDepSucursal.Leave
         Dim d As New Datasource
         Dim dtDatosSucursal As DataTable
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If (Trim(txDepPlaza.Text) <> "" And Trim(txDepSucursal.Text) = "" And mn_Bbvab = 0) _
              Or (Trim(txDepSucursal.Text) = "" And mn_Bbvab = 1) Then
             dtDatosSucursal = d.ListaSucursal(dllDepSucursal.Text, mn_Bbvab, txDepPlaza.Text, txDepSucursal.Text, 0)
@@ -2402,6 +2473,12 @@ GuardaSoporte:
         Dim d As New Datasource
         Dim dtDatosSucursal As DataTable
         Dim dtDatosPlaza As DataTable
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If mn_Bbvab = 0 Then
             If Trim(txRetPlaza.Text) = "" Then
                 'Llena el combo de Plaza
@@ -2445,6 +2522,12 @@ GuardaSoporte:
         Dim d As New Datasource
         Dim dtDatosSucursal As DataTable
         Dim dtDatosPlaza As DataTable
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If mn_Bbvab = 0 Then
             If Trim(txDepPlaza.Text) = "" Then
                 'Llena el combo de Plaza
@@ -2486,6 +2569,12 @@ GuardaSoporte:
     End Sub
 
     Private Sub txCuenta_Leave(sender As Object, e As EventArgs) Handles txCuenta.Leave
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If txCuenta.Text <> "" Then
             If txCuenta.Enabled Then
                 If Len(txCuenta.Text) < 6 Then
@@ -2501,6 +2590,12 @@ GuardaSoporte:
     End Sub
 
     Private Sub txCuenta2_Leave(sender As Object, e As EventArgs) Handles txCuenta2.Leave
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If txCuenta2.Text <> "" Then
             If txCuenta2.Enabled Then
                 If Len(txCuenta2.Text) < 6 Then
@@ -2640,7 +2735,12 @@ GuardaSoporte:
     End Sub
 
     Private Sub btImprimir_Click(sender As Object, e As EventArgs) Handles btImprimir.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Try
             'arma el query que se pasara al reporte
             ls_PorImprimir = ""
@@ -2662,6 +2762,4 @@ GuardaSoporte:
 
 
     End Sub
-
-
 End Class

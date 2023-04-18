@@ -7,7 +7,12 @@
     Private Sub btGestor_Click(sender As Object, e As EventArgs) Handles btGestor.Click
         Dim d As New Datasource
         Dim Registro As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Registro = d.InsertaRegistroGestor(usuario)
 
         If Registro > 0 Then
@@ -26,7 +31,12 @@
         Dim d As New Datasource
         Dim dtAgencia As New DataTable
         Dim validaLogin As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If My.Computer.Network.IsAvailable = False Then
             MsgBox("EL EQUIPO NO TIENE CONEXION DE RED")
             Exit Sub
@@ -167,6 +177,7 @@
         MsgBox(dtTipoOperacion)
 
     End Sub
+
 
 #End Region
 

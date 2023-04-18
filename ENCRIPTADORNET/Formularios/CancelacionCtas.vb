@@ -19,7 +19,12 @@
 
 #Region "Eventos"
     Private Sub txCuenta_Leave(sender As Object, e As EventArgs) Handles txCuenta.Leave
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         txSufijo.Text = ""
         Try
             If Not cargaAgencia() Then
@@ -87,6 +92,13 @@
 
         sOpcionRealizada = ""
         lnStatusAnterior = 1
+
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
 
         If Not DatosCorrectos() Then
             Exit Sub

@@ -31,7 +31,12 @@
         Dim d As New Datasource
         Dim dtaOrdPago As New DataTable
         Dim iHayRegistros As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         limpiarPantalla()
 
         Cursor = System.Windows.Forms.Cursors.WaitCursor
@@ -78,6 +83,12 @@
     End Sub
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         fe_Inicio = txtFechaIni.Text
         fe_Fin = txtFechaFin.Text
         'realiza la extracción de la información - Fecha Inicio

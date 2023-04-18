@@ -79,6 +79,12 @@ Public Class frmRepOFAC
 
     Private Sub btExaminar_Click(sender As Object, e As EventArgs) Handles btExaminar.Click
         fbdExploradorCarpetas.Description() = "Seleccione la carpeta en la que se desea guardar el archivo."
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If (fbdExploradorCarpetas.ShowDialog() = DialogResult.OK) Then
             txtRuta.Text = fbdExploradorCarpetas.SelectedPath
         End If
@@ -120,7 +126,12 @@ Public Class frmRepOFAC
         Dim a As VariantType
         Dim sFechaIni As String
         Dim sFechaFin As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'No se ha seleccionado la agencia
         'If lstAgencia.ListIndex = -1 Then
         If txtRuta.Text = "" Then

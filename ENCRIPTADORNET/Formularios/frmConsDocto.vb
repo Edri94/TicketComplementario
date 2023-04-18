@@ -552,7 +552,12 @@
     End Sub
 
     Private Sub cmdConsultar_Click(sender As Object, e As EventArgs) Handles cmdConsultar.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If mb_FED = True Then
             Dim frmConsulta As New frmConsulta
             frmConsulta.Fuente(mn_Tipo, "FED")
@@ -827,7 +832,12 @@
     End Sub
 
     Private Sub cmdDigital_Click(sender As Object, e As EventArgs) Handles cmdDigital.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         l.MuestraDigitalizacion(Trim(lblDoc.Text), 1, 0)
 
     End Sub
@@ -956,5 +966,4 @@ Error_cblmc_ObtieneUsuario:
             MsgBox("Error: " & Err.Description, vbCritical, "Error")
         End If
     End Function
-
 End Class

@@ -12,7 +12,12 @@
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
         'realizar la busqueda de cuentas aperturadas en el intervalo de tiempo establecido
         Cursor = System.Windows.Forms.Cursors.WaitCursor
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'revisa que opción se eligio
         If rb_DelDia.Checked Then
             ListaAperturasdelDia()
@@ -107,7 +112,12 @@
         Dim ln_Indice As Integer
         Dim ln_NumOps As Integer
         'Dim Agencia As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         ls_PorImprimir = ""
         opcionReporte = 0
 

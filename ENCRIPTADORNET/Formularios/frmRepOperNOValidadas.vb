@@ -89,7 +89,12 @@
         Dim Ls_Selcount As String
         Dim Ls_Selselect As String
         Dim Ls_Selorder As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Cursor = System.Windows.Forms.Cursors.WaitCursor
 
         'realiza la extracción de la información
@@ -183,7 +188,12 @@
 
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'realiza la extracción de la información
         opcionReporte = 6    'reporte de Operaciones NO validadas
         'ls_PorImprimir = "WHERE  OPERACION.fecha_operacion = '" & (Jan 8, 2001) & "'"

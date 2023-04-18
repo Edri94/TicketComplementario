@@ -89,6 +89,20 @@ Public Class frmAltaFuncs
         pbRegistro.Maximum = contador
         pbRegistro.Value = 0
         contador = 0
+
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        For iRegistro As Integer = 0 To dtTablaAltaGestoresExcel.Rows.Count - 1
+            For iColumna As Integer = 0 To dtTablaAltaGestoresExcel.Columns.Count - 1
+                If objGlobal.sqlValidation(dtTablaAltaGestoresExcel.Rows(iRegistro).Item(iColumna).ToString) = False Then
+                    Exit Sub
+                End If
+            Next
+        Next
+        Dim hola = dtTablaAltaGestoresExcel.Rows(0).Item(0).ToString
+        '------------------------------------------------------- RACB 22/03/2023
+
+
         For Each drRegistro As DataRow In dtTablaAltaGestoresExcel.Rows
             If drRegistro.Item(0).ToString() <> "" And drRegistro.Item(1).ToString() <> "" And drRegistro.Item(3).ToString() <> "" Then
                 contador = contador + 1

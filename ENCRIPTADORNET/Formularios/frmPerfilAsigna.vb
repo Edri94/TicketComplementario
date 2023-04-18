@@ -428,6 +428,12 @@
 
     Private Sub cmdActualizar_Click(sender As Object, e As EventArgs) Handles cmdActualizar.Click
         If NumAplicacion <> "" Then
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             If cmbPerfiles.SelectedValue > 0 Then
                 Dim ls_sql As String
                 Dim ls_TotalPermisos As String

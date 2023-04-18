@@ -63,7 +63,12 @@
         Dim gs_sql As String
         Dim d As New Datasource
         Dim iHayRegistros As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
 
         SFechaIniPar = txtFechaIni.Text.Substring(5, 2) + "-" + txtFechaIni.Text.Substring(8, 2) + "-" + txtFechaIni.Text.Substring(0, 4)
         SFechaFinPar = txtFechaFin.Text.Substring(5, 2) + "-" + txtFechaFin.Text.Substring(8, 2) + "-" + txtFechaFin.Text.Substring(0, 4)
@@ -169,7 +174,12 @@
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
         Dim SFechaIniPar As String
         Dim SFechaFinPar As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'fe_Inicio = SFechaIniPar
         'fe_Inicio = strFechaInicio
         fe_Inicio = txtFechaIni.Text

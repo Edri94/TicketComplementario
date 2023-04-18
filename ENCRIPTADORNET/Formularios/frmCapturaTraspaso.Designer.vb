@@ -78,7 +78,7 @@ Partial Class frmCapturaTraspaso
         Me.dtpFechaOperacion.MaxDate = New Date(2050, 12, 31, 0, 0, 0, 0)
         Me.dtpFechaOperacion.MinDate = New Date(1990, 1, 1, 0, 0, 0, 0)
         Me.dtpFechaOperacion.Name = "dtpFechaOperacion"
-        Me.dtpFechaOperacion.Size = New System.Drawing.Size(91, 21)
+        Me.dtpFechaOperacion.Size = New System.Drawing.Size(91, 28)
         Me.dtpFechaOperacion.TabIndex = 15
         '
         'dtpFechaCaptura
@@ -89,7 +89,7 @@ Partial Class frmCapturaTraspaso
         Me.dtpFechaCaptura.MaxDate = New Date(2050, 12, 31, 0, 0, 0, 0)
         Me.dtpFechaCaptura.MinDate = New Date(1990, 1, 1, 0, 0, 0, 0)
         Me.dtpFechaCaptura.Name = "dtpFechaCaptura"
-        Me.dtpFechaCaptura.Size = New System.Drawing.Size(91, 21)
+        Me.dtpFechaCaptura.Size = New System.Drawing.Size(91, 28)
         Me.dtpFechaCaptura.TabIndex = 14
         '
         'Label7
@@ -97,7 +97,7 @@ Partial Class frmCapturaTraspaso
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(298, 28)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(115, 13)
+        Me.Label7.Size = New System.Drawing.Size(171, 20)
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "Número de Cuenta"
         '
@@ -106,7 +106,7 @@ Partial Class frmCapturaTraspaso
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(31, 168)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(95, 13)
+        Me.Label6.Size = New System.Drawing.Size(141, 20)
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "Cuenta Destino"
         '
@@ -115,7 +115,7 @@ Partial Class frmCapturaTraspaso
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(83, 140)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(43, 13)
+        Me.Label5.Size = New System.Drawing.Size(61, 20)
         Me.Label5.TabIndex = 11
         Me.Label5.Text = "Causa"
         '
@@ -124,7 +124,7 @@ Partial Class frmCapturaTraspaso
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(6, 112)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(120, 13)
+        Me.Label4.Size = New System.Drawing.Size(178, 20)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Fecha de Operación"
         '
@@ -133,7 +133,7 @@ Partial Class frmCapturaTraspaso
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(36, 84)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 13)
+        Me.Label3.Size = New System.Drawing.Size(133, 20)
         Me.Label3.TabIndex = 9
         Me.Label3.Text = "Fecha Captura"
         '
@@ -142,7 +142,7 @@ Partial Class frmCapturaTraspaso
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(85, 56)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(41, 13)
+        Me.Label2.Size = New System.Drawing.Size(61, 20)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Monto"
         '
@@ -151,7 +151,7 @@ Partial Class frmCapturaTraspaso
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(85, 28)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(41, 13)
+        Me.Label1.Size = New System.Drawing.Size(60, 20)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Ticket"
         '
@@ -160,7 +160,7 @@ Partial Class frmCapturaTraspaso
         Me.txCuentaAnexa.Enabled = False
         Me.txCuentaAnexa.Location = New System.Drawing.Point(132, 165)
         Me.txCuentaAnexa.Name = "txCuentaAnexa"
-        Me.txCuentaAnexa.Size = New System.Drawing.Size(91, 21)
+        Me.txCuentaAnexa.Size = New System.Drawing.Size(91, 28)
         Me.txCuentaAnexa.TabIndex = 6
         '
         'txCausa
@@ -168,7 +168,7 @@ Partial Class frmCapturaTraspaso
         Me.txCausa.Enabled = False
         Me.txCausa.Location = New System.Drawing.Point(132, 137)
         Me.txCausa.Name = "txCausa"
-        Me.txCausa.Size = New System.Drawing.Size(375, 21)
+        Me.txCausa.Size = New System.Drawing.Size(375, 28)
         Me.txCausa.TabIndex = 5
         '
         'txMonto
@@ -176,7 +176,7 @@ Partial Class frmCapturaTraspaso
         Me.txMonto.Enabled = False
         Me.txMonto.Location = New System.Drawing.Point(132, 53)
         Me.txMonto.Name = "txMonto"
-        Me.txMonto.Size = New System.Drawing.Size(91, 21)
+        Me.txMonto.Size = New System.Drawing.Size(91, 28)
         Me.txMonto.TabIndex = 2
         '
         'txCuenta
@@ -184,14 +184,14 @@ Partial Class frmCapturaTraspaso
         Me.txCuenta.Enabled = False
         Me.txCuenta.Location = New System.Drawing.Point(416, 25)
         Me.txCuenta.Name = "txCuenta"
-        Me.txCuenta.Size = New System.Drawing.Size(91, 21)
+        Me.txCuenta.Size = New System.Drawing.Size(91, 28)
         Me.txCuenta.TabIndex = 1
         '
         'txTicket
         '
         Me.txTicket.Location = New System.Drawing.Point(132, 25)
         Me.txTicket.Name = "txTicket"
-        Me.txTicket.Size = New System.Drawing.Size(91, 21)
+        Me.txTicket.Size = New System.Drawing.Size(91, 28)
         Me.txTicket.TabIndex = 0
         '
         'grbDocto
@@ -210,7 +210,7 @@ Partial Class frmCapturaTraspaso
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(31, 28)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(95, 13)
+        Me.Label8.Size = New System.Drawing.Size(142, 20)
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "No. Documento"
         '
@@ -219,7 +219,7 @@ Partial Class frmCapturaTraspaso
         Me.txDocto.Enabled = False
         Me.txDocto.Location = New System.Drawing.Point(132, 25)
         Me.txDocto.Name = "txDocto"
-        Me.txDocto.Size = New System.Drawing.Size(91, 21)
+        Me.txDocto.Size = New System.Drawing.Size(91, 28)
         Me.txDocto.TabIndex = 0
         '
         'gbBotones
@@ -253,7 +253,7 @@ Partial Class frmCapturaTraspaso
         '
         'frmCapturaTraspaso
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(542, 273)

@@ -725,7 +725,12 @@ ErrorDeclaration:
         Dim lsAmbiente As String = ""
         Dim lsReporte As String = ""
         Dim lsRutaFolder As String = ""
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'For ln_Indice = 1 To lstOperac.ListItems.Count
         '    If lstOperac.ListItems(ln_Indice).Selected Then
         '        GoTo EmiteImpresion

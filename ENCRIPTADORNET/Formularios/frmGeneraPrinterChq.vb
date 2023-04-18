@@ -167,7 +167,12 @@ Public Class frmGeneraPrinterChq
         Dim DBFConnection As OleDbConnection = New OleDbConnection()
         Dim DBFCommand As OleDbCommand = New OleDbCommand()
         Dim DBFCadena As String = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source= " & Path.GetTempPath() & "; Extended Properties = dBase IV" '; User ID =;Password ="
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'lsPathChequera = Trim$(dirFolder.Path)
         lsPathChequera = txtRutaHD.Text
 
@@ -569,7 +574,12 @@ ErrorConeccion:
     Private Sub btPrint_Click(sender As Object, e As EventArgs) Handles btPrint.Click
         Dim LsFormula As String
         Dim lsFechaFin As String
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If chkReimpresion.Checked = True Then
             If Trim$(dtpFechaIni.Text) = "" Then
                 MsgBox("Es necesario indicar la fecha inicial del período.", vbInformation, "Dato faltante")
@@ -722,6 +732,12 @@ ErrorConeccion:
         End If
     End Sub
     Private Sub btExaminar_Click(sender As Object, e As EventArgs) Handles btExaminar.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         fbdExplorarCarpetas.Description() = "Seleccione la carpeta en la que se desea guardar el archivo."
         If (fbdExplorarCarpetas.ShowDialog() = DialogResult.OK) Then
             txtRutaHD.Text = fbdExplorarCarpetas.SelectedPath

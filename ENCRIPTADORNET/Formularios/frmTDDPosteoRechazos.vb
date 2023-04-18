@@ -12,6 +12,12 @@
 
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
         Cursor = System.Windows.Forms.Cursors.WaitCursor
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If ValidaDatos() Then
             'inicializa grid
             dgvTDDRechazos.DataSource = ""
@@ -26,7 +32,12 @@
     End Sub
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'arma el query que se pasara al reporte
         ls_PorImprimir = ""
         ls_PorImprimir &= " {vw_retenciones_posteos.opcion} = 2 "

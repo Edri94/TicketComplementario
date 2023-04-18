@@ -207,6 +207,12 @@ Public Class frmRepAgencias
         On Error GoTo ErrHdlr
         mn_Agencia = lstAgencia.SelectedIndex + 1
         'Screen.MousePointer = vbHourglass
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Select Case mn_TipoRep
             'Case 2 : RepOpPendRec()      ''MCLM. Operaciones Pendientes a Recibir Equation
                 'RepOpPendRecSwift ''MCLM. Operaciones Pendientes a Recibir SWIFT

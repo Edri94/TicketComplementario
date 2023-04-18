@@ -57,7 +57,12 @@ Public Class frmConsulCHQApertura
     End Sub
 
     Private Sub btSolicitar_Click(sender As Object, e As EventArgs) Handles btSolicitar.Click
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If rdCHQNormal.Checked = True Then
             Dim frmSolicitudChequera As New frmSolicitudChequeraNormal
             frmSolicitudChequeraNormal.ShowDialog()
@@ -71,7 +76,12 @@ Public Class frmConsulCHQApertura
     End Sub
     Private Sub btBuscar_Click(sender As Object, e As EventArgs) Handles btBuscar.Click
         Dim d As New Datasource
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If CDate(dtpFechaIni.Text) > CDate(dtpFechaFin.Text) Then
             MsgBox("La fecha inicial del periodo debe ser menor o igual a la fecha final.", vbInformation, "Fecha Invalida")
             dtpFechaIni.Text = DateTime.Now

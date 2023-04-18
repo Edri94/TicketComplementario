@@ -224,6 +224,12 @@
         If cmbFuncs.Items.Count > 0 And Trim(txtFuncCte.Text) <> "" Then
             Exit Sub
         End If
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         pbProceso.Visible = True
         pbProceso.Maximum = 3
         pbProceso.Value = 0
@@ -376,6 +382,12 @@
             Dim blTpUniOrg As Boolean
             Dim blTpUniOrg2 As Boolean
             Dim foundRows As DataRow()
+            '------------------------------------------------------- RACB 22/03/2023
+            Dim objGlobal As New Cursors
+            If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+                Exit Sub
+            End If
+            '------------------------------------------------------- RACB 22/03/2023
             blTpUniOrg = False
             blTpUniOrg2 = True
             Label5.Visible = True
@@ -783,7 +795,12 @@ errComboFuncs:
         pbProceso.Value = 0
     End Sub
     Private Sub cmbFuncs_DropDown(sender As Object, e As EventArgs) Handles cmbFuncs.DropDown
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If cmbFuncs.Items.Count = 0 Then
             If Trim(cmbFuncs.Text) = "" Then
                 Exit Sub
@@ -1025,6 +1042,12 @@ errComboFuncs:
 
         Dim dtRespuesta As DataTable
         'WSS001 Ends
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         If txtFuncCte.Text <> "" And cmbFuncs.DataSource IsNot Nothing Then
             unidadAnulada = ""
             'Se va a reactivar o anular sin cuentas
@@ -1572,7 +1595,12 @@ errComboFuncs:
         ' OLIVIA FARIAS GARCIA OFG 2016-07-21
         'MODIFICACION PARA QUE ACTUALICE O INSERTE EL REGISTRO TF DEL FUNCIONARIO
         Dim countfunc As Integer
-
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         'Inicializa a que no se tiene que mandar a la tabla TMP_FUNCIONARIOS_PU
         lbFuncAltaPU = False
         lbFuncBajaPU = False
@@ -2947,6 +2975,12 @@ errComboFuncs:
 
     Private Sub cmbSucursal_DropDown(sender As Object, e As EventArgs) Handles cmbSucursal.DropDown
         Dim iValorAnterior = 0
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         iValorAnterior = cmbSucursal.SelectedValue
         Dim sSql = "Select cr_opera,bbvab,nombre_sucursal,sucursal From CATALOGOS..SUCURSAL WITH (NOLOCK) where estrategica =1 and bbvab=1 order by sucursal "
             dtRespConsulta = objDatasource.RealizaConsulta(sSql)
@@ -2961,23 +2995,35 @@ errComboFuncs:
             cmbSucursal.SelectedValue = iValorAnterior
     End Sub
     Private Sub cmbSucursal1_DropDown(sender As Object, e As EventArgs) Handles cmbSucursal1.DropDown
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         Dim iValorAnterior = 0
         iValorAnterior = cmbSucursal1.SelectedValue
         llena_sucursales_M1()
-            Dim sSql = "Select cr_opera,bbvab,nombre_sucursal,sucursal From CATALOGOS..SUCURSAL WITH (NOLOCK) where estrategica =1 and bbvab=1 order by sucursal "
-            dtRespConsulta = objDatasource.RealizaConsulta(sSql)
-            dtRespConsulta.Columns.Add("DatoMostrado")
-            For Each row As DataRow In dtRespConsulta.Rows
-                row("DatoMostrado") = row("sucursal") + " " + row("nombre_sucursal")
-            Next
-            cmbSucursal1.DataSource = Nothing
-            cmbSucursal1.ValueMember = "cr_opera"
-            cmbSucursal1.DisplayMember = "DatoMostrado"
-            cmbSucursal1.DataSource = dtRespConsulta
-            cmbSucursal1.SelectedValue = iValorAnterior
+        Dim sSql = "Select cr_opera,bbvab,nombre_sucursal,sucursal From CATALOGOS..SUCURSAL WITH (NOLOCK) where estrategica =1 and bbvab=1 order by sucursal "
+        dtRespConsulta = objDatasource.RealizaConsulta(sSql)
+        dtRespConsulta.Columns.Add("DatoMostrado")
+        For Each row As DataRow In dtRespConsulta.Rows
+            row("DatoMostrado") = row("sucursal") + " " + row("nombre_sucursal")
+        Next
+        cmbSucursal1.DataSource = Nothing
+        cmbSucursal1.ValueMember = "cr_opera"
+        cmbSucursal1.DisplayMember = "DatoMostrado"
+        cmbSucursal1.DataSource = dtRespConsulta
+        cmbSucursal1.SelectedValue = iValorAnterior
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles cmdNuevo.Click
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         LimpiaCampos()
         txtFuncCte.Text = ""
         txtFuncCte.Enabled = True
@@ -2985,6 +3031,12 @@ errComboFuncs:
         cmbFuncs.DataSource = Nothing
     End Sub
     Private Sub txtUniOrg_LostFocus(sender As Object, e As EventArgs) Handles txtUniOrg.LostFocus
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         cmbSucursal_DropDown(sender, e)
         cmbSucursal1_DropDown(sender, e)
         cmbSucursal.SelectedValue = -1
@@ -2999,6 +3051,12 @@ errComboFuncs:
     End Sub
     Private Sub cmbSucursal_LostFocus(sender As Object, e As EventArgs) Handles cmbSucursal.LostFocus
         Dim sCadenaBuscar As String = cmbSucursal.Text
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         For i As Integer = 0 To cmbSucursal.Items.Count - 1
             cmbSucursal.SelectedIndex = i
             If DirectCast(cmbSucursal.SelectedItem, System.Data.DataRowView).Row.ItemArray(4).ToString.Contains(sCadenaBuscar) Then
@@ -3008,6 +3066,12 @@ errComboFuncs:
     End Sub
     Private Sub cmbSucursal1_LostFocus(sender As Object, e As EventArgs) Handles cmbSucursal1.LostFocus
         Dim sCadenaBuscar As String = cmbSucursal1.Text
+        '------------------------------------------------------- RACB 22/03/2023
+        Dim objGlobal As New Cursors
+        If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
+            Exit Sub
+        End If
+        '------------------------------------------------------- RACB 22/03/2023
         For i As Integer = 0 To cmbSucursal1.Items.Count - 1
             cmbSucursal1.SelectedIndex = i
             If DirectCast(cmbSucursal1.SelectedItem, System.Data.DataRowView).Row.ItemArray(4).ToString.Contains(sCadenaBuscar) Then
@@ -3019,7 +3083,7 @@ errComboFuncs:
 
         gsSql = "Select rtrim(FU.nombre_funcionario)+' '+rtrim(IsNull(FU.apellido_paterno, Space(0)))+' '+rtrim(IsNull(FU.apellido_materno, Space(0))) as nombre, FU.funcionario, PC.cuenta_cliente "
         gsSql = gsSql & "From FUNCIONARIOS..FUNCIONARIO FU WITH (NOLOCK), CATALOGOS..CLIENTE CT WITH (NOLOCK), TICKET..PRODUCTO_CONTRATADO PC WITH (NOLOCK) "
-        gsSql = gsSql & "where FU.numero_funcionario = " & txtNumF.Text & " "
+        gsSql = gsSql & "where FU.numero_funcionario = '" & txtNumF.Text & "' "
         gsSql = gsSql & "And CT.cuenta_cliente = PC.cuenta_cliente "
         gsSql = gsSql & "And CT.agencia = PC.agencia "
         gsSql = gsSql & "And FU.funcionario = CT.funcionario"
