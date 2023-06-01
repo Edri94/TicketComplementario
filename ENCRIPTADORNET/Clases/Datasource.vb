@@ -1942,7 +1942,7 @@ Public Class Datasource
         lsGsSql = lsGsSql & " INNER JOIN TICKET.dbo.STATUS_PRODUCTO STATUS_PRODUCTO ON PRODUCTO_CONTRATADO.status_producto=STATUS_PRODUCTO.status_producto "
 
         lsGsSql = lsGsSql & " where PRODUCTO_CONTRATADO.producto = 8009 "
-        lsGsSql = lsGsSql & " and PRODUCTO_CONTRATADO.fecha_contratacion between '" & sFechaInicio & "' and '" & sFechaFin & "'"
+        lsGsSql = lsGsSql & " and PRODUCTO_CONTRATADO.fecha_contratacion between '" & sFechaInicio & " 00:00:00' and '" & sFechaFin & " 23:59:50'"
         lsGsSql = lsGsSql & " and CLIENTE.agencia = 1 "
 
         Return Consulta(lsGsSql, "LoadCuentasAperturaxFecha")

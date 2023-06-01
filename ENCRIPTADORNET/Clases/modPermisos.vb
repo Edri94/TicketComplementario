@@ -428,6 +428,7 @@ Public Class modPermisos
             gs_Sql = gs_Sql & "when bu.COMENTARIO='ELIMINO USUARIO' then bu.COMENTARIO "
             gs_Sql = gs_Sql & "when bu.COMENTARIO='DESBLOQUEO DE USUARIO' then bu.COMENTARIO "
             gs_Sql = gs_Sql & "when bu.COMENTARIO='ACTIVACION DE USUARIO' then bu.COMENTARIO "
+			gs_Sql = gs_Sql & "when bu.COMENTARIO='REACTIVACION A USUARIO' then bu.COMENTARIO "
             gs_Sql = gs_Sql & "when bu.COMENTARIO='PERMISOS PARA USUARIO' then bu.COMENTARIO + ' (Perfil. '+ isnull(bu.Permisos,'') +') '"
             gs_Sql = gs_Sql & "when bu.COMENTARIO='MANTENIMIENTO A USUARIO' then bu.COMENTARIO + ' ('+ isnull(bu.Mantenimiento ,'')+') ' end "
             gs_Sql = gs_Sql & " From  CATALOGOS..BITACORA_USUARIO BU WITH (NOLOCK),"
@@ -454,15 +455,15 @@ Public Class modPermisos
             Else
                 For Each drRegistro As DataRow In dtRespConsulta.Rows
                     objTipoBitacora = New TipoBitacora()
-                    objTipoBitacora.uUsuario = Val(drRegistro.Item(0))
-                    objTipoBitacora.uNombre = Left(UCase(Trim(drRegistro.Item(1))), 30)
-                    objTipoBitacora.uLogin = Trim(drRegistro.Item(2))
-                    objTipoBitacora.uMarcacion = Trim(drRegistro.Item(7))
+                    objTipoBitacora.uUsuario = Val(drRegistro.Item(0).ToString)
+                    objTipoBitacora.uNombre = Left(UCase(Trim(drRegistro.Item(1).ToString)), 30)
+                    objTipoBitacora.uLogin = Trim(drRegistro.Item(2).ToString)
+                    objTipoBitacora.uMarcacion = Trim(drRegistro.Item(7).ToString)
                     objTipoBitacora.uAccPerfil = 0 'Trim(drRegistro.Item(8))
                     objTipoBitacora.uAccesos = 0 'Trim(drRegistro.Item(9))
-                    objTipoBitacora.Login = Trim(drRegistro.Item(3))
-                    objTipoBitacora.Nombre = Left(UCase(Trim(drRegistro.Item(4))), 30)
-                    objTipoBitacora.Fecha = objCursors.FechaY2K(drRegistro.Item(5)) & " " & Trim(drRegistro.Item(6))
+                    objTipoBitacora.Login = Trim(drRegistro.Item(3).ToString)
+                    objTipoBitacora.Nombre = Left(UCase(Trim(drRegistro.Item(4).ToString)), 30)
+                    objTipoBitacora.Fecha = objCursors.FechaY2K(drRegistro.Item(5).ToString) & " " & Trim(drRegistro.Item(6))
                     la_Buffer.Add(objTipoBitacora)
                 Next
             End If

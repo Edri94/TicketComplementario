@@ -829,6 +829,8 @@ errComboFuncs:
                 cmbFuncs.DisplayMember = "Nombre"
                 cmbFuncs.DataSource = dtRespConsulta
                 cmbFuncs.SelectedIndex = 0
+			Else
+                MsgBox("No se encontro información.", vbInformation, "Aviso")
             End If
             'dbEndQuery
             'StatusMessage "Seleccione un Gestor de la lista..."

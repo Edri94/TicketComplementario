@@ -7,6 +7,7 @@ Public Class frmMantUsr
     Private iRegistrosAfectados As Integer
     Private iUsuarioSelec As Integer
     Private iControl As Integer
+	Private Manto, Mante As String
     Private Sub frmMantUsr_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Centerform Me
         'Cambio de colores
@@ -197,7 +198,16 @@ Elimina:
                 If MsgBox("No es posible actualizar la base de datos. ¿Desea reintentar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then GoTo Elimina
             Else
                 'ShowDefaultCursor
-                MsgBox("El Usuario " & Trim(txtNombre.Text) & " ha sido Eliminado.", vbInformation, "Usuarios...")
+				gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
+                gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
+                gs_Sql = gs_Sql & " values (getdate(),6,'ELIMINO USUARIO','" & cmbUsuarios.SelectedValue & "', "
+                gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9) "
+                If objDataSource.insertar(gs_Sql) = 0 Then
+                    If MsgBox("No es posible actualizar la base de datos. ¿Desea Reintentar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then
+                    End If
+                Else
+                    MsgBox("El Usuario " & Trim(txtNombre.Text) & " ha sido Eliminado.", vbInformation, "Usuarios...")
+                End If
             End If
             'dbEndQuery
         Else
@@ -215,6 +225,16 @@ Elimina:
         'cmbUsuarios.SetFocus
     End Sub
     Private Sub cmdAceptar_Click(sender As Object, e As EventArgs) Handles cmdAceptar.Click
+		gsSql = "Select nombre_usuario, login, "
+        gsSql = gsSql & "origen_usuario, area_usuario, "
+        gsSql = gsSql & "convert(char(10),fecha_cambio_password,105), "
+        gsSql = gsSql & "password, usuario "
+        gsSql = gsSql & "from CATALOGOS..USUARIO "
+        gsSql = gsSql & "where usuario = " & cmbUsuarios.SelectedValue 'cmbUsuarios.ItemData(cmbUsuarios.ListIndex)
+        'dbExecQuery gsSql
+        'dbGetRecord
+        'ShowDefaultCursor
+        Dim dtDatosAnteriores As DataTable = objDataSource.RealizaConsulta(gsSql)
         If DatosCompletos() = False Then
             Exit Sub
         End If
@@ -243,6 +263,61 @@ Guarda:
             If MsgBox("No es posible actualizar la base de datos. ¿Desea reintentar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then GoTo Guarda
         Else
             MsgBox("Los datos del usuario han sido actualizados.", vbInformation, "Actualización...")
+        End If
+        'Tipo de Mantenimiento realizado
+        Mante = ""
+        If Trim(txtNombre.Text) <> Trim(dtDatosAnteriores.Rows(0).Item(0).ToString) Then
+            Manto = 1
+        End If
+        If Trim(txtLogin.Text) <> Trim(dtDatosAnteriores.Rows(0).Item(1).ToString) Then
+            Manto = Manto & "2"
+        End If
+        If cmbOrigen.SelectedValue <> dtDatosAnteriores.Rows(0).Item(2).ToString Then
+            Manto = Manto & "3"
+        End If
+        If cmbArea.SelectedValue <> dtDatosAnteriores.Rows(0).Item(3).ToString Then
+            Manto = Manto & "4"
+        End If
+        If Format(dtpFecha.Text, "dd-mm-yyyy") <> Format(dtDatosAnteriores.Rows(0).Item(4).ToString, "dd-mm-yyyy") Then
+            Manto = Manto & "5"
+        End If
+        For i = 1 To Len(Manto)
+            Select Case Mid(Manto, i, 1)
+                Case "1" : Mante = Mante & " A Nombre"
+                Case "2" : Mante = Mante & " A Login"
+                Case "3" : Mante = Mante & " A Origen"
+                Case "4" : Mante = Mante & " Al Area"
+                Case "5" : Mante = Mante & " A Fecha de Cambio de PWS"
+                Case Else
+                    Mante = Mante
+            End Select
+            If i < Len(Manto) Then
+                Mante = Mante & ","
+            End If
+        Next i
+        Mante = "Mantenieminto" & Mante
+        gs_Sql = "SELECT USUARIO FROM CATALOGOS..USUARIO with(nolock) WHERE LOGIN= "
+        gs_Sql = gs_Sql & " '" & Trim(txtLogin.Text) & "' "
+        'dbExecQuery gs_Sql
+        'dbGetRecord
+        dtRespConsulta = objDataSource.RealizaConsulta(gs_Sql)
+        If dtRespConsulta Is Nothing Or dtRespConsulta.Rows.Count < 0 Then
+            'dbEndQuery
+            'ShowDefaultCursor
+            If MsgBox("No es posible realizar la consulta del usuario ¿Deseas Continuar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then
+            End If
+        End If
+        gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
+        gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion,Mantenimiento)"
+        gs_Sql = gs_Sql & " values (getdate(),3,'MANTENIMIENTO A USUARIO','" & Trim(UCase(cmbUsuarios.SelectedValue)) & "', "
+        gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9, "
+        gs_Sql = gs_Sql & "'" & Mante & "') "
+        iRegistrosAfectados = objDataSource.insertar(gs_Sql)
+        If iRegistrosAfectados = 0 Then
+            'dbEndQuery
+            'ShowDefaultCursor
+            If MsgBox("No es posible actualizar la base de datos. ¿Desea Reintentar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then
+            End If
         End If
         'dbEndQuery
         'cmbUsuarios.SelectedText = txtLogin.Text
@@ -352,6 +427,14 @@ actualiza:
             'If cmdAceptar.Enabled Then
             '    cmdAceptar.SetFocus
             'End If
+			gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
+            gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
+            gs_Sql = gs_Sql & " values (getdate(),5,'REACTIVACION A USUARIO','" & Trim(UCase(cmbUsuarios.SelectedValue)) & "', "
+            gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9) "
+            If objDataSource.insertar(gs_Sql) = 0 Then '
+                If MsgBox("No es posible actualizar la base de datos. ¿Desea Reintentar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then
+                End If
+            End If
             cmbUsuarios.DataSource.Clear()
             LlenaListaUsuarios()
             cmbNombre.DataSource.Clear()
@@ -526,7 +609,7 @@ actualiza:
             End If
             gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
             gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
-            gs_Sql = gs_Sql & " values (getdate(),4,'DESBLOQUEO DE USUARIO','" & Trim(UCase(usuario)) & "', "
+            gs_Sql = gs_Sql & " values (getdate(),4,'DESBLOQUEO DE USUARIO','" & Trim(UCase(cmbUsuarios.SelectedValue)) & "', "
             gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9) "
             'dbExecQuery gs_Sql
             If objDataSource.insertar(gs_Sql) = 0 Then 'If dbError Then

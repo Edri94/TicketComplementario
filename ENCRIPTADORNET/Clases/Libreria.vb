@@ -184,7 +184,7 @@ Public Class Libreria
         Dim Buffer As Byte() = ASCIIEncoding.ASCII.GetBytes(stringToEncrypt)
         Return Convert.ToBase64String(DES.CreateEncryptor().TransformFinalBlock(Buffer, 0, Buffer.Length))
     End Function
-    '-----------------------------------RACB
+    '-----------------------------------RACB MEXICO
     Public Function Encryption(ByVal Accion As Byte, ByVal Palabra As String) As String
         Dim objEncriptar As New MNICript.clsEncripta
         On Error GoTo NoSingOn
@@ -196,8 +196,50 @@ NoSingOn:
         Encryption = "ERROR"
         MsgBox("No es posible verificar datos encriptados.", vbCritical, "Error:" & Err.Description)
     End Function
-    '-----------------------------------RACB
-
+    '-----------------------------------RACB MEXICO
+    '-----------------------------------RACB HOUSTON
+    '    Public Function Encryption(ByVal Accion As Byte, ByVal Palabra As String) As String
+    '        'Dim objEncriptar As New MNICript.clsEncripta
+    '        'On Error GoTo NoSingOn
+    '        'Encryption = objEncriptar.VerificaClaves(Accion, Palabra)
+    '        'Exit Function
+    '        Dim proces As New Process()
+    '        Dim RutaArchivo, sNomArchivo, sCadenaRespuesta As String
+    '        Dim caracteres As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+    '        Dim res As New StringBuilder()
+    '        Dim rnd As New Random()
+    '        Dim longitud As Integer = 10
+    '        Dim fileReader As StreamReader
+    '        While 0 < longitud
+    '            res.Append(caracteres(rnd.[Next](caracteres.Length)))
+    '            longitud = longitud - 1
+    '        End While
+    '        sNomArchivo = res.ToString
+    '        RutaArchivo = My.Computer.FileSystem.CurrentDirectory & "\" & “ProyectoMNICript.exe”
+    '        proces.StartInfo.FileName = RutaArchivo
+    '        proces.StartInfo.Arguments = Accion & " " & Palabra & " " & sNomArchivo
+    '        proces.Start()
+    '        For i = 0 To 5
+    '            If proces.HasExited Then
+    '                Exit For
+    '            Else
+    '                i = -1
+    '            End If
+    '        Next
+    '        fileReader = My.Computer.FileSystem.OpenTextFileReader(My.Computer.FileSystem.CurrentDirectory & "\" & sNomArchivo & ".txt")
+    '        sCadenaRespuesta = fileReader.ReadLine()
+    '        fileReader.Close()
+    '        If System.IO.File.Exists(My.Computer.FileSystem.CurrentDirectory & "\" & sNomArchivo & ".txt") = True Then
+    '            System.IO.File.Delete(My.Computer.FileSystem.CurrentDirectory & "\" & sNomArchivo & ".txt")
+    '        End If
+    '        On Error GoTo NoSingOn
+    '        Encryption = sCadenaRespuesta
+    '        Exit Function
+    'NoSingOn:
+    '        Encryption = "ERROR"
+    '        MsgBox("No es posible verificar datos encriptados.", vbCritical, "Error:" & Err.Description)
+    '    End Function
+    '-----------------------------------RACB HOUSTON
     '--------------------------------------------------------------------------------
     'Quitamos los espacios excedentes entre el texto enviado
     '2020 junio 09
