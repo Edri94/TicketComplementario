@@ -48,6 +48,7 @@ Partial Class funcionalidades
         Me.BloqueoDesloqueoTDsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CapturaDeOperacionesMT103ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidarOperacionesMT103ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AperturasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -99,6 +100,7 @@ Partial Class funcionalidades
         Me.ReportesDeControlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MT198ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReimpresionMT198ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OperacionesDiariasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DepósitosPorSucursaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalvoBuenFinToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -172,7 +174,8 @@ Partial Class funcionalidades
         Me.tsslFecha = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BloqueoDeCuentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -330,9 +333,15 @@ Partial Class funcionalidades
         Me.ValidarOperacionesMT103ToolStripMenuItem.Size = New System.Drawing.Size(416, 34)
         Me.ValidarOperacionesMT103ToolStripMenuItem.Text = "Validar operaciones MT103"
         '
+        'CancelaciónDeOperacionesValidadasToolStripMenuItem
+        '
+        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Name = "CancelaciónDeOperacionesValidadasToolStripMenuItem"
+        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Size = New System.Drawing.Size(416, 34)
+        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Text = "Cancelación de Operaciones Validadas"
+        '
         'ReportesToolStripMenuItem
         '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AperturasToolStripMenuItem, Me.TimeDepositToolStripMenuItem, Me.BloqueosTDs, Me.ReporteCtaCEDToolStripMenuItem, Me.ToolStripSeparator5, Me.ReporteMantenimientoDeCuentasToolStripMenuItem, Me.ToolStripSeparator10, Me.ReporteOperaToolStripMenuItem, Me.ToolStripSeparator18, Me.ReportesDeControlToolStripMenuItem, Me.OperacionesDiariasToolStripMenuItem, Me.ToolStripSeparator8, Me.ReporteXUsuarioGestores, Me.ReporteGoMACToolStripMenuItem})
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AperturasToolStripMenuItem, Me.TimeDepositToolStripMenuItem, Me.BloqueosTDs, Me.ReporteCtaCEDToolStripMenuItem, Me.ToolStripSeparator5, Me.ReporteMantenimientoDeCuentasToolStripMenuItem, Me.ToolStripSeparator10, Me.ReporteOperaToolStripMenuItem, Me.ToolStripSeparator18, Me.ReportesDeControlToolStripMenuItem, Me.ToolStripMenuItem1, Me.OperacionesDiariasToolStripMenuItem, Me.ToolStripSeparator8, Me.ReporteXUsuarioGestores, Me.ReporteGoMACToolStripMenuItem})
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
         Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(98, 29)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
@@ -639,6 +648,13 @@ Partial Class funcionalidades
         Me.ReimpresionMT198ToolStripMenuItem.Name = "ReimpresionMT198ToolStripMenuItem"
         Me.ReimpresionMT198ToolStripMenuItem.Size = New System.Drawing.Size(272, 34)
         Me.ReimpresionMT198ToolStripMenuItem.Text = "Reimpresion MT198"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BloqueoDeCuentasToolStripMenuItem})
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(394, 34)
+        Me.ToolStripMenuItem1.Text = "Control Supervisor"
         '
         'OperacionesDiariasToolStripMenuItem
         '
@@ -1112,11 +1128,18 @@ Partial Class funcionalidades
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(225, 22)
         '
-        'CancelaciónDeOperacionesValidadasToolStripMenuItem
+        'BloqueoDeCuentasToolStripMenuItem
         '
-        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Name = "CancelaciónDeOperacionesValidadasToolStripMenuItem"
-        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Size = New System.Drawing.Size(416, 34)
-        Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Text = "Cancelación de Operaciones Validadas"
+        Me.BloqueoDeCuentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeCuentasBloqueadasToolStripMenuItem})
+        Me.BloqueoDeCuentasToolStripMenuItem.Name = "BloqueoDeCuentasToolStripMenuItem"
+        Me.BloqueoDeCuentasToolStripMenuItem.Size = New System.Drawing.Size(273, 34)
+        Me.BloqueoDeCuentasToolStripMenuItem.Text = "Bloqueo de Cuentas"
+        '
+        'ReporteDeCuentasBloqueadasToolStripMenuItem
+        '
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Name = "ReporteDeCuentasBloqueadasToolStripMenuItem"
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Size = New System.Drawing.Size(366, 34)
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Text = "Reporte de Cuentas Bloqueadas"
         '
         'funcionalidades
         '
@@ -1292,4 +1315,7 @@ Partial Class funcionalidades
     Friend WithEvents GestoresActivosConOSinCEDToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReasignaciónDeGestoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CancelaciónDeOperacionesValidadasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents BloqueoDeCuentasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReporteDeCuentasBloqueadasToolStripMenuItem As ToolStripMenuItem
 End Class

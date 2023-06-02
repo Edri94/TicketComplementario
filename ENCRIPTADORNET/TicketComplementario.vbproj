@@ -341,6 +341,12 @@
     <Compile Include="Formularios\MantPasswd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\RepCtasBloqueadas.Designer.vb">
+      <DependentUpon>RepCtasBloqueadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\RepCtasBloqueadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\VerPersonas.Designer.vb">
       <DependentUpon>VerPersonas.vb</DependentUpon>
     </Compile>
@@ -678,6 +684,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CtasDVTOT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\CuentaBloqueada.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuentaBloqueada.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Depo_Ret_General.vb">
@@ -1209,6 +1221,9 @@
     <EmbeddedResource Include="Formularios\MantPasswd.resx">
       <DependentUpon>MantPasswd.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\RepCtasBloqueadas.resx">
+      <DependentUpon>RepCtasBloqueadas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\VerPersonas.resx">
       <DependentUpon>VerPersonas.vb</DependentUpon>
     </EmbeddedResource>
@@ -1302,6 +1317,10 @@
     <EmbeddedResource Include="Reportes\CtasDVTOT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CtasDVTOT.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\CuentaBloqueada.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CuentaBloqueada.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Depo_Ret_General.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

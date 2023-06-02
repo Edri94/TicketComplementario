@@ -880,23 +880,19 @@ VerificaDiasFeriados:
         For Each ControlForm As Control In ControlesFormulario
             If TypeOf ControlForm Is GroupBox Or TypeOf ControlForm Is Panel Then
                 For Each ControlForm2 As Control In ControlForm.Controls
-				
-                        If TypeOf ControlForm2 Is TextBox Or TypeOf ControlForm2 Is ComboBox Or TypeOf ControlForm2 Is DateTimePicker Then
-							MsgBox("objeto: " & ControlForm2.Name & " Texto: " & ControlForm2.Text)
-                            If sqlValidation(ControlForm2.Text) = False Then
-                                MsgBox("Se detectaron comandos no validos, favor de validar con el administrador del sistema.")
-                                Return False
-                            End If
+                    If TypeOf ControlForm2 Is TextBox Or TypeOf ControlForm2 Is ComboBox Or TypeOf ControlForm2 Is DateTimePicker Then
+                        If sqlValidation(ControlForm2.Text) = False Then
+                            MsgBox("Se detectaron comandos no validos, favor de validar con el administrador del sistema.")
+                            Return False
                         End If
-                    
+                    End If
+
                 Next
             ElseIf TypeOf ControlForm Is TextBox Or TypeOf ControlForm Is ComboBox Or TypeOf ControlForm Is DateTimePicker Then
-                MsgBox("objeto: " & ControlForm.Name & " Texto: " & ControlForm.Text)
-                    If sqlValidation(ControlForm.Text) = False Then
-                        MsgBox("Se detectaron comandos no validos, favor de validar con el administrador del sistema.")
-                        Return False
-                    End If
-                
+                If sqlValidation(ControlForm.Text) = False Then
+                    MsgBox("Se detectaron comandos no validos, favor de validar con el administrador del sistema.")
+                    Return False
+                End If
             End If
         Next
         Return True

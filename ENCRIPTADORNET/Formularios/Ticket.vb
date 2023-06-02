@@ -939,6 +939,16 @@ Public Class funcionalidades
             MsgBox("Sin permisos para este modulo")
         End If
     End Sub
+    Private Sub ReporteDeCuentasBloqueadasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteDeCuentasBloqueadasToolStripMenuItem.Click
+        If l.Permiso("PREPCUENBLOQ") Then
+            ConfReg()
+            Dim CuentasBloqueadas As New RepCtasBloqueadas
+            CuentasBloqueadas.StartPosition = FormStartPosition.CenterScreen
+            CuentasBloqueadas.Show()
+        Else
+            MsgBox("Sin permisos para este modulo")
+        End If
+    End Sub
     Private Sub ConfReg()
         Dim objLibreria As New Libreria
         Dim objDatasource As New Datasource
