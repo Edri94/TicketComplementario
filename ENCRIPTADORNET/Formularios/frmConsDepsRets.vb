@@ -119,19 +119,17 @@
         gs_Sql = gs_Sql & "status_operacion, "
         gs_Sql = gs_Sql & "operacion_definida_global, contacto "
         gs_Sql = gs_Sql & "from "
-        gs_Sql = gs_Sql & "GOS.dbo.T_OPERACION OP, "
+        gs_Sql = gs_Sql & "GOS.dbo.T_OPERACION OP left outer join FUNCIONARIOS.dbo.FUNCIONARIO FU on OP.funcionario = FU.funcionario, "
         gs_Sql = gs_Sql & "CATALOGOS.dbo.USUARIO US, "
         gs_Sql = gs_Sql & "TICKET.dbo.PRODUCTO_CONTRATADO PC, "
         gs_Sql = gs_Sql & "TICKET.dbo.OPERACION_DEFINIDA OD, "
-        gs_Sql = gs_Sql & "CATALOGOS.dbo.AGENCIA AG, "
-        gs_Sql = gs_Sql & "FUNCIONARIOS.dbo.FUNCIONARIO FU "
+        gs_Sql = gs_Sql & "CATALOGOS.dbo.AGENCIA AG "
         gs_Sql = gs_Sql & "where "
         gs_Sql = gs_Sql & "OD.operacion_definida = OP.operacion_definida and "
         gs_Sql = gs_Sql & "PC.producto_contratado = OP.producto_contratado and "
         gs_Sql = gs_Sql & "OP.usuario_captura = US.usuario and "
         gs_Sql = gs_Sql & "AG.agencia = PC.agencia and "
         gs_Sql = gs_Sql & "AG.agencia = OD.agencia and "
-        gs_Sql = gs_Sql & "OP.funcionario *= FU.funcionario and "
         gs_Sql = gs_Sql & "OP.operacion = " & Operacion
         '& " and "
         'gs_Sql = gs_Sql & "AG.agencia " & gs_PermisoAgencias          'Permiso Agencias
@@ -509,18 +507,16 @@
             gs_Sql = gs_Sql & "DR.destino as col2, "
             gs_Sql = gs_Sql & "DR.otro_documento as col3 "
             gs_Sql = gs_Sql & "From "
-            gs_Sql = gs_Sql & "GOS.dbo.T_DEPOSITO DR, "
+            gs_Sql = gs_Sql & "TICKET.dbo.TIPO_MONEDA TM right outer join GOS.dbo.T_DEPOSITO DR on TM.tipo_moneda = DR.tipo_moneda, "
         Else                                          'La operacion es un retiro
             gs_Sql = gs_Sql & "DR.numero_cheque as col1, "
             gs_Sql = gs_Sql & "DR.causa as col2 "
             gs_Sql = gs_Sql & "From "
-            gs_Sql = gs_Sql & "GOS.dbo.T_RETIRO_PME DR, "
+            gs_Sql = gs_Sql & "TICKET.dbo.TIPO_MONEDA TM right outer join GOS.dbo.T_RETIRO_PME DR on TM.tipo_moneda = DR.tipo_moneda, "
         End If
         gs_Sql = gs_Sql & "TICKET.dbo.TIPO_DOCUMENTO TD, "
-        gs_Sql = gs_Sql & "TICKET.dbo.TIPO_MONEDA TM "
         gs_Sql = gs_Sql & "Where "
         gs_Sql = gs_Sql & "TD.tipo_documento = DR.tipo_documento and "
-        gs_Sql = gs_Sql & "TM.tipo_moneda =* DR.tipo_moneda and "
         gs_Sql = gs_Sql & "DR.operacion = " & Operacion
         '    dbExecQuery gs_Sql                            'Busca mas datos particulares de la operacion
         '    dbGetRecord

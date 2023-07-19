@@ -1748,11 +1748,9 @@ Fin2:
             gs_Sql = "Select "
             gs_Sql = gs_Sql & "usuario = case when UT.usuario_tran is null then UD.usuario_tran else UT.usuario_tran end "
             gs_Sql = gs_Sql & "From "
-            gs_Sql = gs_Sql & "OPERACION OP, "
-            gs_Sql = gs_Sql & "CATALOGOS" & "..USUARIO_TRANSACCION UT, "
+            gs_Sql = gs_Sql & "OPERACION OP left outer join CATALOGOS..USUARIO_TRANSACCION UT on OP.usuario_captura = UT.usuario, "
             gs_Sql = gs_Sql & "CATALOGOS" & "..USUARIO_TRANSACCION UD "
             gs_Sql = gs_Sql & "Where OP.operacion = " & Operacion & " "
-            gs_Sql = gs_Sql & "  and OP.usuario_captura *= UT.usuario "
             gs_Sql = gs_Sql & "  and UD.usuario = 0 "
             'dbExecQuery gs_Sql
             'dbGetRecord

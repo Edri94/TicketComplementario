@@ -23,6 +23,7 @@ Public Class frmMT198
     Private objLibreria As New Libreria
     Private objArchivoExcel As StreamWriter
     Private bEncabezados As Boolean = True
+    Private sRutaArchivo As String
     Private Sub frmMT198_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Se cambia cursor a reloj de espera - ALB
         'Screen.MousePointer = vbHourglass
@@ -108,7 +109,7 @@ Public Class frmMT198
         gs_Sql = "select count(OP.operacion) "
         'If Not IsMissing(bbva) Then
         If Not (bbva IsNot Nothing) Then
-            gs_Sql = gs_Sql & " from OPERACION OP, PRODUCTO_CONTRATADO PC WITH (NOLOCK), " & "FUNCIONARIOS" & "..FUNCIONARIO F WITH (NOLOCK)"
+            gs_Sql = gs_Sql & " from OPERACION OP left outer join FUNCIONARIOS..FUNCIONARIO F WITH (NOLOCK) on OP.funcionario = F.funcionario, PRODUCTO_CONTRATADO PC WITH (NOLOCK), "
         Else
             gs_Sql = gs_Sql & " from OPERACION OP, PRODUCTO_CONTRATADO PC WITH (NOLOCK) "
         End If
@@ -139,7 +140,6 @@ Public Class frmMT198
         'If Not IsMissing(bbva) Then
         If Not (bbva IsNot Nothing) Then
             If bbva = 1 Then  ' es bbva
-                gs_Sql = gs_Sql & " and OP.funcionario *= F.funcionario "
                 gs_Sql = gs_Sql & " and F.bbvab = 1 "   'Sólo operaciones realizadas con funcionarios que operan en suc no migradas
             Else
                 gs_Sql = gs_Sql & " and OP.funcionario = F.funcionario "
@@ -1031,6 +1031,7 @@ errPorEnviar:
         pbMT198.Value = 0
         'Screen.MousePointer = vbDefault
         cmdAceptar.Enabled = True
+        My.Computer.FileSystem.DeleteFile(sRutaArchivo)
     End Sub
 
     '-------------------------------------------------------------------------------
@@ -1082,6 +1083,7 @@ errPorEnviar:
         '        Else
         '    existeArchivo = True
         strFile = String.Format(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\" + strnameFile & ".csv")
+        sRutaArchivo = strFile
         objArchivoExcel = New StreamWriter(strFile)
         'End If
 

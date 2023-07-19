@@ -35,7 +35,7 @@
         If rb_ConsolidXTicket.Checked Then
             ListaAperConsolidadoxTicket()
         End If
-
+        gvCuentasAperturadas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         Cursor = System.Windows.Forms.Cursors.Default
     End Sub
 

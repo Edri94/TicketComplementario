@@ -899,7 +899,7 @@ VerificaDiasFeriados:
     End Function
     Public Function sqlValidation(dato As String) As Boolean
         dato = dato.ToUpper
-        If dato.Contains("SELECT") Or dato.Contains("FROM") Or dato.Contains("CREATE") Or dato.Contains("DROP") Or dato.Contains("DELETE") Or dato.Contains("INSERT") Or dato.Contains("UPDATE") Or dato.Contains("GRANT") Or dato.Contains("ALTER") Or dato.Contains("TRUNCATE") Or dato.Contains("WHERE") Or dato.Contains("RENAME") Then
+        If dato.Contains("SELECT ") Or dato.Contains("FROM ") Or dato.Contains("CREATE ") Or dato.Contains("DROP ") Or dato.Contains("DELETE ") Or dato.Contains("INSERT ") Or dato.Contains("UPDATE ") Or dato.Contains("GRANT ") Or dato.Contains("ALTER ") Or dato.Contains("TRUNCATE ") Or dato.Contains("WHERE ") Or dato.Contains("RENAME ") Then
             Return False
         Else
             Return True

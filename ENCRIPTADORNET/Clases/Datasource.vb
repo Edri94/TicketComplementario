@@ -28,6 +28,8 @@ Public Class Datasource
             l.CredencialesConexionRep()
             sqlstring = "data source=" & l.SERVER & ";initial catalog =" & l.DB & ";User ID=" & l.USER & ";Password=" & l.PWD & ";"
         End If
+        sqlstring = sqlstring.Replace("initial catalog ", "database ") '------- RACB 29-06-2023 para nueva base 19
+        sqlstring = sqlstring.Replace("data source ", "server ") '------- RACB 29-06-2023 para nueva base 19
     End Sub
 
     Function valida_coneccion_sql() As Boolean
@@ -257,7 +259,7 @@ Public Class Datasource
         Dim l As New Libreria
 
         'spass = l.Encrypt(spass)
-        'spass = l.Encryption(2, "BEOVUSGQ^g^]TnS_qTc")
+        'spass = l.Encryption(2, "YU^xa_Q]_`j`e")
         'l = Nothing
         s = "SELECT usuario, origen_usuario, convert(char(10),fecha_cambio_password,105), convert(char(10),fecha_ultimo_acceso,105), password, nombre_usuario FROM catalogos.dbo.USUARIO where password <> 'BLOQUEAR' and password <> 'ANULADO' AND login = '" & slogin & "'"  ' and password = '" & spass & "'"
         's = "SELECT usuario FROM catalogos.dbo.USUARIO where password <> 'BLOQUEAR' and password <> 'ANULADO' AND login = '" & slogin & "'"  ' and password = '" & spass & "'"
@@ -1897,7 +1899,8 @@ Public Class Datasource
         lsGsSql = lsGsSql & " WHEN status_operacion = 16 THEN 'Rechazada'"
         lsGsSql = lsGsSql & " End AS [desc_status_op],"
         lsGsSql = lsGsSql & " SP.descripcion_status AS [desc_status_cta]"
-        lsGsSql = lsGsSql & " from TICKET..OPERACION O (INDEX = IDX_FECHA_OPERA),"
+        'lsGsSql = lsGsSql & " from TICKET..OPERACION O (INDEX = IDX_FECHA_OPERA),"
+        lsGsSql = lsGsSql & " from TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         lsGsSql = lsGsSql & " TICKET..PRODUCTO_CONTRATADO PC,"
         lsGsSql = lsGsSql & " CATALOGOS..AGENCIA AG,"
         lsGsSql = lsGsSql & " TICKET..CUENTA_EJE CE,"
@@ -1916,7 +1919,7 @@ Public Class Datasource
         lsGsSql = lsGsSql & " and PC.status_producto = SP.status_producto"
         lsGsSql = lsGsSql & " and OD.operacion_definida = O.operacion_definida"
         lsGsSql = lsGsSql & " and PC.agencia = 1 "
-        lsGsSql = lsGsSql & " and O.operacion *= RO.operacion "
+        'lsGsSql = lsGsSql & " and O.operacion *= RO.operacion "
         lsGsSql = lsGsSql & " order by O.operacion"
 
 
@@ -1983,10 +1986,9 @@ Public Class Datasource
         lsGsSql = lsGsSql & " PC.cuenta_cliente AS [cuenta_cliente],"
         lsGsSql = lsGsSql & " O.monto_operacion AS [monto_operacion],"
         lsGsSql = lsGsSql & " case RO.impreso when 1 then 'Impreso' else '' end as [impreso]"
-        lsGsSql = lsGsSql & " from TICKET..OPERACION O,"
+        lsGsSql = lsGsSql & " from TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         lsGsSql = lsGsSql & " TICKET..PRODUCTO_CONTRATADO PC,"
-        lsGsSql = lsGsSql & " TICKET..OPERACION_DEFINIDA OD,"
-        lsGsSql = lsGsSql & " TICKET..REPORTE_OPERACION RO"
+        lsGsSql = lsGsSql & " TICKET..OPERACION_DEFINIDA OD"
         lsGsSql = lsGsSql & " where operacion_definida_global =100 "
         lsGsSql = lsGsSql & " and O.fecha_operacion = '" & sFechaInicio & "' "
         lsGsSql = lsGsSql & " and O.status_operacion in (2,3,4,5) "
@@ -1994,7 +1996,6 @@ Public Class Datasource
         lsGsSql = lsGsSql & " and O.producto_contratado = PC.producto_contratado"
         lsGsSql = lsGsSql & " and OD.operacion_definida = O.operacion_definida"
         lsGsSql = lsGsSql & " and PC.agencia = 1 "
-        lsGsSql = lsGsSql & " and O.operacion *= RO.operacion "
         lsGsSql = lsGsSql & " order by O.operacion"
 
 
@@ -2651,8 +2652,7 @@ errLogOn:
         lsGsSql &= "From "
         lsGsSql &= "CATALOGOS..CLIENTE CL, "
         lsGsSql &= "CATALOGOS..AGENCIA AG, "
-        lsGsSql &= "CATALOGOS..SUCURSAL SS, "
-        lsGsSql &= "TICKET..CHEQUERAS CH, "
+        lsGsSql &= "CATALOGOS..SUCURSAL SS right outer join TICKET..CHEQUERAS CH on SS.sucursal = CH.sucursal_solicita, "
         lsGsSql &= "TICKET..CUENTA_EJE CE, "
         lsGsSql &= "TICKET..STATUS_CHEQUERA ST, "
         lsGsSql &= "TICKET..TIPO_CUENTA_EJE TC, "
@@ -2663,7 +2663,7 @@ errLogOn:
         lsGsSql &= "CE.producto_contratado = PC.producto_contratado and "
         lsGsSql &= "PC.producto_contratado = CH.producto_contratado and "
         lsGsSql &= "ST.status_chequera = CH.status_chequera and "
-        lsGsSql &= "SS.sucursal =* CH.sucursal_solicita and "
+
         lsGsSql &= "TC.tipo_cuenta_eje = CE.tipo_cuenta_eje And "
         lsGsSql &= "AG.agencia = PC.agencia and "
         lsGsSql &= "PC.agencia = 1"
@@ -4237,7 +4237,7 @@ errLogOn:
         lsGsSql &= "direccion_cliente "                                         '31
         'lsGsSql &= "CL.del_o_municipio "                                        '32
         lsGsSql &= "From "
-        lsGsSql &= "CATALOGOS..CLIENTE CL, "
+        lsGsSql &= "CATALOGOS..CLIENTE CL left outer join CATALOGOS..TIPO_CLIENTE TC on CL.tipo_cliente = TC.tipo_cliente, "
         lsGsSql &= "CATALOGOS..TIPO_CLIENTE TC, "
         lsGsSql &= "PRODUCTO_CONTRATADO PC, "
         lsGsSql &= "PRODUCTO PR, "
@@ -4245,8 +4245,7 @@ errLogOn:
         lsGsSql &= "CUENTA_EJE CE, "
         lsGsSql &= "TIPO_CUENTA_EJE TCE "
         lsGsSql &= "Where "
-        lsGsSql &= "CL.tipo_cliente *= TC.tipo_cliente "
-        lsGsSql &= "and PC.cuenta_cliente = CL.cuenta_cliente "
+        lsGsSql &= "PC.cuenta_cliente = CL.cuenta_cliente "
         lsGsSql &= "and PC.agencia = CL.agencia "
         lsGsSql &= "and PC.producto = PR.producto "
         lsGsSql &= "and PC.agencia = PR.agencia "
@@ -4404,12 +4403,10 @@ errLogOn:
         lsGsSql &= "linea, "                                 '4
         lsGsSql &= "grabadora "                              '5
         lsGsSql &= "from "
-        lsGsSql &= "CATALOGOS..USUARIO u, "
-        lsGsSql &= "OPERACION o, "
+        lsGsSql &= "OPERACION o left outer join CATALOGOS..USUARIO u on o.usuario_captura = u.usuario, "
         lsGsSql &= "OPERACION_DEFINIDA od "
         lsGsSql &= "where "
-        lsGsSql &= "o.usuario_captura *= u.usuario "
-        lsGsSql &= "and o.operacion_definida = od.operacion_definida "
+        lsGsSql &= "o.operacion_definida = od.operacion_definida "
         'APERTURA DE CTA
         lsGsSql &= "and operacion_definida_global = 100 "
         lsGsSql &= "and o.producto_contratado = " & lnProductoContratado

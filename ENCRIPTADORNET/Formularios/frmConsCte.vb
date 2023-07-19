@@ -111,8 +111,7 @@
         gs_Sql = gs_Sql & "TICKET.dbo.PRODUCTO_CONTRATADO PC, "
         gs_Sql = gs_Sql & "GOS.dbo.TIPO_DOCUMENTO TD, "
         gs_Sql = gs_Sql & "GOS.dbo.STATUS_CONCILIA SC, "
-        gs_Sql = gs_Sql & "GOS.dbo.DIFERENCIAS DI, "
-        gs_Sql = gs_Sql & "GOS.dbo.DOCUMENTO DC "
+        gs_Sql = gs_Sql & "GOS.dbo.DOCUMENTO DC left outer join GOS.dbo.DIFERENCIAS DI on DC.documento = DI.documento"
         gs_Sql = gs_Sql & "Where "
         gs_Sql = gs_Sql & "TD.tipo_documento = DC.tipo_documento and "
         gs_Sql = gs_Sql & "SC.status_concilia = DC.status_concilia and "
@@ -130,7 +129,6 @@
             gs_Sql = gs_Sql & "DC.status_concilia = " & cmbDocStatus.SelectedValue.ToString & " and "
             'ItemData(cmbDocStatus.ListIndex) & " and "
         End If
-        gs_Sql = gs_Sql & "DC.documento *= DI.documento and "
         gs_Sql = gs_Sql & "PC.producto_contratado = " & cmbCliente.SelectedValue.ToString
         gs_Sql = gs_Sql & " order by DC.documento desc"
 
@@ -192,16 +190,14 @@
         gs_Sql = gs_Sql & "else RP.referencia end, "
         gs_Sql = gs_Sql & "SC.descripcion_status_concilia, "
         gs_Sql = gs_Sql & "OD.descripcion_operacion_definida "
-        gs_Sql = gs_Sql & "From "
+        gs_Sql = gs_Sql & "From GOS.dbo.T_OPERACION OP left outer join GOS.dbo.T_RETIRO_PME RP on OP.operacion = RP.operacion
+                	                                   left outer join GOS.dbo.T_DEPOSITO_PME DP on OP.operacion = DP.operacion
+					                                   left outer join GOS.dbo.T_TRASPASO TT on OP.operacion = TT.operacion
+					                                   left outer join GOS.dbo.T_RETIRO_ORDEN_PAGO RO on OP.operacion = RO.operacion
+					                                   left outer join GOS.dbo.T_RETIRO_ORDEN_DIVISAS RD on OP.operacion = RD.operacion, "
         gs_Sql = gs_Sql & "TICKET.dbo.OPERACION_DEFINIDA OD, "
         gs_Sql = gs_Sql & "GOS.dbo.OPERACION_TICKET OT, "
         gs_Sql = gs_Sql & "GOS.dbo.STATUS_CONCILIA SC, "
-        gs_Sql = gs_Sql & "GOS.dbo.T_OPERACION OP, "
-        gs_Sql = gs_Sql & "GOS.dbo.T_DEPOSITO_PME DP, "
-        gs_Sql = gs_Sql & "GOS.dbo.T_RETIRO_PME RP, "
-        gs_Sql = gs_Sql & "GOS.dbo.T_TRASPASO TT, "
-        gs_Sql = gs_Sql & "GOS.dbo.T_RETIRO_ORDEN_PAGO RO, "
-        gs_Sql = gs_Sql & "GOS.dbo.T_RETIRO_ORDEN_DIVISAS RD "
         gs_Sql = gs_Sql & "Where "
         gs_Sql = gs_Sql & "SC.status_concilia = OT.status_concilia and "
         gs_Sql = gs_Sql & "OT.operacion = OP.operacion and "
@@ -218,11 +214,6 @@
         If chkTktStatus.Checked = True Then
             gs_Sql = gs_Sql & "OT.status_concilia = " & cmbTktStatus.SelectedValue.ToString & " and "
         End If
-        gs_Sql = gs_Sql & "OP.operacion *= RP.operacion and "
-        gs_Sql = gs_Sql & "OP.operacion *= DP.operacion and "
-        gs_Sql = gs_Sql & "OP.operacion *= TT.operacion and "
-        gs_Sql = gs_Sql & "OP.operacion *= RO.operacion and "
-        gs_Sql = gs_Sql & "OP.operacion *= RD.operacion and "
         gs_Sql = gs_Sql & "OP.producto_contratado = " & cmbCliente.SelectedValue.ToString
         gs_Sql = gs_Sql & " order by OP.operacion desc"
         'MsgBox("gs_sql tickets " & gs_Sql, MessageBoxButtons.OK)

@@ -39,8 +39,7 @@
         gs_Sql = gs_Sql & "From "
         gs_Sql = gs_Sql & "CATALOGOS.dbo.CLIENTE CL, "
         gs_Sql = gs_Sql & "CATALOGOS.dbo.AGENCIA AG, "
-        gs_Sql = gs_Sql & "CATALOGOS.dbo.SUCURSAL SS, "
-        gs_Sql = gs_Sql & "CHEQUERAS CH, "
+        gs_Sql = gs_Sql & "CATALOGOS.dbo.SUCURSAL SS right outer join CHEQUERAS CH on SS.sucursal = CH.sucursal_solicita, "
         gs_Sql = gs_Sql & "CUENTA_EJE CE, "
         gs_Sql = gs_Sql & "STATUS_CHEQUERA ST, "
         gs_Sql = gs_Sql & "TIPO_CUENTA_EJE TC, "
@@ -51,7 +50,6 @@
         gs_Sql = gs_Sql & "CE.producto_contratado = PC.producto_contratado and "
         gs_Sql = gs_Sql & "PC.producto_contratado = CH.producto_contratado and "
         gs_Sql = gs_Sql & "ST.status_chequera = CH.status_chequera and "
-        gs_Sql = gs_Sql & "SS.sucursal =* CH.sucursal_solicita and "
         gs_Sql = gs_Sql & "TC.tipo_cuenta_eje = CE.tipo_cuenta_eje and "
         gs_Sql = gs_Sql & "AG.agencia = PC.agencia and "
         gs_Sql = gs_Sql & "PC.agencia = " & cmbAgencias.SelectedValue.ToString

@@ -224,8 +224,8 @@ Public Class frmRepOpesDiarias
                 OP.fecha_captura, OP.fecha_operacion, OD.descripcion_operacion_definida, 
                 DP.referencia, DP.sucursal, DP.nombre_sucursal, TD.descripcion_documento, CONVERT(varchar,TM.descripcion_moneda)
                 From CATALOGOS.dbo.AGENCIA AG, TICKET.dbo.PRODUCTO_CONTRATADO PC, TICKET.dbo.OPERACION OP, 
-                TICKET.dbo.DEPOSITO_PME DP, TICKET.dbo.DEPOSITO DE, TICKET.dbo.OPERACION_DEFINIDA OD, 
-                TICKET.dbo.TIPO_DOCUMENTO TD, TICKET.dbo.TIPO_MONEDA TM, TICKET.dbo.CUENTA_EJE CE, TICKET.dbo.TIPO_CUENTA_EJE TCE 
+                TICKET.dbo.DEPOSITO_PME DP, TICKET.dbo.DEPOSITO DE left outer join TICKET.dbo.TIPO_DOCUMENTO TD on DE.tipo_documento = TD.tipo_documento left outer join TICKET.dbo.TIPO_MONEDA TM on DE.tipo_moneda = TM.tipo_moneda, TICKET.dbo.OPERACION_DEFINIDA OD, 
+                TICKET.dbo.CUENTA_EJE CE, TICKET.dbo.TIPO_CUENTA_EJE TCE 
                 Where  OP.fecha_operacion >= '" & l.InvierteFecha(mtxtFechaIni.Text) & " 00:00AM' and  OP.fecha_operacion <= '" & l.InvierteFecha(mtxtFechaFin.Text) & " 11:59PM' 
                 and  OD.operacion_definida_global in (589,583) and  OP.fecha_captura >= '" & l.InvierteFecha(mtxtFechaIni.Text) & " 00:00AM' and  OP.fecha_captura <= '" & l.InvierteFecha(mtxtFechaFin.Text) & " 11:59PM' 
                 and AG.agencia = PC.agencia 
@@ -234,8 +234,6 @@ Public Class frmRepOpesDiarias
                 and OP.operacion = DP.operacion 
                 and OP.operacion = DE.operacion 
                 and OP.operacion_definida = OD.operacion_definida 
-                and DE.tipo_documento *= TD.tipo_documento 
-                and DE.tipo_moneda *= TM.tipo_moneda 
                 and PC.producto in (8009,3009) 
                 and OP.status_operacion <> 250 
                 and PC.producto_contratado = CE.producto_contratado 
@@ -245,7 +243,7 @@ Public Class frmRepOpesDiarias
                 OP.fecha_captura, OP.fecha_operacion, OD.descripcion_operacion_definida, 
                 DP.referencia, DP.sucursal, DP.nombre_sucursal, TD.descripcion_documento, CONVERT(varchar,TM.descripcion_moneda) 
                 From CATALOGOS.dbo.AGENCIA AG, TICKET.dbo.PRODUCTO_CONTRATADO PC, TICKET.dbo.OPERACION OP, TICKET.dbo.DEPOSITO_PME DP, 
-                TICKET.dbo.DEPOSITO DE, TICKET.dbo.OPERACION_DEFINIDA OD, TICKET.dbo.TIPO_DOCUMENTO TD, TICKET.dbo.TIPO_MONEDA TM, 
+                TICKET.dbo.DEPOSITO DE left outer join TICKET.dbo.TIPO_DOCUMENTO TD on DE.tipo_documento = TD.tipo_documento left outer join TICKET.dbo.TIPO_MONEDA TM on DE.tipo_moneda = TM.tipo_moneda, TICKET.dbo.OPERACION_DEFINIDA OD, 
                 TICKET.dbo.CUENTA_EJE CE, TICKET.dbo.TIPO_CUENTA_EJE TCE 
                 Where  OP.fecha_operacion >= '" & l.InvierteFecha(mtxtFechaIni.Text) & "' and  OP.fecha_operacion <= '" & l.InvierteFecha(mtxtFechaFin.Text) & "' 
                 and  OD.operacion_definida_global in (588,592,590,591) 
@@ -256,8 +254,6 @@ Public Class frmRepOpesDiarias
                 and OP.operacion = DP.operacion 
                 and OP.operacion = DE.operacion 
                 and OP.operacion_definida = OD.operacion_definida 
-                and DE.tipo_documento *= TD.tipo_documento 
-                and DE.tipo_moneda *= TM.tipo_moneda 
                 and PC.producto in (8009,2009,3009) 
                 and OP.status_operacion <> 250 
                 and PC.producto_contratado = CE.producto_contratado 

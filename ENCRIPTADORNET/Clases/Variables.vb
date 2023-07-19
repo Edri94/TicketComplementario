@@ -128,6 +128,7 @@ Module VARIABLES
     Public GsPlaza As String = "0"           'Variable para complemento 
     Public GsPlazaBack As String = "0"           'Variable para complemento 
     Public GsCentroRegional As String = "0"           'Variable para complemento 
+    Public GsEstatusMantenimientoOperacion = ""     'Variable de mantenimiento de opreaciones
     '--------------------------------------------------------  RACB 20/01/2021
 
 #End Region

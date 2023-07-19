@@ -949,6 +949,17 @@ Public Class funcionalidades
             MsgBox("Sin permisos para este modulo")
         End If
     End Sub
+    Private Sub FrmMantenimientoTKTmnEntro1ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Click
+        If l.Permiso("PREPCUENBLOQ") Then 'If True Then
+            ConfReg()
+            Dim MantenimientoTKT As New frmMantenimientoTKT
+            MantenimientoTKT.StartPosition = FormStartPosition.CenterScreen
+            MantenimientoTKT.mnEntro = 1
+            MantenimientoTKT.Show()
+        Else
+            MsgBox("Sin permisos para este modulo")
+        End If
+    End Sub
     Private Sub ConfReg()
         Dim objLibreria As New Libreria
         Dim objDatasource As New Datasource

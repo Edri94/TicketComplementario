@@ -292,7 +292,11 @@
             ElseIf ln_TipoDoc = 2 Then                      'Si se trata de un traspaso
                 gs_Sql = gs_Sql & "GOS.dbo.TRASPASO PO, "
             Else                                            'Si se trata de una transferencia
-                gs_Sql = gs_Sql & "GOS.dbo.TRANSFERENCIA PO, "
+                If ln_TipoDoc = 3 Then
+                    gs_Sql = gs_Sql & "GOS.dbo.TRANSFERENCIA PO right outer join GOS.dbo.DOCUMENTO DC on PO.documento = DC.documento, "
+                Else
+                    gs_Sql = gs_Sql & "GOS.dbo.TRANSFERENCIA PO, "
+                End If
             End If
             If ln_TipoDoc < 2 Then                          'Si es deposito o retiro
                 gs_Sql = gs_Sql & "GOS.dbo.PLAZAS PZ, "
@@ -302,7 +306,9 @@
             End If
             gs_Sql = gs_Sql & "GOS.dbo.FUENTES FU, "
             gs_Sql = gs_Sql & "GOS.dbo.USUARIO US, "                       'gstUsuarios
-            gs_Sql = gs_Sql & "GOS.dbo.DOCUMENTO DC, "
+            If ln_TipoDoc <> 3 Then
+                gs_Sql = gs_Sql & "GOS.dbo.DOCUMENTO DC, "
+            End If
             gs_Sql = gs_Sql & "GOS.dbo.STATUS_GOS SG, "
             gs_Sql = gs_Sql & "GOS.dbo.TIPO_DOCUMENTO TD, "
             gs_Sql = gs_Sql & "GOS.dbo.STATUS_CONCILIA SC, "
@@ -328,7 +334,7 @@
                 gs_Sql = gs_Sql & "AD.agencia = PO.agencia_destino and "
             End If
             If ln_TipoDoc = 3 Then                           'Si es Transferencia
-                gs_Sql = gs_Sql & "PO.documento =* DC.documento and "
+                'gs_Sql = gs_Sql & "PO.documento =* DC.documento and "
             Else                                            'Si es un Dep, Ret o Traspaso
                 gs_Sql = gs_Sql & "PO.documento = DC.documento and "
             End If
@@ -424,11 +430,9 @@
                         gs_Sql = gs_Sql & "convert(char(10),fecha_soporte,105) as 'Fecha Soporte', "
                         gs_Sql = gs_Sql & "soporte as 'Soporte' "
                         gs_Sql = gs_Sql & "From "
-                        gs_Sql = gs_Sql & "GOS.dbo.DIVISAS DV, "
-                        gs_Sql = gs_Sql & "GOS.dbo.SOPORTE SO, "
+                        gs_Sql = gs_Sql & "GOS.dbo.DIVISAS DV right outer join GOS.dbo.SOPORTE SO on DV.divisa = SO.divisa, "
                         gs_Sql = gs_Sql & "GOS.dbo.TIPO_SOPORTE TS "
                         gs_Sql = gs_Sql & "Where "
-                        gs_Sql = gs_Sql & "DV.divisa =* SO.divisa and "
                         gs_Sql = gs_Sql & "TS.tipo_soporte = SO.tipo_soporte and "
                         gs_Sql = gs_Sql & "documento = " & Documento
 

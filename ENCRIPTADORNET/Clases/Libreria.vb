@@ -162,7 +162,6 @@ Public Class Libreria
                 Return ""
                 Exit Function
             End If
-
             DES.Key = MD5Hash(key)
             DES.Mode = CipherMode.ECB
             Dim Buffer As Byte() = Convert.FromBase64String(encryptedString)

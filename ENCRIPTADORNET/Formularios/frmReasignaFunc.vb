@@ -4,6 +4,7 @@
     Private objDatasource As New Datasource
     Private objLibreria As New Libreria
     Private dtRespConsulta As DataTable
+    Private sFuncionarioActual As String '----- RACB 11-07-2023 convivencia APX
     Private Sub txtCuenta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCuenta.KeyPress
         'KeyAscii = Filtra(KeyAscii, 1)
         If AscW(e.KeyChar) = CInt(Keys.Enter) Then 'If KeyAscii = vbKeyReturn Then
@@ -169,6 +170,7 @@
                 txtCuenta.Tag = Val(dtRespConsulta.Rows(0).Item(1))
                 txtCuenta.Text = Trim$(dtRespConsulta.Rows(0).Item(2))
                 pgbProgreso.Value = 6
+                sFuncionarioActual = cmbFuncs.SelectedValue.ToString '----- RACB 11-07-2023 convivencia APX
             End If
             'dbEndQuery
             'Screen.MousePointer = vbDefault
@@ -553,6 +555,9 @@ Reasigna:
             End If
         End If
         pgbProgreso.Value = 8
+        '-------- RACB 11-07-2023 convivencia APX
+        gs_Sql = "INSERT INTO REASIGNAFUNCAPX VALUES (" & cmbCuentas.SelectedValue & "," & sFuncionarioActual & "," & cmbFuncs.SelectedValue & "," & usuario & ",GETDATE())"
+        objDatasource.EjecutaComandoTransaccion(gs_Sql) '-------- RACB 11-07-2023 convivencia APX
         'dbEndQuery
         If cmbFuncs.SelectedValue <> mnFuncant Then 'If cmbFuncs.ItemData(cmbFuncs.ListIndex) <> mnFuncant Then
             '*** Actualiza liga on_mni de DB Funcionarios Nuevo

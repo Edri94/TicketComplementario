@@ -110,10 +110,9 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
         gs_Sql = gs_Sql & " from TICKET..RETIRO_PME ROP,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
         gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO,"
         gs_Sql = gs_Sql & " TICKET..TIPO_DOCUMENTO TD"
         gs_Sql = gs_Sql & " where OD.operacion_definida_global IN (83, 59, 58)"
         gs_Sql = gs_Sql & " and O.status_operacion <> 250"
@@ -125,7 +124,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and O.operacion_definida=OD.operacion_definida"
         gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion"
         gs_Sql = gs_Sql & " order by O.operacion"
     End Sub
     Private Sub ListaRetDevCheque()
@@ -136,10 +134,9 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
         gs_Sql = gs_Sql & " from TICKET..RETIRO_PME ROP,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD"
         gs_Sql = gs_Sql & " where OD.operacion_definida_global = 88"
         gs_Sql = gs_Sql & " and O.status_operacion <> 250"
         gs_Sql = gs_Sql & " and O.status_operacion >= 2"
@@ -149,7 +146,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and O.operacion_definida=OD.operacion_definida"
         gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion"
         gs_Sql = gs_Sql & " order by O.operacion"
     End Sub
 
@@ -163,10 +159,9 @@ Public Class frmOperacReport
                 gs_Sql = gs_Sql & " O.monto_operacion,"
                 gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
                 gs_Sql = gs_Sql & " from TICKET..DEPOSITO_PME ROP,"
-                gs_Sql = gs_Sql & " TICKET..OPERACION O,"
+                gs_Sql = gs_Sql & " TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
                 gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
                 gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-                gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO,"
                 gs_Sql = gs_Sql & " TICKET..DEPOSITO D,"
                 gs_Sql = gs_Sql & " TICKET..TIPO_DOCUMENTO TD"
                 gs_Sql = gs_Sql & " where OD.operacion_definida_global IN (" & OpDefGlobal & ", 559)"
@@ -180,7 +175,6 @@ Public Class frmOperacReport
                 gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
                 gs_Sql = gs_Sql & " and O.operacion_definida= OD.operacion_definida"
                 gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-                gs_Sql = gs_Sql & " and O.operacion *= RO.operacion"
 
             Case 588
                 'If optSBF(0).Value Then
@@ -189,9 +183,9 @@ Public Class frmOperacReport
                     gs_Sql = "Select distinct"
                     gs_Sql = gs_Sql & " O.operacion, PC.cuenta_cliente,O.monto_operacion,"
                     gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
-                    gs_Sql = gs_Sql & " from TICKET..DEPOSITO_PME ROP, TICKET..OPERACION O,"
+                    gs_Sql = gs_Sql & " from TICKET..DEPOSITO_PME ROP, TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
                     gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,TICKET..OPERACION_DEFINIDA OD,"
-                    gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO,TICKET..DEPOSITO D,"
+                    gs_Sql = gs_Sql & " TICKET..DEPOSITO D,"
                     gs_Sql = gs_Sql & " TICKET..TIPO_DOCUMENTO TD"
                     gs_Sql = gs_Sql & " where OD.operacion_definida_global = " & OpDefGlobal
                     gs_Sql = gs_Sql & " and O.status_operacion <> 250 and O.status_operacion >= 2"
@@ -204,7 +198,6 @@ Public Class frmOperacReport
                     gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
                     gs_Sql = gs_Sql & " and O.operacion_definida= OD.operacion_definida"
                     gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-                    gs_Sql = gs_Sql & " and O.operacion *= RO.operacion"
                 Else
                     'LGA MAYO 24, 2007  Se anexan 6 dias habilies a la Fecha Captura
                     'que es lo que tarda en hacerse el deposito (Operaciones "N" Dias)
@@ -215,9 +208,9 @@ Public Class frmOperacReport
                     gs_Sql = gs_Sql & "WHEN DATEPART(weekday,DATEADD(d,6,fecha_captura))= 7 THEN DATEADD(d,8,fecha_captura)"
                     gs_Sql = gs_Sql & "WHEN DATEPART(weekday,DATEADD(d,6,fecha_captura))= 1 THEN DATEADD(d,7,fecha_captura)"
                     gs_Sql = gs_Sql & "ELSE DATEADD(d,8,fecha_captura)  END, fecha_operacion "
-                    gs_Sql = gs_Sql & "from TICKET..DEPOSITO_PME ROP, TICKET..OPERACION O,"
+                    gs_Sql = gs_Sql & "from TICKET..DEPOSITO_PME ROP, TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
                     gs_Sql = gs_Sql & "TICKET..PRODUCTO_CONTRATADO PC, TICKET..OPERACION_DEFINIDA OD, "
-                    gs_Sql = gs_Sql & "TICKET..REPORTE_OPERACION RO, TICKET..DEPOSITO D, TICKET..TIPO_DOCUMENTO TD "
+                    gs_Sql = gs_Sql & "TICKET..DEPOSITO D, TICKET..TIPO_DOCUMENTO TD "
                     gs_Sql = gs_Sql & "Where O.operacion = ROP.operacion "
                     gs_Sql = gs_Sql & "AND O.operacion = D.operacion "
                     gs_Sql = gs_Sql & "AND OD.operacion_definida_global = " & OpDefGlobal
@@ -226,7 +219,7 @@ Public Class frmOperacReport
                     gs_Sql = gs_Sql & "AND D.tipo_documento = TD.tipo_documento "
                     gs_Sql = gs_Sql & "AND O.producto_contratado = PC.producto_contratado "
                     gs_Sql = gs_Sql & "AND O.operacion_definida= OD.operacion_definida "
-                    gs_Sql = gs_Sql & "AND OD.agencia = 1 and O.operacion *= RO.operacion"
+                    gs_Sql = gs_Sql & "AND OD.agencia = 1"
                 End If
             Case 590
                 'Obtiene las operaciones con fecha_cierre <= "HOY" ya Validadas
@@ -236,10 +229,9 @@ Public Class frmOperacReport
                 gs_Sql = gs_Sql & " O.monto_operacion,"
                 gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
                 gs_Sql = gs_Sql & " from TICKET..DEPOSITO_PME ROP,"
-                gs_Sql = gs_Sql & " TICKET..OPERACION O,"
+                gs_Sql = gs_Sql & " TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
                 gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
                 gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-                gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO,"
                 gs_Sql = gs_Sql & " TICKET..DEPOSITO D,"
                 gs_Sql = gs_Sql & " TICKET..TIPO_DOCUMENTO TD"
                 gs_Sql = gs_Sql & " where OD.operacion_definida_global = " & OpDefGlobal
@@ -253,7 +245,6 @@ Public Class frmOperacReport
                 gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
                 gs_Sql = gs_Sql & " and O.operacion_definida= OD.operacion_definida"
                 gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-                gs_Sql = gs_Sql & " and O.operacion *= RO.operacion"
         End Select
     End Sub
 
@@ -264,13 +255,12 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
         gs_Sql = gs_Sql & " From TICKET..TRASPASO T,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO P,"
         gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD, "
         gs_Sql = gs_Sql & " CATALOGOS" & ".dbo.AGENCIA A,"
         gs_Sql = gs_Sql & " TICKET..CUENTA_EJE CE,"
-        gs_Sql = gs_Sql & " TICKET..TIPO_CUENTA_EJE TCE,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & " TICKET..TIPO_CUENTA_EJE TCE"
         gs_Sql = gs_Sql & " Where O.operacion = T.operacion and"
         gs_Sql = gs_Sql & " P.producto_contratado = O.producto_contratado and"
         gs_Sql = gs_Sql & " O.operacion_definida = OD.operacion_definida and"
@@ -288,7 +278,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.fecha_operacion < '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 23:59:59'"      'Fecha "HOY"
         gs_Sql = gs_Sql & " and O.status_operacion >= 2"
         gs_Sql = gs_Sql & " and O.status_operacion <> 250"
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion "
     End Sub
 
     Private Sub ListaAperturasDia()
@@ -298,10 +287,9 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " PC.cuenta_cliente,"
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
-        gs_Sql = gs_Sql & " from TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " From TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD"
         gs_Sql = gs_Sql & " where operacion_definida_global =100 "               'Apertura de Cuentas
         gs_Sql = gs_Sql & " and O.fecha_operacion > '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 00:00:00'"      'Fecha "HOY"
         gs_Sql = gs_Sql & " and O.fecha_operacion < '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 23:59:59'"      'Fecha "HOY"
@@ -309,7 +297,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and OD.operacion_definida = O.operacion_definida"
         gs_Sql = gs_Sql & " and PC. agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion "
         gs_Sql = gs_Sql & " order by O.operacion"
     End Sub
 
@@ -320,10 +307,9 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " PC.cuenta_cliente,"
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
-        gs_Sql = gs_Sql & " from TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " From TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC, "
-        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD"
         gs_Sql = gs_Sql & " where operacion_definida_global =100 "              'Apertura de Cuenta
         gs_Sql = gs_Sql & " and O.fecha_operacion > '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 00:00:00'"      'Fecha "HOY"
         gs_Sql = gs_Sql & " and O.fecha_operacion < '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 23:59:59'"      'Fecha "HOY"
@@ -332,7 +318,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and OD.operacion_definida = O.operacion_definida"
         gs_Sql = gs_Sql & " and PC. agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion "
         gs_Sql = gs_Sql & " order by O.operacion"
     End Sub
 
@@ -342,10 +327,9 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " PC.cuenta_cliente,"
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
-        gs_Sql = gs_Sql & " from TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " From TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC, "
-        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD"
         gs_Sql = gs_Sql & " where operacion_definida_global =100 "              'Apertura de Cuenta
         gs_Sql = gs_Sql & " and O.fecha_operacion > '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 00:00:00'"      'Fecha "HOY"
         gs_Sql = gs_Sql & " and O.fecha_operacion < '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 23:59:59'"      'Fecha "HOY"
@@ -354,7 +338,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and O.operacion_definida = OD.operacion_definida "
         gs_Sql = gs_Sql & " and PC.agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion "
         gs_Sql = gs_Sql & " order by O.operacion"
     End Sub
 
@@ -364,11 +347,10 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " PC.cuenta_cliente,"
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
-        gs_Sql = gs_Sql & " from TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " From TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
         gs_Sql = gs_Sql & " TICKET..COMPRA_CD CD,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD"
         gs_Sql = gs_Sql & " where operacion_definida_global =80 "
         gs_Sql = gs_Sql & " and O.operacion = CD.operacion "
         gs_Sql = gs_Sql & " and O.fecha_operacion > '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " 00:00:00'"      'Fecha "HOY"
@@ -377,7 +359,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and O.operacion_definida = OD.operacion_definida"
         gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion "
         gs_Sql = gs_Sql & " order by O.operacion"
     End Sub
 
@@ -387,11 +368,10 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " PC.cuenta_cliente,"
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
-        gs_Sql = gs_Sql & " from TICKET..OPERACION O,"
+        gs_Sql = gs_Sql & " TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
         gs_Sql = gs_Sql & " TICKET..COMPRA_CD CD,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD"
         gs_Sql = gs_Sql & " where operacion_definida_global =80 "
         gs_Sql = gs_Sql & " and O.operacion = CD.operacion "
         gs_Sql = gs_Sql & " and O.fecha_operacion >= '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & "'"      'Fecha "HOY"
@@ -400,7 +380,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and O.operacion_definida = OD.operacion_definida"
         gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion "
         gs_Sql = gs_Sql & " order by O.operacion"
     End Sub
 
@@ -412,10 +391,9 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " O.monto_operacion,"
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
         gs_Sql = gs_Sql & " from TICKET..DEPOSITO_PME ROP,"
-        gs_Sql = gs_Sql & " TICKET..OPERACION O, "
+        gs_Sql = gs_Sql & " TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & " TICKET..PRODUCTO_CONTRATADO PC,"
         gs_Sql = gs_Sql & " TICKET..OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & " TICKET..REPORTE_OPERACION RO,"
         gs_Sql = gs_Sql & " TICKET..DEPOSITO D,"
         gs_Sql = gs_Sql & " TICKET..TIPO_DOCUMENTO TD"
         gs_Sql = gs_Sql & " where OD.operacion_definida_global = " & OpDefGlobal
@@ -429,7 +407,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & " and O.operacion_definida= OD.operacion_definida"
         gs_Sql = gs_Sql & " and OD.agencia = " & mnAgencia
-        gs_Sql = gs_Sql & " and O.operacion *= RO.operacion"
     End Sub
 
     Private Sub ListaRetAreaInt()
@@ -441,10 +418,9 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & " case RO.impreso when 1 then 'Impreso' else '' end"
         gs_Sql = gs_Sql & " From"
         gs_Sql = gs_Sql & "  RETIRO_PME ROP,"
-        gs_Sql = gs_Sql & "  OPERACION O,"
+        gs_Sql = gs_Sql & "  TICKET..OPERACION O left outer join TICKET..REPORTE_OPERACION RO on O.operacion = RO.operacion,"
         gs_Sql = gs_Sql & "  PRODUCTO_CONTRATADO PC,"
-        gs_Sql = gs_Sql & "  OPERACION_DEFINIDA OD,"
-        gs_Sql = gs_Sql & "  REPORTE_OPERACION RO"
+        gs_Sql = gs_Sql & "  OPERACION_DEFINIDA OD"
         gs_Sql = gs_Sql & " Where"
         gs_Sql = gs_Sql & "  OD.operacion_definida_global = 89"
         gs_Sql = gs_Sql & "  and O.status_operacion <> 250"
@@ -455,7 +431,6 @@ Public Class frmOperacReport
         gs_Sql = gs_Sql & "  and O.producto_contratado = PC.producto_contratado"
         gs_Sql = gs_Sql & "  and O.operacion_definida=OD.operacion_definida"
         gs_Sql = gs_Sql & "  and OD.agencia = " & mnAgencia
-        gs_Sql = gs_Sql & "  and O.operacion *= RO.operacion"
         gs_Sql = gs_Sql & " Order By"
         gs_Sql = gs_Sql & "  O.operacion"
     End Sub

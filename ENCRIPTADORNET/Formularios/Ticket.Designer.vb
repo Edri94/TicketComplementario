@@ -101,6 +101,8 @@ Partial Class funcionalidades
         Me.MT198ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReimpresionMT198ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BloqueoDeCuentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OperacionesDiariasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DepósitosPorSucursaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalvoBuenFinToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -174,8 +176,7 @@ Partial Class funcionalidades
         Me.tsslFecha = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.BloqueoDeCuentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReporteDeCuentasBloqueadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -298,7 +299,7 @@ Partial Class funcionalidades
         '
         'OperacionesToolStripMenuItem
         '
-        Me.OperacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MT202ToolStripMenuItem, Me.CancelacionTDsToolStripMenuItem, Me.BloqueoDesloqueoTDsToolStripMenuItem, Me.CapturaDeOperacionesMT103ToolStripMenuItem, Me.ValidarOperacionesMT103ToolStripMenuItem, Me.CancelaciónDeOperacionesValidadasToolStripMenuItem})
+        Me.OperacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MT202ToolStripMenuItem, Me.CancelacionTDsToolStripMenuItem, Me.BloqueoDesloqueoTDsToolStripMenuItem, Me.CapturaDeOperacionesMT103ToolStripMenuItem, Me.ValidarOperacionesMT103ToolStripMenuItem, Me.CancelaciónDeOperacionesValidadasToolStripMenuItem, Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem})
         Me.OperacionesToolStripMenuItem.Name = "OperacionesToolStripMenuItem"
         Me.OperacionesToolStripMenuItem.Size = New System.Drawing.Size(127, 29)
         Me.OperacionesToolStripMenuItem.Text = "Operaciones"
@@ -655,6 +656,19 @@ Partial Class funcionalidades
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(394, 34)
         Me.ToolStripMenuItem1.Text = "Control Supervisor"
+        '
+        'BloqueoDeCuentasToolStripMenuItem
+        '
+        Me.BloqueoDeCuentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeCuentasBloqueadasToolStripMenuItem})
+        Me.BloqueoDeCuentasToolStripMenuItem.Name = "BloqueoDeCuentasToolStripMenuItem"
+        Me.BloqueoDeCuentasToolStripMenuItem.Size = New System.Drawing.Size(273, 34)
+        Me.BloqueoDeCuentasToolStripMenuItem.Text = "Bloqueo de Cuentas"
+        '
+        'ReporteDeCuentasBloqueadasToolStripMenuItem
+        '
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Name = "ReporteDeCuentasBloqueadasToolStripMenuItem"
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Size = New System.Drawing.Size(366, 34)
+        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Text = "Reporte de Cuentas Bloqueadas"
         '
         'OperacionesDiariasToolStripMenuItem
         '
@@ -1128,18 +1142,11 @@ Partial Class funcionalidades
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(225, 22)
         '
-        'BloqueoDeCuentasToolStripMenuItem
+        'FrmMantenimientoTKTmnEntro1ToolStripMenuItem
         '
-        Me.BloqueoDeCuentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeCuentasBloqueadasToolStripMenuItem})
-        Me.BloqueoDeCuentasToolStripMenuItem.Name = "BloqueoDeCuentasToolStripMenuItem"
-        Me.BloqueoDeCuentasToolStripMenuItem.Size = New System.Drawing.Size(273, 34)
-        Me.BloqueoDeCuentasToolStripMenuItem.Text = "Bloqueo de Cuentas"
-        '
-        'ReporteDeCuentasBloqueadasToolStripMenuItem
-        '
-        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Name = "ReporteDeCuentasBloqueadasToolStripMenuItem"
-        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Size = New System.Drawing.Size(366, 34)
-        Me.ReporteDeCuentasBloqueadasToolStripMenuItem.Text = "Reporte de Cuentas Bloqueadas"
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Name = "FrmMantenimientoTKTmnEntro1ToolStripMenuItem"
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Size = New System.Drawing.Size(416, 34)
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Text = "Status-Fecha-Monto"
         '
         'funcionalidades
         '
@@ -1318,4 +1325,5 @@ Partial Class funcionalidades
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents BloqueoDeCuentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReporteDeCuentasBloqueadasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FrmMantenimientoTKTmnEntro1ToolStripMenuItem As ToolStripMenuItem
 End Class

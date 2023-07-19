@@ -60,7 +60,6 @@
             iHayRegistros = 1
             sCuentaIni = txtCuentaIni.Text
             sCuentaFin = txtCuentaFin.Text
-
         End If
         Cursor = System.Windows.Forms.Cursors.Default
         cmdImprimir.Enabled = True '---------------- RACB 24-05-2021
@@ -121,14 +120,14 @@
 
         CalculaMontos000 = False
 
-        gs_sql = "exec sp_a_obten_montos_cta_000 1"
+        gs_sql = "exec TICKET..sp_a_obten_montos_cta_000 1"
 
         dtCuentas = d.EjecutaSP(gs_sql)
 
         'buscamos si hubo registros en tabal de saldos
         'SALDO_CTA_000
 
-        gs_sql = "Select distinct convert(char(5),fecha_saldo,114) from SALDO_CTA_000"
+        gs_sql = "Select distinct convert(char(5),fecha_saldo,114) from TICKET..SALDO_CTA_000"
         dtCuentas = d.ObtieneCuentas000(gs_sql)
 
 
@@ -153,7 +152,7 @@
         Llenagrid000 = False
 
         'buscamos si hubo registros en tabal de saldos SALDO_CTA_000
-        gs_sql = "Select * from SALDO_CTA_000 where saldo_total <> 0 order by 2"
+        gs_sql = "Select * from TICKET..SALDO_CTA_000 where saldo_total <> 0 order by 2"
         dtResouesta = dctas.LoadSaldos000(gs_sql) '---RACB 24/03/2021
         If dtResouesta.Rows.Count > 0 Then '---RACB 24/03/2021
             dgvCuentas000.DataSource = dtResouesta '---RACB 24/03/2021

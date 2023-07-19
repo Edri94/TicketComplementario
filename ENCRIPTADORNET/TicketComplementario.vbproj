@@ -191,6 +191,12 @@
     <Compile Include="Formularios\frmCancelaTicket.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\frmComboBox.Designer.vb">
+      <DependentUpon>frmComboBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmComboBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frmComplementoAICED.Designer.vb">
       <DependentUpon>frmComplementoAICED.vb</DependentUpon>
     </Compile>
@@ -201,6 +207,12 @@
       <DependentUpon>frmFunc.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmFunc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmMantenimientoTKT.Designer.vb">
+      <DependentUpon>frmMantenimientoTKT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmMantenimientoTKT.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmMenuApp.Designer.vb">
@@ -1065,6 +1077,9 @@
     <EmbeddedResource Include="Formularios\frmCancelaTicket.resx">
       <DependentUpon>frmCancelaTicket.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmComboBox.resx">
+      <DependentUpon>frmComboBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmComplementoAICED.resx">
       <DependentUpon>frmComplementoAICED.vb</DependentUpon>
     </EmbeddedResource>
@@ -1073,6 +1088,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmFunc.resx">
       <DependentUpon>frmFunc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmMantenimientoTKT.resx">
+      <DependentUpon>frmMantenimientoTKT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmMenuApp.resx">
       <DependentUpon>frmMenuApp.vb</DependentUpon>
