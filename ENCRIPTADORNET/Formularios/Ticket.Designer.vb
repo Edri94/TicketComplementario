@@ -49,6 +49,7 @@ Partial Class funcionalidades
         Me.CapturaDeOperacionesMT103ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValidarOperacionesMT103ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CancelaciónDeOperacionesValidadasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AperturasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFACToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -176,7 +177,8 @@ Partial Class funcionalidades
         Me.tsslFecha = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CargaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MantenimientoDiasFeriadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -185,7 +187,7 @@ Partial Class funcionalidades
         '
         Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SistemaToolStripMenuItem, Me.AperturaDeCuentaToolStripMenuItem, Me.OperacionesToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.ReportesPlatinoToolStripMenuItem, Me.ChequerasToolStripMenuItem, Me.MiscelaneaToolStripMenuItem1, Me.AICEDToolStripMenuItem, Me.GestoresToolStripMenuItem, Me.AdministradorToolStripMenuItem, Me.AyudaToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SistemaToolStripMenuItem, Me.AperturaDeCuentaToolStripMenuItem, Me.OperacionesToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.ReportesPlatinoToolStripMenuItem, Me.ChequerasToolStripMenuItem, Me.MiscelaneaToolStripMenuItem1, Me.AICEDToolStripMenuItem, Me.GestoresToolStripMenuItem, Me.AdministradorToolStripMenuItem, Me.CargaToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1886, 33)
@@ -339,6 +341,12 @@ Partial Class funcionalidades
         Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Name = "CancelaciónDeOperacionesValidadasToolStripMenuItem"
         Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Size = New System.Drawing.Size(416, 34)
         Me.CancelaciónDeOperacionesValidadasToolStripMenuItem.Text = "Cancelación de Operaciones Validadas"
+        '
+        'FrmMantenimientoTKTmnEntro1ToolStripMenuItem
+        '
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Name = "FrmMantenimientoTKTmnEntro1ToolStripMenuItem"
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Size = New System.Drawing.Size(416, 34)
+        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Text = "Status-Fecha-Monto"
         '
         'ReportesToolStripMenuItem
         '
@@ -1142,11 +1150,18 @@ Partial Class funcionalidades
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(225, 22)
         '
-        'FrmMantenimientoTKTmnEntro1ToolStripMenuItem
+        'CargaToolStripMenuItem
         '
-        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Name = "FrmMantenimientoTKTmnEntro1ToolStripMenuItem"
-        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Size = New System.Drawing.Size(416, 34)
-        Me.FrmMantenimientoTKTmnEntro1ToolStripMenuItem.Text = "Status-Fecha-Monto"
+        Me.CargaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MantenimientoDiasFeriadosToolStripMenuItem})
+        Me.CargaToolStripMenuItem.Name = "CargaToolStripMenuItem"
+        Me.CargaToolStripMenuItem.Size = New System.Drawing.Size(74, 29)
+        Me.CargaToolStripMenuItem.Text = "Carga"
+        '
+        'MantenimientoDiasFeriadosToolStripMenuItem
+        '
+        Me.MantenimientoDiasFeriadosToolStripMenuItem.Name = "MantenimientoDiasFeriadosToolStripMenuItem"
+        Me.MantenimientoDiasFeriadosToolStripMenuItem.Size = New System.Drawing.Size(345, 34)
+        Me.MantenimientoDiasFeriadosToolStripMenuItem.Text = "Mantenimiento Dias Feriados"
         '
         'funcionalidades
         '
@@ -1326,4 +1341,6 @@ Partial Class funcionalidades
     Friend WithEvents BloqueoDeCuentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReporteDeCuentasBloqueadasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FrmMantenimientoTKTmnEntro1ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CargaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MantenimientoDiasFeriadosToolStripMenuItem As ToolStripMenuItem
 End Class

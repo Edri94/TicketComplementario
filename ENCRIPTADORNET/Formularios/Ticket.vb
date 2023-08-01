@@ -986,4 +986,9 @@ Public Class funcionalidades
         drRegistro = dtRespConsulta.Rows(0)
         gs_HoraSistema = drRegistro.Item(0).ToString
     End Sub
+
+    Private Sub MantenimientoDiasFeriadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MantenimientoDiasFeriadosToolStripMenuItem.Click
+        Dim frmDiasFeriados As New CargaDiasFeriados.FrmCargaDiasFeriados
+        frmDiasFeriados.ShowDialog()
+    End Sub
 End Class
