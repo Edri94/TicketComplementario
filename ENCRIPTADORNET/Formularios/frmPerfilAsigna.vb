@@ -208,13 +208,11 @@
 
         If cmbUsuarios.SelectedIndex > -1 Then
             'Call LimpiaChecks(Me)
-            'ls_sql = "SELECT US.nombre_usuario, AU.descripcion " &
-            '         "FROM CATALOGOS.dbo.USUARIO US, CATALOGOS.dbo.AREA_USUARIO AU " &
-            '         "WHERE AU.area_usuario =* US.area_usuario " &
-            '         "AND US.usuario = " & cmbUsuarios.SelectedValue 'cmbUsuarios.ItemData(cmbUsuarios.ListIndex)
             ls_sql = "SELECT US.nombre_usuario, AU.descripcion " &
-                     "FROM CATALOGOS.dbo.USUARIO US right outer join CATALOGOS.dbo.AREA_USUARIO AU on AU.area_usuario = US.area_usuario " &
-                     "WHERE US.usuario = " & cmbUsuarios.SelectedValue
+                     "FROM CATALOGOS.dbo.USUARIO US " &
+                     "RIGHT OUTER JOIN CATALOGOS.dbo.AREA_USUARIO AU " &
+                     "ON AU.area_usuario = US.area_usuario " &
+                     "WHERE US.usuario = " & cmbUsuarios.SelectedValue 'cmbUsuarios.ItemData(cmbUsuarios.ListIndex)
             'dbExecQuery ls_sql
             'dbGetRecord
             dtRespuesta = objDataSourse.RealizaConsulta(ls_sql)

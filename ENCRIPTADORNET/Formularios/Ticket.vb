@@ -916,7 +916,7 @@ Public Class funcionalidades
     End Sub
     Private Sub ReasignaciónDeGestoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReasignaciónDeGestoresToolStripMenuItem.Click
         Try
-            If l.Permiso("PREAGEST") Then
+            If l.Permiso("PREAGEST") Then 'If True Then
                 ConfReg()
                 Dim frmAsuganFuncionario As New frmReasignaFunc
                 frmAsuganFuncionario.StartPosition = FormStartPosition.CenterScreen

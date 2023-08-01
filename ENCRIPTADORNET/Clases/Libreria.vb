@@ -852,9 +852,10 @@ NoSingOn:
         gs_Sql = gs_Sql & " IsNull(tipoacceso,0) as acceso, TDOCUMENTO.disco,"
         gs_Sql = gs_Sql & " TDOCUMENTO.directorio , TDISCO.nombre as disco_nombre,"
         gs_Sql = gs_Sql & " TDISCO.drive as disco_drive, TDISCO.activo as disco_activo"
-        gs_Sql = gs_Sql & " from TDOCUMENTO,TRESTRICCION,TACCESO, TDISCO  where (documento=" & ls_DocDigital & ")"
-        gs_Sql = gs_Sql & " and   (tipo=1)  and   ((TDOCUMENTO.acceso*=TRESTRICCION.acceso)  and"
-        gs_Sql = gs_Sql & " (TRESTRICCION.tipousuario=1))  and TDISCO.disco=TDOCUMENTO.disco"
+        gs_Sql = gs_Sql & " from TACCESO, TDISCO, TDOCUMENTO"
+        gs_Sql = gs_Sql & " LEFT OUTER JOIN TRESTRICCION ON ((TDOCUMENTO.acceso =TRESTRICCION.acceso) AND (TRESTRICCION.tipousuario=1))"
+        gs_Sql = gs_Sql & " where (documento=" & ls_DocDigital & ")"
+        gs_Sql = gs_Sql & " and   (tipo=1)  and  TDISCO.disco=TDOCUMENTO.disco"
 
         'gs_Sql = "SELECT Directorio FROM TDOCUMENTO WHERE DOCUMENTO= " & Documento
         'dbExecQuery gs_Sql
