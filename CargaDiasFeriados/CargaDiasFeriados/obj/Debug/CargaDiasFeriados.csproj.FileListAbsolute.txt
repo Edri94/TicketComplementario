@@ -27,3 +27,4 @@ C:\Users\MI05332\source\repos\ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Deb
 C:\Users\MI05332\source\repos\ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Debug\CargaDiasFeriados.csproj.CopyComplete
 C:\Users\MI05332\source\repos\ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Debug\CargaDiasFeriados.exe
 C:\Users\MI05332\source\repos\ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Debug\CargaDiasFeriados.pdb
+C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Debug\CargaDiasFeriados.csproj.AssemblyReference.cache

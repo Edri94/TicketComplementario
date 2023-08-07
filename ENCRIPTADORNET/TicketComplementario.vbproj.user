@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>publish\</PublishUrlHistory>
-    <InstallUrlHistory />
+    <PublishUrlHistory>\\150.100.195.44\Procesos2\TicketComplementario\Instalador\|D:\Sistemas\TicketNET\Publish\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>\\150.100.195.44\Procesos2\TicketComplementario\Instalador\|\\WVMTICKETDES01\Sistemas\Ticket NET\PublicacionTKT\</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
