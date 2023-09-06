@@ -36,7 +36,6 @@ namespace CargaDiasFeriados
             this.rbMexico = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbAño = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cmbMes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpMesFestivo = new System.Windows.Forms.MonthCalendar();
@@ -44,9 +43,9 @@ namespace CargaDiasFeriados
             this.btnGuardar = new System.Windows.Forms.Button();
             this.dtGrdVwFeriados = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.loading = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.bgwCargaFines = new System.ComponentModel.BackgroundWorker();
-            this.loading = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwFeriados)).BeginInit();
@@ -106,7 +105,6 @@ namespace CargaDiasFeriados
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbAño);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cmbMes);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,15 +126,6 @@ namespace CargaDiasFeriados
             this.cmbAño.TabIndex = 1;
             this.cmbAño.SelectedIndexChanged += new System.EventHandler(this.cmbAño_SelectedIndexChanged);
             this.cmbAño.Click += new System.EventHandler(this.cmbAño_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(459, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Año:";
             // 
             // cmbMes
             // 
@@ -164,6 +153,7 @@ namespace CargaDiasFeriados
             this.dtpMesFestivo.Location = new System.Drawing.Point(28, 37);
             this.dtpMesFestivo.Name = "dtpMesFestivo";
             this.dtpMesFestivo.TabIndex = 2;
+            this.dtpMesFestivo.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.dtpMesFestivo_DateChanged);
             this.dtpMesFestivo.Enter += new System.EventHandler(this.dtpMesFestivo_Enter);
             this.dtpMesFestivo.Leave += new System.EventHandler(this.dtpMesFestivo_Leave);
             // 
@@ -217,6 +207,18 @@ namespace CargaDiasFeriados
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Seleccionar el Dia";
             // 
+            // loading
+            // 
+            this.loading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.loading.Image = ((System.Drawing.Image)(resources.GetObject("loading.Image")));
+            this.loading.Location = new System.Drawing.Point(505, 91);
+            this.loading.Name = "loading";
+            this.loading.Size = new System.Drawing.Size(145, 136);
+            this.loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loading.TabIndex = 5;
+            this.loading.TabStop = false;
+            this.loading.Visible = false;
+            // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -234,19 +236,7 @@ namespace CargaDiasFeriados
             this.bgwCargaFines.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwCargaFines_DoWork);
             this.bgwCargaFines.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwCargaFines_RunWorkerCompleted);
             // 
-            // loading
-            // 
-            this.loading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.loading.Image = ((System.Drawing.Image)(resources.GetObject("loading.Image")));
-            this.loading.Location = new System.Drawing.Point(505, 91);
-            this.loading.Name = "loading";
-            this.loading.Size = new System.Drawing.Size(145, 136);
-            this.loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.loading.TabIndex = 5;
-            this.loading.TabStop = false;
-            this.loading.Visible = false;
-            // 
-            // Form1
+            // FrmCargaDiasFeriados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -260,7 +250,7 @@ namespace CargaDiasFeriados
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "FrmCargaDiasFeriados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carga Dias Feriados";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -283,7 +273,6 @@ namespace CargaDiasFeriados
         private System.Windows.Forms.RadioButton rbMexico;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbAño;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbMes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MonthCalendar dtpMesFestivo;

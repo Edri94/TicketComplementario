@@ -21,7 +21,7 @@ namespace CargaDiasFeriados
 
         DateTime fecha_selected;
         byte pais_seleted;
-        bool click_cmbAño = false, click_cmbMes = false;
+        bool click_cmbAño = false, click_cmbMes = false, click_dtpFecha = false;
 
         int cmbYearSelect, cmbMesSelect;
 
@@ -45,12 +45,47 @@ namespace CargaDiasFeriados
                 cmbAño.SelectedValue = DateTime.Now.Year;
                 cmbMes.SelectedValue = DateTime.Now.Month;
                 SeleccionarCalendario();
+
+                LimitarDatePicker(false);
                 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error en Load", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }          
+        }
+
+        private void LimitarDatePicker(bool combos)
+        {
+            DateTime fecha_inicio, fecha_fin;
+            
+            if(combos)
+            {
+                fecha_inicio = new DateTime((int)cmbAño.SelectedValue, (int)cmbMes.SelectedValue, 1);
+                fecha_fin = new DateTime((int)cmbAño.SelectedValue, (int)cmbMes.SelectedValue, UltimoDiaMes(fecha_inicio));
+            }
+            else
+            {
+                fecha_inicio = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                fecha_fin = new DateTime(DateTime.Now.Year, DateTime.Now.Month, UltimoDiaMes(fecha_inicio));             
+            }
+
+            if(fecha_inicio > dtpMesFestivo.MaxDate)
+            {
+                dtpMesFestivo.MaxDate = fecha_fin;
+                dtpMesFestivo.MinDate = fecha_inicio;
+            }
+            else
+            {
+                dtpMesFestivo.MinDate = fecha_inicio;
+                dtpMesFestivo.MaxDate = fecha_fin;
+                  
+            }
+
+            
+           
+           
+
         }
 
         private void SeleccionarFecha(DateTime fecha)
@@ -97,8 +132,9 @@ namespace CargaDiasFeriados
 
         private void cmbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             CargarDiasMes();
-            SeleccionarCalendario();
+            SeleccionarCalendario();          
         }
 
         private void CargarDiasMes()
@@ -124,6 +160,7 @@ namespace CargaDiasFeriados
                         }
                     }
                 }
+                LimitarDatePicker(true);
             }
         }
 
@@ -164,6 +201,7 @@ namespace CargaDiasFeriados
                         }
                     }
                 }
+                LimitarDatePicker(true);
             }
         }
 
@@ -392,32 +430,44 @@ namespace CargaDiasFeriados
 
                 fecha_selected = DateTime.Parse(dtGrdVwFeriados.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                btnCancelar.Text = "Eliminar";
-                btnGuardar.Text = "Actualizar";
-
-                SeleccionarFecha(fecha_selected);
-
-                string pais = dtGrdVwFeriados.Rows[e.RowIndex].Cells[1].Value.ToString();
-                pais_seleted = 0;
-
-                switch (pais)
+                string dia_nombre = fecha_selected.ToString("dddd");
+                if (dia_nombre != "sábado" && dia_nombre != "domingo")
                 {
-                    case "Mexico":
-                        pais_seleted = 1;
-                        rbMexico.Checked = true;
-                        break;
-                    case "Estados Unidos":
-                        pais_seleted = 2;
-                        rbEUA.Checked = true;
-                        break;
-                    case "Ambos":
-                        pais_seleted = 3;
-                        rbAmbos.Checked = true;
-                        break;
-                }
+                    btnCancelar.Text = "Eliminar";
+                    btnGuardar.Text = "Actualizar";
 
-               
-                bool existe = ConsultarFecha(new DIAS_FERIADOS { tipo_dia_feriado = pais_seleted, fecha = fecha_selected });
+                    SeleccionarFecha(fecha_selected);
+
+                    string pais = dtGrdVwFeriados.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    pais_seleted = 0;
+
+                    switch (pais)
+                    {
+                        case "Mexico":
+                            pais_seleted = 1;
+                            rbMexico.Checked = true;
+                            break;
+                        case "Estados Unidos":
+                            pais_seleted = 2;
+                            rbEUA.Checked = true;
+                            break;
+                        case "Ambos":
+                            pais_seleted = 3;
+                            rbAmbos.Checked = true;
+                            break;
+                    }
+
+
+                    bool existe = ConsultarFecha(new DIAS_FERIADOS { tipo_dia_feriado = pais_seleted, fecha = fecha_selected });
+                }
+                else
+                {
+                    MessageBox.Show("No se puede editar o eliminar un fin de semana", "Fines de Semana", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    
+                    btnCancelar.Text = "Cancelar";
+                    btnGuardar.Text = "Guardar";
+                    btnGuardar.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
@@ -531,8 +581,7 @@ namespace CargaDiasFeriados
                         fecha_contador = new DateTime(this.cmbYearSelect, 1, 1);
 
                         do
-                        {
-                            fecha_contador = fecha_contador.AddDays(1);
+                        {                           
                             string nombre_dia = fecha_contador.ToString("dddd");
 
                             if (nombre_dia == "sábado" || nombre_dia == "domingo")
@@ -546,6 +595,7 @@ namespace CargaDiasFeriados
 
                                 afectados += cmd.ExecuteNonQuery();                             
                             }
+                            fecha_contador = fecha_contador.AddDays(1);
 
                         } while (fecha_contador.Year == this.cmbYearSelect);
                     }
@@ -555,7 +605,6 @@ namespace CargaDiasFeriados
 
                         do
                         {
-                            fecha_contador = fecha_contador.AddDays(1);
                             string nombre_dia = fecha_contador.ToString("dddd");
 
                             if (nombre_dia == "sábado" || nombre_dia == "domingo")
@@ -568,7 +617,8 @@ namespace CargaDiasFeriados
                                 cmd.Parameters.AddWithValue("@param2", 3);
 
                                 afectados += cmd.ExecuteNonQuery();                             
-                            }                        
+                            }
+                            fecha_contador = fecha_contador.AddDays(1);
 
                         } while (fecha_contador.Month == this.cmbMesSelect);
                     }
@@ -588,6 +638,11 @@ namespace CargaDiasFeriados
                     cnn.Close();
                 }
             }
+
+        }
+
+        private void dtpMesFestivo_DateChanged(object sender, DateRangeEventArgs e)
+        {
 
         }
 

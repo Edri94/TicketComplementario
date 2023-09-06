@@ -134,6 +134,8 @@ Partial Class funcionalidades
         Me.MantenimientoHorariosOperaciónCashToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
         Me.ReasignaciónDeGestoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator20 = New System.Windows.Forms.ToolStripSeparator()
+        Me.CargaDiasFeriadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AICEDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CapturaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentosDeSucursalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -177,8 +179,7 @@ Partial Class funcionalidades
         Me.tsslFecha = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.CargaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MantenimientoDiasFeriadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -187,7 +188,7 @@ Partial Class funcionalidades
         '
         Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SistemaToolStripMenuItem, Me.AperturaDeCuentaToolStripMenuItem, Me.OperacionesToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.ReportesPlatinoToolStripMenuItem, Me.ChequerasToolStripMenuItem, Me.MiscelaneaToolStripMenuItem1, Me.AICEDToolStripMenuItem, Me.GestoresToolStripMenuItem, Me.AdministradorToolStripMenuItem, Me.CargaToolStripMenuItem, Me.AyudaToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SistemaToolStripMenuItem, Me.AperturaDeCuentaToolStripMenuItem, Me.OperacionesToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.ReportesPlatinoToolStripMenuItem, Me.ChequerasToolStripMenuItem, Me.MiscelaneaToolStripMenuItem1, Me.AICEDToolStripMenuItem, Me.GestoresToolStripMenuItem, Me.AdministradorToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1886, 33)
@@ -226,7 +227,7 @@ Partial Class funcionalidades
         '
         'AperturaDeCuentaToolStripMenuItem
         '
-        Me.AperturaDeCuentaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultaToolStripMenuItem1, Me.ToolStripSeparator4, Me.AperturaDeCuentaToolStripMenuItem1, Me.ComplementoDeAperturaDeCuentaToolStripMenuItem, Me.ValidarAperturaToolStripMenuItem, Me.ToolStripSeparator1, Me.CancelacionToolStripMenuItem, Me.ToolStripSeparator2, Me.BloqDesBloqToolStripMenuItem, Me.ToolStripSeparator3, Me.ReenvioDeTicketsToolStripMenuItem, Me.MantenimientoDeCuentaCEDToolStripMenuItem1})
+        Me.AperturaDeCuentaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultaToolStripMenuItem1, Me.ToolStripMenuItem3, Me.ToolStripSeparator4, Me.AperturaDeCuentaToolStripMenuItem1, Me.ComplementoDeAperturaDeCuentaToolStripMenuItem, Me.ValidarAperturaToolStripMenuItem, Me.ToolStripSeparator1, Me.CancelacionToolStripMenuItem, Me.ToolStripSeparator2, Me.BloqDesBloqToolStripMenuItem, Me.ToolStripSeparator3, Me.ReenvioDeTicketsToolStripMenuItem, Me.MantenimientoDeCuentaCEDToolStripMenuItem1})
         Me.AperturaDeCuentaToolStripMenuItem.Name = "AperturaDeCuentaToolStripMenuItem"
         Me.AperturaDeCuentaToolStripMenuItem.Size = New System.Drawing.Size(91, 29)
         Me.AperturaDeCuentaToolStripMenuItem.Text = "Cuentas"
@@ -833,7 +834,7 @@ Partial Class funcionalidades
         '
         'MiscelaneaToolStripMenuItem1
         '
-        Me.MiscelaneaToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MantenimientoHorariosOperaciónToolStripMenuItem, Me.MantenimientoHorariosOperaciónCashToolStripMenuItem, Me.ToolStripSeparator9, Me.ReasignaciónDeGestoresToolStripMenuItem})
+        Me.MiscelaneaToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MantenimientoHorariosOperaciónToolStripMenuItem, Me.MantenimientoHorariosOperaciónCashToolStripMenuItem, Me.ToolStripSeparator9, Me.ReasignaciónDeGestoresToolStripMenuItem, Me.ToolStripSeparator20, Me.CargaDiasFeriadosToolStripMenuItem})
         Me.MiscelaneaToolStripMenuItem1.Name = "MiscelaneaToolStripMenuItem1"
         Me.MiscelaneaToolStripMenuItem1.Size = New System.Drawing.Size(114, 29)
         Me.MiscelaneaToolStripMenuItem1.Text = "Miscelanea"
@@ -860,6 +861,17 @@ Partial Class funcionalidades
         Me.ReasignaciónDeGestoresToolStripMenuItem.Name = "ReasignaciónDeGestoresToolStripMenuItem"
         Me.ReasignaciónDeGestoresToolStripMenuItem.Size = New System.Drawing.Size(437, 34)
         Me.ReasignaciónDeGestoresToolStripMenuItem.Text = "Reasignación de Gestores"
+        '
+        'ToolStripSeparator20
+        '
+        Me.ToolStripSeparator20.Name = "ToolStripSeparator20"
+        Me.ToolStripSeparator20.Size = New System.Drawing.Size(434, 6)
+        '
+        'CargaDiasFeriadosToolStripMenuItem
+        '
+        Me.CargaDiasFeriadosToolStripMenuItem.Name = "CargaDiasFeriadosToolStripMenuItem"
+        Me.CargaDiasFeriadosToolStripMenuItem.Size = New System.Drawing.Size(437, 34)
+        Me.CargaDiasFeriadosToolStripMenuItem.Text = "Carga Dias Feriados"
         '
         'AICEDToolStripMenuItem
         '
@@ -1150,18 +1162,11 @@ Partial Class funcionalidades
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(225, 22)
         '
-        'CargaToolStripMenuItem
+        'ToolStripMenuItem3
         '
-        Me.CargaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MantenimientoDiasFeriadosToolStripMenuItem})
-        Me.CargaToolStripMenuItem.Name = "CargaToolStripMenuItem"
-        Me.CargaToolStripMenuItem.Size = New System.Drawing.Size(74, 29)
-        Me.CargaToolStripMenuItem.Text = "Carga"
-        '
-        'MantenimientoDiasFeriadosToolStripMenuItem
-        '
-        Me.MantenimientoDiasFeriadosToolStripMenuItem.Name = "MantenimientoDiasFeriadosToolStripMenuItem"
-        Me.MantenimientoDiasFeriadosToolStripMenuItem.Size = New System.Drawing.Size(345, 34)
-        Me.MantenimientoDiasFeriadosToolStripMenuItem.Text = "Mantenimiento Dias Feriados"
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(528, 34)
+        Me.ToolStripMenuItem3.Text = "Consulta Saldos y Movimientos"
         '
         'funcionalidades
         '
@@ -1341,6 +1346,7 @@ Partial Class funcionalidades
     Friend WithEvents BloqueoDeCuentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReporteDeCuentasBloqueadasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FrmMantenimientoTKTmnEntro1ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CargaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MantenimientoDiasFeriadosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator20 As ToolStripSeparator
+    Friend WithEvents CargaDiasFeriadosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
 End Class

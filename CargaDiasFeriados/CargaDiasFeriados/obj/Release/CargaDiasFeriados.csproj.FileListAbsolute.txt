@@ -20,7 +20,6 @@ C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\bin\Rel
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\bin\Release\EntityFramework.SqlServer.dll
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\bin\Release\EntityFramework.xml
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.csproj.AssemblyReference.cache
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.FrmCargaDiasFeriados.resources
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.Properties.Resources.resources
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.csproj.GenerateResource.cache
@@ -28,3 +27,4 @@ C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Rel
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.csproj.CopyComplete
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.exe
 C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.pdb
+C:\Users\MI05332\source\repos\Ticket\CargaDiasFeriados\CargaDiasFeriados\obj\Release\CargaDiasFeriados.csproj.AssemblyReference.cache

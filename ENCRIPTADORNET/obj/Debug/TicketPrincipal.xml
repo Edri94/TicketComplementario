@@ -107,5 +107,11 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
+<member name="M:Ticket.frmConsultaSaldosMov.TieneVencimeintos(Ticket.PRODUCTO_CONTRATADO)">
+ <summary>
+ Determinar si una cuenta tiene vencimientos de time deposit fecha valor hoy
+ </summary>
+ <returns></returns>
+</member>
 </members>
 </doc>

@@ -111,6 +111,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
     <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
@@ -119,18 +122,54 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Windows\assembly\GAC_64\log4net\1.2.10.0__692fbea5521e1304\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\..\..\Componentes\dlls\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=110.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.110.2.0\lib\net471\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -164,12 +203,118 @@
     <Compile Include="Clases\Class1.vb" />
     <Compile Include="Clases\clGlobal.vb" />
     <Compile Include="Clases\DataSourceMannto.vb" />
+    <Compile Include="Clases\HolidayApi.vb" />
     <Compile Include="Clases\modPermisos.vb" />
     <Compile Include="Clases\Opera000LA.vb" />
     <Compile Include="Clases\PermisoRemoto.vb" />
     <Compile Include="Clases\TipoBitacora.vb" />
     <Compile Include="Clases\TipoUsuario.vb" />
     <Compile Include="Clases\UnidadOrg.vb" />
+    <Compile Include="Datos\AGENCIA.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\APERTURA_SUCURSAL_MANUAL.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\BLOQUEO_CUENTAS_DINAMICO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\BLOQUEO_OBSERVACION.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\CANCELA_REACTIVA_CUENTAS.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\CatalogoBd.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatalogoBd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\CatalogoBd.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatalogoBd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\CatalogoBd.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\CLIENTE.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Cliente_Funcionario.vb" />
+    <Compile Include="Datos\CONCEPTO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\COTITULAR.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\CUENTA_EJE.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\DETALLE_STATUS.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\DIAS_FERIADOS.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\FUNCIONARIO.vb">
+      <DependentUpon>FuncionarioBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\FuncionarioBd.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FuncionarioBd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\FuncionarioBd.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FuncionarioBd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\FuncionarioBd.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FuncionarioBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Holiday.vb" />
+    <Compile Include="Datos\OPERACION.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\OPERACION_DEFINIDA.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\PRODUCTO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\PRODUCTO_CONTRATADO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\STATUS_BLOQUEO_GROUP.vb" />
+    <Compile Include="Datos\STATUS_PRODUCTO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TicketBd.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TicketBd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TicketBd.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TicketBd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TicketBd.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TIPO_CUENTA_EJE.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\UNIDAD_ORGANIZACIONAL.vb">
+      <DependentUpon>FuncionarioBd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Esquema\CambioPermisos.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -204,6 +349,12 @@
     <Compile Include="Formularios\frmCancelaTicket.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\frmCargaDiasFeriados.Designer.vb">
+      <DependentUpon>frmCargaDiasFeriados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCargaDiasFeriados.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frmComboBox.Designer.vb">
       <DependentUpon>frmComboBox.vb</DependentUpon>
     </Compile>
@@ -214,6 +365,12 @@
       <DependentUpon>frmComplementoAICED.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmComplementoAICED.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConsultaSaldosMov.Designer.vb">
+      <DependentUpon>frmConsultaSaldosMov.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmConsultaSaldosMov.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmFunc.Designer.vb">
@@ -1090,6 +1247,9 @@
     <EmbeddedResource Include="Formularios\frmCancelaTicket.resx">
       <DependentUpon>frmCancelaTicket.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCargaDiasFeriados.resx">
+      <DependentUpon>frmCargaDiasFeriados.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmComboBox.resx">
       <DependentUpon>frmComboBox.vb</DependentUpon>
     </EmbeddedResource>
@@ -1098,6 +1258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConsDepsRets.resx">
       <DependentUpon>frmConsDepsRets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConsultaSaldosMov.resx">
+      <DependentUpon>frmConsultaSaldosMov.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmFunc.resx">
       <DependentUpon>frmFunc.vb</DependentUpon>
@@ -1581,6 +1744,27 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Datos\CatalogoBd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CatalogoBd.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Datos\CatalogoBd.edmx.diagram">
+      <DependentUpon>CatalogoBd.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Datos\TicketBd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TicketBd.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Datos\FuncionarioBd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FuncionarioBd.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Datos\FuncionarioBd.edmx.diagram">
+      <DependentUpon>FuncionarioBd.edmx</DependentUpon>
+    </None>
+    <None Include="Datos\TicketBd.edmx.diagram">
+      <DependentUpon>TicketBd.edmx</DependentUpon>
+    </None>
     <None Include="Esquema\CambioPermisos.xsc">
       <DependentUpon>CambioPermisos.xsd</DependentUpon>
     </None>
@@ -1635,12 +1819,43 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Configuraciones.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Datos\CatalogoBd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CatalogoBd.edmx</DependentUpon>
+      <LastGenOutput>CatalogoBd.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Datos\CatalogoBd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CatalogoBd.edmx</DependentUpon>
+      <LastGenOutput>CatalogoBd.vb</LastGenOutput>
+    </Content>
+    <Content Include="Datos\FuncionarioBd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FuncionarioBd.edmx</DependentUpon>
+      <LastGenOutput>FuncionarioBd.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Datos\FuncionarioBd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FuncionarioBd.edmx</DependentUpon>
+      <LastGenOutput>FuncionarioBd.vb</LastGenOutput>
+    </Content>
+    <Content Include="Datos\TicketBd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TicketBd.edmx</DependentUpon>
+      <LastGenOutput>TicketBd.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Datos\TicketBd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TicketBd.edmx</DependentUpon>
+      <LastGenOutput>TicketBd.vb</LastGenOutput>
+    </Content>
     <Content Include="Resources\Crear.png" />
     <Content Include="Resources\FondoBBVA.JPG" />
     <Content Include="Resources\Imagen_iconoBBVA.ico" />
@@ -1671,12 +1886,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CargaDiasFeriados\CargaDiasFeriados\CargaDiasFeriados.csproj">
-      <Project>{04efe005-c1fc-46b2-a324-1585a36ed84e}</Project>
-      <Name>CargaDiasFeriados</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

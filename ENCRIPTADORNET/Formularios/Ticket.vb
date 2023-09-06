@@ -987,8 +987,23 @@ Public Class funcionalidades
         gs_HoraSistema = drRegistro.Item(0).ToString
     End Sub
 
-    Private Sub MantenimientoDiasFeriadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MantenimientoDiasFeriadosToolStripMenuItem.Click
-        Dim frmDiasFeriados As New CargaDiasFeriados.FrmCargaDiasFeriados
+    Private Sub MantenimientoDiasFeriadosToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub CargaDiasFeriadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CargaDiasFeriadosToolStripMenuItem.Click
+        Dim frmDiasFeriados As New frmCargaDiasFeriados
         frmDiasFeriados.ShowDialog()
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+        If l.Permiso("PCONSULCTACED") Then
+            Dim frmConsultaSaldosMov As New frmConsultaSaldosMov
+            frmConsultaSaldosMov.ShowDialog()
+        Else
+            MsgBox("Sin permisos para este modulo")
+        End If
+
+
     End Sub
 End Class
