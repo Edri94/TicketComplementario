@@ -40,10 +40,10 @@ Public Class Login
 
             If validaLogin > 0 Then
 
-                usuario = dtlogin.Rows(0).Item(0)
+                userId = dtlogin.Rows(0).Item(0)
 
                 'carga permisos del usuario en la aplicación (9 - TicketComplementario)
-                dtPermAutor = d.obtiene_permisos_autorizaciones(usuario, 9)
+                dtPermAutor = d.obtiene_permisos_autorizaciones(userId, 9)
                 If dtPermAutor IsNot Nothing And dtPermAutor.Rows.Count > 0 Then
                     sPermiso0 = dtPermAutor.Rows(0).Item(0)
                     sPermiso1 = dtPermAutor.Rows(0).Item(1)
@@ -90,7 +90,7 @@ Public Class Login
                 Me.Enabled = True '------RACB 27/09/2021
                 gs_Sql = "UPDATE " & "Catalogos" & ".." & "USUARIO" '------RACB 21/04/2022
                 gs_Sql = gs_Sql & " SET login_erroneo = " & 0 '------RACB 21/04/2022
-                gs_Sql = gs_Sql & " WHERE usuario = " & usuario '------21/04/2022
+                gs_Sql = gs_Sql & " WHERE usuario = " & userId '------21/04/2022
                 d.insertar(gs_Sql) '------21/04/2022
 
                 If Relogin = False Then

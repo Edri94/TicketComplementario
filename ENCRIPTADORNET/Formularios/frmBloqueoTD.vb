@@ -358,7 +358,7 @@ Public Class frmBloqueoTD
 
                 'inserta en evento producto
                 insEventoProd = 0
-                insEventoProd = d.InsEventoProd(GnProductoContratado, GnStatusProducto, UCase(txtComentario.Text.Trim), usuario)
+                insEventoProd = d.InsEventoProd(GnProductoContratado, GnStatusProducto, UCase(txtComentario.Text.Trim), userId)
                 If regActualiza <= 0 Then
                     MsgBox("No es posible " & strTit & " la operación en la base de datos.", vbCritical, "SQL Server Error")
                     Exit Sub

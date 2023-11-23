@@ -220,7 +220,7 @@
 
         'inserta en operacion evento, la cancelación del td
         InsEventoOper = 0
-        InsEventoOper = d.InsEventoOper(CLng(txtTicket.Text), "250", UCase(txtComentario.Text.Trim), usuario)
+        InsEventoOper = d.InsEventoOper(CLng(txtTicket.Text), "250", UCase(txtComentario.Text.Trim), userId)
         If InsEventoOper <= 0 Then
             MsgBox("No es posible insertar el evento de la operación en la base de datos.", vbCritical, "SQL Server Error")
             'Exit Sub

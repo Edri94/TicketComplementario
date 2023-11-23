@@ -42,7 +42,7 @@
             'gs_Sql = gs_Sql & dbcatalogos & ".." & gsUSUARIO & " "
             gs_Sql = gs_Sql & "CATALOGOS..USUARIO "
             'gs_Sql = gs_Sql & "Where usuario = " & gn_Usuario
-            gs_Sql = gs_Sql & "Where usuario = " & usuario
+            gs_Sql = gs_Sql & "Where usuario = " & userId
             gs_Sql = gs_Sql & " and password <> 'ANULADO'"
             LlenaLista(cmbNombre, gs_Sql)
             If cmbNombre.Items.Count > 0 Then cmbNombre.SelectedIndex = -1

@@ -701,7 +701,7 @@ errPorEnviar:
                         gs_Sql = gs_Sql & "1, 0, "
                     End If
                     gs_Sql = gs_Sql & chkUltimoRep.Checked & ","
-                    gs_Sql = gs_Sql & usuario & ")"
+                    gs_Sql = gs_Sql & userId & ")"
                     'dbExecQuery gs_Sql
                     If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then 'If dbError Then
                         'dbRollback
@@ -940,7 +940,7 @@ errPorEnviar:
                                 gs_Sql = gs_Sql & "2, 0, "
                             End If
                             gs_Sql = gs_Sql & Convert.ToInt32(chkUltimoRep.Checked) & ","
-                            gs_Sql = gs_Sql & usuario & ")"
+                            gs_Sql = gs_Sql & userId & ")"
                             ' Actualiza la tabla de Reporte Swift
                             'dbExecQuery gs_Sql
                             If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then 'If dbError Then

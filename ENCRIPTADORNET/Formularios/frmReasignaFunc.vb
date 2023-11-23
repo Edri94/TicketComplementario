@@ -556,7 +556,7 @@ Reasigna:
         End If
         pgbProgreso.Value = 8
         '-------- RACB 11-07-2023 convivencia APX
-        gs_Sql = "INSERT INTO REASIGNAFUNCAPX VALUES (" & cmbCuentas.SelectedValue & "," & sFuncionarioActual & "," & cmbFuncs.SelectedValue & "," & usuario & ",GETDATE())"
+        gs_Sql = "INSERT INTO REASIGNAFUNCAPX VALUES (" & cmbCuentas.SelectedValue & "," & sFuncionarioActual & "," & cmbFuncs.SelectedValue & "," & userId & ",GETDATE())"
         objDatasource.EjecutaComandoTransaccion(gs_Sql) '-------- RACB 11-07-2023 convivencia APX
         'dbEndQuery
         If cmbFuncs.SelectedValue <> mnFuncant Then 'If cmbFuncs.ItemData(cmbFuncs.ListIndex) <> mnFuncant Then

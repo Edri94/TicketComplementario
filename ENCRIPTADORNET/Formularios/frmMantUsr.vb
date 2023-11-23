@@ -201,7 +201,7 @@ Elimina:
 				gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
                 gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
                 gs_Sql = gs_Sql & " values (getdate(),6,'ELIMINO USUARIO','" & cmbUsuarios.SelectedValue & "', "
-                gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9) "
+                gs_Sql = gs_Sql & "'" & Trim(userId) & "',9) "
                 If objDataSource.insertar(gs_Sql) = 0 Then
                     If MsgBox("No es posible actualizar la base de datos. ¿Desea Reintentar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then
                     End If
@@ -310,7 +310,7 @@ Guarda:
         gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
         gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion,Mantenimiento)"
         gs_Sql = gs_Sql & " values (getdate(),3,'MANTENIMIENTO A USUARIO','" & Trim(UCase(cmbUsuarios.SelectedValue)) & "', "
-        gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9, "
+        gs_Sql = gs_Sql & "'" & Trim(userId) & "',9, "
         gs_Sql = gs_Sql & "'" & Mante & "') "
         iRegistrosAfectados = objDataSource.insertar(gs_Sql)
         If iRegistrosAfectados = 0 Then
@@ -430,7 +430,7 @@ actualiza:
 			gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
             gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
             gs_Sql = gs_Sql & " values (getdate(),5,'REACTIVACION A USUARIO','" & Trim(UCase(cmbUsuarios.SelectedValue)) & "', "
-            gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9) "
+            gs_Sql = gs_Sql & "'" & Trim(userId) & "',9) "
             If objDataSource.insertar(gs_Sql) = 0 Then '
                 If MsgBox("No es posible actualizar la base de datos. ¿Desea Reintentar?", vbYesNo + vbCritical, "SQL Server Error") = vbYes Then
                 End If
@@ -579,7 +579,7 @@ actualiza:
                 gs_Sql = gs_Sql & "(usuario, fecha_modificacion, "
                 gs_Sql = gs_Sql & "usuario_valida, aplicacion, nombre_pc, password) "
                 gs_Sql = gs_Sql & "VALUES (" & cmbUsuarios.SelectedValue & ", getdate(), "
-                gs_Sql = gs_Sql & usuario & ", " & "9"
+                gs_Sql = gs_Sql & userId & ", " & "9"
                 gs_Sql = gs_Sql & ", '" & Environment.MachineName & "', '" & strPassword & "')" 'gs_Sql = gs_Sql & ", '" & gnGetComputerName & "', '" & strPassword & "')"
                 'dbExecQuery gs_Sql
                 If objDataSource.insertar(gs_Sql) > 0 Then 'If Not IsdbError Then
@@ -597,7 +597,7 @@ actualiza:
             'dbExecQuery gs_Sql
             'dbGetRecord
             dtRespConsulta = objDataSource.RealizaConsulta(gs_Sql)
-            usuario = Val(dtRespConsulta.Rows(0).Item(0))
+            userId = Val(dtRespConsulta.Rows(0).Item(0))
             If dtRespConsulta Is Nothing Or dtRespConsulta.Rows.Count = 0 Then 'If dbError Then
                 'dbEndQuery
                 'ShowDefaultCursor
@@ -610,7 +610,7 @@ actualiza:
             gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
             gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
             gs_Sql = gs_Sql & " values (getdate(),4,'DESBLOQUEO DE USUARIO','" & Trim(UCase(cmbUsuarios.SelectedValue)) & "', "
-            gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9) "
+            gs_Sql = gs_Sql & "'" & Trim(userId) & "',9) "
             'dbExecQuery gs_Sql
             If objDataSource.insertar(gs_Sql) = 0 Then 'If dbError Then
                 'dbEndQuery

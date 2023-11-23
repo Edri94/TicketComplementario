@@ -496,7 +496,7 @@ Public Class frmRetirosOrdenPagoMT103
         If iFormularioOrigen = 1 Then
             If txtOperacion.Text = "" Then
                 GuardarTicket()
-                iUsuarioCaptura = usuario
+                iUsuarioCaptura = userId
             Else
                 MsgBox("Ya tienes un ticket asignado : " & txtOperacion.Text)
             End If
@@ -505,7 +505,7 @@ Public Class frmRetirosOrdenPagoMT103
                 Exit Sub
             End If
             If txtOperacion.Text <> "" Then
-                If iUsuarioCaptura <> usuario Then
+                If iUsuarioCaptura <> userId Then
                     iTicketGenerado = txtOperacion.Text
                     objDatasource.insertar(GuardarDatosVista())
                     ValidarOperacion()
@@ -1196,7 +1196,7 @@ errOperacionDefinida:
             gs_Sql = "Insert into " & "CATALOGOS" & ".dbo.EVENTO_AUTORIZACION"
             gs_Sql = gs_Sql & " (usuario_opera, usuario_password, fecha_password,"
             gs_Sql = gs_Sql & " operacion, autorizacion, comentario, comentario_respuesta, aplicacion) values ("
-            gs_Sql = gs_Sql & usuario & ", " & gn_UsuarioAutoriza & ", '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " " & gs_HoraSistema & "', " & Operacion
+            gs_Sql = gs_Sql & userId & ", " & gn_UsuarioAutoriza & ", '" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " " & gs_HoraSistema & "', " & Operacion
             gs_Sql = gs_Sql & ", " & gn_NumeroAutorizacion
             gs_Sql = gs_Sql & ", '" & gs_ComentarioAutorizacion & "', '" & gs_Respuesta & "', " & NumAplicacion & ")"
             'dbExecQuery(gs_Sql)
@@ -1241,7 +1241,7 @@ Fin:
                 gs_Sql = "Insert into " & "CATALOGOS" & "..EVENTO_AUTORIZACION"
                 gs_Sql = gs_Sql & " (usuario_opera, usuario_password, fecha_password,"
                 gs_Sql = gs_Sql & " operacion, autorizacion, comentario, comentario_respuesta, tasa, sobretasa, aplicacion) values ("
-                gs_Sql = gs_Sql & usuario
+                gs_Sql = gs_Sql & userId
                 If gn_Tipo_Tasa = 2 Then
                     gs_Sql = gs_Sql & ", " & gn_MesaRegional
                 Else
@@ -1373,7 +1373,7 @@ Fin2:
                     gs_Sql = gs_Sql & " (cuenta_cliente, operacion_definida, monto, usuario, fecha,"
                     gs_Sql = gs_Sql & " datos_referencia, comentario_respuesta, status_autorizacion, autorizacion, aplicacion)"
                     gs_Sql = gs_Sql & " values ('" & gs_Cuenta_Cliente & "'," & gn_Operacion_Definida
-                    gs_Sql = gs_Sql & ", " & gn_Monto & ", " & usuario & ", getdate()"
+                    gs_Sql = gs_Sql & ", " & gn_Monto & ", " & userId & ", getdate()"
                     gs_Sql = gs_Sql & ", '" & ga_Autorizaciones(ln_Autorizacion).Descripcion
                     If gn_Plazo <> 0 Then
                         gs_Sql = gs_Sql & " con Plazo a " & gn_Plazo & " dias"
@@ -1396,7 +1396,7 @@ Fin2:
                     'dbEndQuery
                     gb_Autorizacion = True
                     gb_OperacionConPassword = True
-                    gn_UsuarioAutoriza = usuario
+                    gn_UsuarioAutoriza = userId
                     gs_Comentario = ""
                     gs_Respuesta = ""
                     'Solicita la autorizacion remota
@@ -2155,7 +2155,7 @@ Fin2:
                 'Valida la Operacion de Retiro (Status = 2)
                 gs_Sql = "update OPERACION"
                 gs_Sql = gs_Sql & " set status_operacion = 2,"
-                gs_Sql = gs_Sql & " usuario_valida = " & usuario
+                gs_Sql = gs_Sql & " usuario_valida = " & userId
                 gs_Sql = gs_Sql & " Where operacion = " & Operacion
                 'dbExecQuery gs_Sql
                 If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then
@@ -2169,7 +2169,7 @@ Fin2:
                     'dbEndQuery
                     gs_Sql = "Update OPERACION"
                     gs_Sql = gs_Sql & " set status_operacion = 2,"
-                    gs_Sql = gs_Sql & " usuario_valida = " & usuario
+                    gs_Sql = gs_Sql & " usuario_valida = " & userId
                     gs_Sql = gs_Sql & " Where operacion = " & lsOpComision
                     'Valida la comision generada
                     'dbExecQuery gs_Sql
@@ -2201,7 +2201,7 @@ Fin2:
                 gs_Sql = gs_Sql & "comentario_evento, usuario"
                 gs_Sql = gs_Sql & ") values ("
                 gs_Sql = gs_Sql & Operacion & ",'" & CDate(gs_FechaHoy).Year & "-" & CDate(gs_FechaHoy).Month & "-" & CDate(gs_FechaHoy).Day & " " & gs_HoraSistema & "', 2, "
-                gs_Sql = gs_Sql & "'" & strEventoOperacion & "', " & usuario & ")"
+                gs_Sql = gs_Sql & "'" & strEventoOperacion & "', " & userId & ")"
                 'Inserta registro en EVENTO_OPERACION
                 'dbExecQuery gs_Sql
                 If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then
@@ -2318,7 +2318,7 @@ IniciaTrans:
         gs_Sql = gs_Sql & "', " & ln_Status & ", '"
         gs_Sql = gs_Sql & dtpFechaOperacion.Value.ToString("yyyy-MM-dd") & "', " 'InvierteFecha(txtFechaOperacion.text) & "', "
         gs_Sql = gs_Sql & mn_Monto & ", "
-        gs_Sql = gs_Sql & usuario & ", null, "
+        gs_Sql = gs_Sql & userId & ", null, "
         gs_Sql = gs_Sql & gn_Linea & ", "
         gs_Sql = gs_Sql & cmbFuncionario.SelectedValue & ", " 'cmbFunc.ItemData(cmbFunc.ListIndex) & ", "
         gs_Sql = gs_Sql & "'" & UCase(Trim(DirectCast(cmbFuncionario.SelectedItem, System.Data.DataRowView).Row.ItemArray(1))) & "')" '"'" & UCase(Trim(cmbFunc)) & "')"
@@ -2438,7 +2438,7 @@ IniciaTrans:
         gs_Sql = gs_Sql & " comentario_evento, usuario) "
         gs_Sql = gs_Sql & " values ("
         gs_Sql = gs_Sql & ln_Operacion & ",'" & dtpFechaCaptura.Value.ToString("yyyy-MM-dd") & " " & gs_HoraSistema 'InvierteFecha(txtFechaCaptura) & " " & HoraSistema
-        gs_Sql = gs_Sql & "'," & ln_Status & ",'Captura Retiro Orden de Pago'," & usuario & ")" 'gn_Usuario & ")"
+        gs_Sql = gs_Sql & "'," & ln_Status & ",'Captura Retiro Orden de Pago'," & userId & ")" 'gn_Usuario & ")"
         'dbExecQuery gs_Sql
         If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then
             'dbRollback
@@ -2475,7 +2475,7 @@ IniciaTrans:
             gs_Sql = gs_Sql & " values (" & GnProductoContratado & ", " & ln_OpDefComision & ", '"
             gs_Sql = gs_Sql & dtpFechaCaptura.Value.ToString("yyyy-MM-dd") & " " & gs_HoraSistema & "', " & ln_Status & ", '"
             gs_Sql = gs_Sql & dtpFechaOperacion.Value.ToString("yyyy-MM-dd") & "', "
-            gs_Sql = gs_Sql & mn_Comision & ", " & usuario & ",  null,"
+            gs_Sql = gs_Sql & mn_Comision & ", " & userId & ",  null,"
             gs_Sql = gs_Sql & gn_Linea & ", "
             gs_Sql = gs_Sql & cmbFuncionario.SelectedValue & ", "
             gs_Sql = gs_Sql & "'" & UCase(Trim(DirectCast(cmbFuncionario.SelectedItem, System.Data.DataRowView).Row.ItemArray(1))) & "')"
@@ -2630,7 +2630,7 @@ IniciaTrans:
         End If
         txtFunc.Text = ""
         txtCuenta.Focus()
-        gs_Sql = "select numero_funcionario from Funcionarios..Funcionario where funcionario in (select CD_FUNCIONARIO from TMP_USUARIOAPXTKT where CD_USER = " & usuario & ")"
+        gs_Sql = "select numero_funcionario from Funcionarios..Funcionario where funcionario in (select CD_FUNCIONARIO from TMP_USUARIOAPXTKT where CD_USER = " & userId & ")"
         dtRespConsulta = objDatasource.RealizaConsulta(gs_Sql)
         'gs_Sql = "Select "
         'gs_Sql = gs_Sql & " telefono_funcionario, "
@@ -2983,7 +2983,7 @@ VerificaFecha:
         Dim lsOpOrigen As Integer
         Dim lsMotivo As String
         Dim dtRespConsulta As DataTable
-        If iUsuarioCaptura <> usuario Then
+        If iUsuarioCaptura <> userId Then
             '------------------------------------------------------- RACB 22/03/2023
             Dim objGlobal As New Cursors
             If objGlobal.ValidaCamposFormulario(Me.Controls) = False Then
@@ -3044,7 +3044,7 @@ VerificaFecha:
                 'Cancela la operacion
                 gs_Sql = "Update OPERACION set"
                 gs_Sql = gs_Sql & " status_operacion = 250,"
-                gs_Sql = gs_Sql & " usuario_valida = " & usuario
+                gs_Sql = gs_Sql & " usuario_valida = " & userId
                 gs_Sql = gs_Sql & " Where operacion = " & iTicketGenerado
                 gs_Sql = gs_Sql & " and operacion_definida = (SELECT operacion_definida FROM OPERACION_DEFINIDA WHERE operacion_definida_global = 81 AND agencia = 1)"
                 'dbExecQuery gs_Sql
@@ -3081,7 +3081,7 @@ VerificaFecha:
                     gs_Sql = gs_Sql & "status_operacion, comentario_evento, usuario"
                     gs_Sql = gs_Sql & ") values ("
                     gs_Sql = gs_Sql & lsOpOrigen & ", '" & Format(CDate(gs_FechaHoy), "yyyy/MM/dd") & " " & gs_HoraSistema & "', "
-                    gs_Sql = gs_Sql & "250, '" & lsMotivo & "', " & usuario & ")"
+                    gs_Sql = gs_Sql & "250, '" & lsMotivo & "', " & userId & ")"
                     'dbExecQuery gs_Sql
                     If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then
                         'dbRollback
@@ -3101,7 +3101,7 @@ VerificaFecha:
                 gs_Sql = gs_Sql & "'" & Format(CDate(gs_FechaHoy), "yyyy/MM/dd") & " " & gs_HoraSistema & "', "
                 gs_Sql = gs_Sql & "250, "
                 gs_Sql = gs_Sql & "'" & lsMotivo & "', "
-                gs_Sql = gs_Sql & usuario & ")"
+                gs_Sql = gs_Sql & userId & ")"
                 'Registra el evento de cancelación
                 'dbExecQuery gs_Sql
                 If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then
@@ -3143,7 +3143,7 @@ VerificaFecha:
         'Actualiza la tabla de operación con status 1 (corregido)
         gs_Sql = "Update OPERACION set"
         gs_Sql = gs_Sql & " status_operacion = " & iEstatus & ","
-        gs_Sql = gs_Sql & " usuario_valida = " & usuario
+        gs_Sql = gs_Sql & " usuario_valida = " & userId
         gs_Sql = gs_Sql & " Where operacion = " & Operacion
         gs_Sql = gs_Sql & " and operacion_definida = " & OpDefinida
         'dbExecQuery gs_Sql
@@ -3167,7 +3167,7 @@ VerificaFecha:
         gs_Sql = gs_Sql & "'" & Format(CDate(gs_FechaHoy), "yyyy/MM/dd") & " " & gs_HoraSistema & "', "
         gs_Sql = gs_Sql & iEstatus & ", " '"12, "
         gs_Sql = gs_Sql & "'Corrección Retiro Orden Pago', "
-        gs_Sql = gs_Sql & usuario & ")"
+        gs_Sql = gs_Sql & userId & ")"
         'dbExecQuery gs_Sql
         If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then
             objDatasource.RollbackTransaccion() 'dbRollback

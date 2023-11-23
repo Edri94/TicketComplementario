@@ -642,7 +642,7 @@ errImprime:
                     AltaComplementos(lsNombre, lsBancomer) '--RACB 22-02-2023
                     'INICIO: Registro de Alta en Bitacora de Unidad Organizacional creado por Oliva Farias García OFG 25/nov/2016
                     gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_unidad_org "
-                    gsSql = gsSql & lsBancomer & "," & 1 & "," & usuario 'gsSql = gsSql & gnUnidadOrg & "," & 1 & "," & gnUsuario
+                    gsSql = gsSql & lsBancomer & "," & 1 & "," & userId 'gsSql = gsSql & gnUnidadOrg & "," & 1 & "," & gnUsuario
                     'dbExecQuery gsSql
                     If objDatasource.insertar(gsSql) <= 0 Then 'If dbError <> 0 Then
                         MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Unidad organizacional")
@@ -714,7 +714,7 @@ errImprime:
                     mb_Changes = False
                     'INICIO: Registro de Borrar en Bitacora de Unidad Organizacional creado por Oliva Farias García OFG 25/nov/2016
                     gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_unidad_org "
-                    gsSql = gsSql & txtNumUnidad.Text & "," & 2 & "," & usuario
+                    gsSql = gsSql & txtNumUnidad.Text & "," & 2 & "," & userId
                     'dbExecQuery gsSql
                     If objDatasource.insertar(gsSql) <= 0 Then 'If dbError <> 0 Then
                         MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Unidad organizacional")
@@ -778,7 +778,7 @@ errImprime:
                     End If
                 End If
                 gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_unidad_org "
-                gsSql = gsSql & txtNumUnidad.Text & "," & 6 & "," & usuario
+                gsSql = gsSql & txtNumUnidad.Text & "," & 6 & "," & userId
                 If objDatasource.insertar(gsSql) <= 0 Then 'If dbError <> 0 Then
                     MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Unidad organizacional")
                 End If

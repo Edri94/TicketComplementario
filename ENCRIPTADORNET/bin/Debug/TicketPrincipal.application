@@ -8,7 +8,7 @@
         <expiration maximumAge="0" unit="days" />
       </update>
     </subscription>
-    <deploymentProvider codebase="file://150.100.195.44/Procesos2/TicketComplementario/Instalador/TicketPrincipal.application" />
+    <deploymentProvider codebase="file://150.100.96.189/Procesos2/TicketComplementario/Instalador/TicketPrincipal.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
@@ -21,7 +21,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pf23fPdo+W+xzIyEXGhu1BLsN4Vo/Naee11fVSva41E=</dsig:DigestValue>
+        <dsig:DigestValue>6bfOGsEvYatO60OapqULLDTQEHioEMSA4/8ws8TYYcE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

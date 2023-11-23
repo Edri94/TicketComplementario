@@ -39,7 +39,7 @@
             'Validacion de que ya existe el apoderado FIN*******************************************************
 
 
-            Reg = d.InsertaApoderado(EApo, usuario)
+            Reg = d.InsertaApoderado(EApo, userId)
 
             If Reg > 0 Then
                 cargaGridView()
@@ -125,7 +125,7 @@
             EApo.Paterno = txApellidoPat.Text.Trim()
             EApo.Materno = txApellidoMat.Text.Trim()
 
-            Reg = d.ActualizaApoderado(EApo, usuario)
+            Reg = d.ActualizaApoderado(EApo, userId)
 
             If Reg > 0 Then
                 cargaGridView()

@@ -38,7 +38,7 @@
             End If
             'Validacion de que ya existe el autorizado FIN*******************************************************
 
-            Reg = d.InsertaBeneficiario(EBen, usuario)
+            Reg = d.InsertaBeneficiario(EBen, userId)
 
             If Reg > 0 Then
                 cargaGridView()
@@ -126,7 +126,7 @@
             EBen.Paterno = txApellidoPat.Text.Trim()
             EBen.Materno = txApellidoMat.Text.Trim()
 
-            Reg = d.ActualizaBeneficiario(EBen, usuario)
+            Reg = d.ActualizaBeneficiario(EBen, userId)
 
             If Reg > 0 Then
                 cargaGridView()

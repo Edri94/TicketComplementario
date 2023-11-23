@@ -11,7 +11,7 @@ Public Class funcionalidades
         Call Prende()
         'Carga el arreglo de permisos y autorizaciones
         l.CargaPermisos("9")
-        If usuario = 1 Or l.Permiso("PADMINISTRADOR") Then
+        If userId = 1 Or l.Permiso("PADMINISTRADOR") Then
             AdministradorToolStripMenuItem.Enabled = True
         Else
             AdministradorToolStripMenuItem.Enabled = False
@@ -721,7 +721,7 @@ Public Class funcionalidades
     End Sub
     Private Sub AsignarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarToolStripMenuItem.Click
         ConfReg()
-        If usuario = 1 Or l.Permiso("PADMINISTRADOR") Then
+        If userId = 1 Or l.Permiso("PADMINISTRADOR") Then
             Dim FormAsigna As New frmPerfilAsigna
             FormAsigna.StartPosition = FormStartPosition.CenterScreen
             FormAsigna.Show()
@@ -731,7 +731,7 @@ Public Class funcionalidades
     End Sub
     Private Sub EditarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarToolStripMenuItem.Click
         ConfReg()
-        If usuario = 1 Or l.Permiso("PADMINISTRADOR") Then
+        If userId = 1 Or l.Permiso("PADMINISTRADOR") Then
             Dim FormEdita As New frmPerfilEdita
             FormEdita.StartPosition = FormStartPosition.CenterScreen
             FormEdita.Show()

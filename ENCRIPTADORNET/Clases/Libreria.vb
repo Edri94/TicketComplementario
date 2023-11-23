@@ -20,7 +20,7 @@ Public Class Libreria
     'Public DB As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "DB", "F/zR1+RmJaBlM9ASBnA7fA=="))
     Public DB As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "DB", "z1Rh9boc5VE="))
     Public DBFUN As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "DBFUN", "F/zR1+RmJaBlM9ASBnA7fA=="))
-    Public SERVER As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "SERVER", "fTfCwJ8K9qfw/0ty48UkW6OQUR7KwPbR7cPqM8MFmDA="))
+    Public SERVER As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "SERVER", "fTfCwJ8K9qe67+hwukVAum7KXg3BSb3kKFPPq51rev8="))
     Public USER As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "USER", "0fWlJK7YTOg="))
     Public PWD As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "PWD", "qeOBHX/EztY="))
     Public USERNM As String = Trim(ReadIni(ARCHIVOINI, "DATABASE", "USERNM", "0fWlJK7YTOg="))
@@ -926,7 +926,7 @@ NoSingOn:
         Dim d As New Datasource
         Dim dt As New DataTable
 
-        gs_Sql = "Select origen_usuario from CATALOGOS.dbo.usuario where usuario =  " + usuario.ToString()
+        gs_Sql = "Select origen_usuario from CATALOGOS.dbo.usuario where usuario =  " + userId.ToString()
 
         dt = d.RealizaConsulta(gs_Sql)
 

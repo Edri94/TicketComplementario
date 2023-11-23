@@ -520,7 +520,7 @@ Public Class frmAltaFuncs
 
                 'INICIO: Registro de Alta en Bitacora de Gestores creado por Oliva Farias García OFG 01/nov/2016
                 gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func "
-                gsSql = gsSql & lsNewFunc & "," & 1 & "," & usuario
+                gsSql = gsSql & lsNewFunc & "," & 1 & "," & userId
                 'dbExecQuery gsSql
                 If objDatasource.EjecutaComandoTransaccion(gsSql) = False Then 'If dbError <> 0 Then
                     MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Gestores")

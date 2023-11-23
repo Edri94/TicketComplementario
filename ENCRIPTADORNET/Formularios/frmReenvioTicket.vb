@@ -132,7 +132,7 @@
         Dim sql_reenvioOP As String
         Dim oRespuestaSP As Object
 
-        sql_reenvioOP = "EXEC sp_reenvio_operaciones " + CStr(nOperacion) + ", '" + txtNota.Text + "', " + CStr(usuario)
+        sql_reenvioOP = "EXEC sp_reenvio_operaciones " + CStr(nOperacion) + ", '" + txtNota.Text + "', " + CStr(userId)
         ReenviarOperacion = False
         pgbCarga.Value = 4
         ' Solicita cursor en modo de espera

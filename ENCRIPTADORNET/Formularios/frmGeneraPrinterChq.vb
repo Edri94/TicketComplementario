@@ -288,7 +288,7 @@ Public Class frmGeneraPrinterChq
             gs_Sql = gs_Sql & "orden = " & lsOrden & ", "
             gs_Sql = gs_Sql & "fecha_envio = '" & Format(CDate(gs_FechaHoy), "yyyy-MM-dd") & " " & gs_HoraSistema & "', "
             gs_Sql = gs_Sql & "status_chequera = 3, "
-            gs_Sql = gs_Sql & "usuario_envia = " & usuario
+            gs_Sql = gs_Sql & "usuario_envia = " & userId
             gs_Sql = gs_Sql & " Where status_chequera In ( 1, 2 ) "
             gs_Sql = gs_Sql & "And tipo_chequera <> 1"
             'Actualiza las solicitudes por enviari
@@ -758,14 +758,14 @@ ErrorConeccion:
         oledbConectar.Open()
         Select Case Opcion
             Case 1 'Consultar
-                oledbQueryConsulta = New OleDbDataAdapter("SELECT * FROM ConfiguracionGuardad WHERE Usuario = " & usuario, oledbConectar)
+                oledbQueryConsulta = New OleDbDataAdapter("SELECT * FROM ConfiguracionGuardad WHERE Usuario = " & userId, oledbConectar)
                 oledbQueryConsulta.Fill(dsRespuesta)
                 dtConfiguracionGurdada = dsRespuesta.Tables(0)
             Case 2 'Insertar
-                oledbQuery = New OleDbCommand("INSERT INTO ConfiguracionGuardad VALUES(" & usuario & ",'Generación Archivo Interfase','" & txtRutaHD.Name & "','" & txtRutaHD.Text & "')", oledbConectar)
+                oledbQuery = New OleDbCommand("INSERT INTO ConfiguracionGuardad VALUES(" & userId & ",'Generación Archivo Interfase','" & txtRutaHD.Name & "','" & txtRutaHD.Text & "')", oledbConectar)
                 Dim ver = oledbQuery.ExecuteNonQuery()
             Case 3 'Actualizar
-                oledbQuery = New OleDbCommand("UPDATE ConfiguracionGuardad SET Valor = '" & txtRutaHD.Text & "' WHERE Usuario = " & usuario & " AND Opcion = 'Generación Archivo Interfase' AND Elemento = '" & txtRutaHD.Name & "'", oledbConectar)
+                oledbQuery = New OleDbCommand("UPDATE ConfiguracionGuardad SET Valor = '" & txtRutaHD.Text & "' WHERE Usuario = " & userId & " AND Opcion = 'Generación Archivo Interfase' AND Elemento = '" & txtRutaHD.Name & "'", oledbConectar)
                 Dim ver = oledbQuery.ExecuteNonQuery()
         End Select
         oledbConectar.Close()

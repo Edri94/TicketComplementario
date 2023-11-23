@@ -6,7 +6,7 @@ Imports System.IO
 
 Module VARIABLES
 #Region "variables"
-    Public usuario As Integer
+    Public userId As Integer
     Public nameUser As String
     Public GNombreAgencia As String
     Public GProductoContratado As String

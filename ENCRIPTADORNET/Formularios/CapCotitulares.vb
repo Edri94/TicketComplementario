@@ -38,7 +38,7 @@
             End If
             'Validacion de que ya existe el autorizado FIN*******************************************************
 
-            Reg = d.InsertaCotitular(ECot, usuario)
+            Reg = d.InsertaCotitular(ECot, userId)
 
             If Reg > 0 Then
                 cargaGridView()
@@ -119,7 +119,7 @@
             ECot.Paterno = txApellidoPat.Text.Trim()
             ECot.Materno = txApellidoMat.Text.Trim()
 
-            Reg = d.ActualizaCotitular(ECot, usuario)
+            Reg = d.ActualizaCotitular(ECot, userId)
 
             If Reg > 0 Then
                 cargaGridView()

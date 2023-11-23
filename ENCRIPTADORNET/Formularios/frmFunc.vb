@@ -1139,7 +1139,7 @@ errComboFuncs:
                     objDatasource.EjecutaComandoTransaccion(gsSql)
                     'INICIO: Oliva Farias García OFG 09/nov/2016 - Registro de Anular o Baja en Bitacora de Gestores
                     gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func "
-                    gsSql = gsSql & mnFunc & "," & 2 & "," & usuario
+                    gsSql = gsSql & mnFunc & "," & 2 & "," & userId
                     'dbExecQuery gsSql
                     If objDatasource.EjecutaComandoTransaccion(gsSql) = False Then 'If dbError <> 0 Then
                         MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Gestores")
@@ -1217,7 +1217,7 @@ errComboFuncs:
                     'INICIO: Oliva Farias García OFG 09/nov/2016 - Registro de Reactivación en Bitacora de Gestores
                     If lnActivo = 1 Then
                         gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func "
-                        gsSql = gsSql & mnFunc & "," & 14 & "," & usuario
+                        gsSql = gsSql & mnFunc & "," & 14 & "," & userId
                         'dbExecQuery gsSql
                         If objDatasource.EjecutaComandoTransaccion(gsSql) = False Then 'If dbError <> 0 Then
                             MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Gestores")
@@ -1540,7 +1540,7 @@ errComboFuncs:
                 'INICIO: Oliva Farias García OFG 09/nov/2016 - Registro de Alta o Baja de CR por Reactivacion o Anulacion en Bitacora de Gestores
                 If lnActivo = 0 Then
                     gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func "
-                    gsSql = gsSql & mnFunc & "," & 15 & "," & usuario
+                    gsSql = gsSql & mnFunc & "," & 15 & "," & userId
                     'dbExecQuery gsSql
                     If objDatasource.EjecutaComandoTransaccion(gsSql) = False Then 'If dbError <> 0 Then
                         MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Gestores")
@@ -1548,7 +1548,7 @@ errComboFuncs:
                     'dbEndQuery
                 Else
                     gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func "
-                    gsSql = gsSql & mnFunc & "," & 16 & "," & usuario
+                    gsSql = gsSql & mnFunc & "," & 16 & "," & userId
                     'dbExecQuery gsSql
                     If objDatasource.EjecutaComandoTransaccion(gsSql) = False Then 'If dbError <> 0 Then
                         MsgBox("No fue posible registrar la información en bitacora.", vbCritical, "Gestores")
@@ -1901,7 +1901,7 @@ errComboFuncs:
             strOpciones = Split(Mid(strValidaEjecucion, 2), ",")
             For i = 0 To UBound(strOpciones)
                 If strOpciones(i) <> 0 Then
-                    gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func " & mnFunc & "," & strOpciones(i) & "," & usuario
+                    gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func " & mnFunc & "," & strOpciones(i) & "," & userId
                     'dbExecQuery gsSql
                     dtRespConsulta = objDatasource.EjecutaSP(gsSql)
                     If dtRespConsulta Is Nothing Or dtRespConsulta.Rows.Count <= 0 Then 'If dbError <> 0 Then
@@ -2388,7 +2388,7 @@ errComboFuncs:
 
                 'INICIO: Oliva Farias García OFG 15/nov/2016 - Registro de Modificaciones de funcionarios en Bitacora de Gestores
                 gsSql = "EXEC FUNCIONARIOS..sp_mantenimiento_func "
-                gsSql = gsSql & mnFunc & "," & 11 & "," & usuario
+                gsSql = gsSql & mnFunc & "," & 11 & "," & userId
                 'dbExecQuery gsSql
                 dtRespConsulta = objDatasource.EjecutaSP(gsSql)
                 If False Then 'If dtRespConsulta Is Nothing Then 'If dbError <> 0 Then

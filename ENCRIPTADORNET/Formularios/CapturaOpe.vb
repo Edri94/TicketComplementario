@@ -13,7 +13,7 @@
             Exit Sub
         End If
         '------------------------------------------------------- RACB 22/03/2023
-        Registro = d.InsertaRegistroGestor(usuario)
+        Registro = d.InsertaRegistroGestor(userId)
 
         If Registro > 0 Then
             MsgBox("El gestor ha sido registrado correctamente!")

@@ -18,7 +18,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>\\150.100.195.44\Procesos2\TicketComplementario\Instalador\</PublishUrl>
+    <PublishUrl>\\150.100.96.189\Procesos2\TicketComplementario\Instalador\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,8 +28,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\150.100.195.44\Procesos2\TicketComplementario\Instalador\</InstallUrl>
-    <UpdateUrl>\\150.100.195.44\Procesos2\TicketComplementario\Instalador\</UpdateUrl>
+    <InstallUrl>\\150.100.96.189\Procesos2\TicketComplementario\Instalador\</InstallUrl>
+    <UpdateUrl>\\150.100.96.189\Procesos2\TicketComplementario\Instalador\</UpdateUrl>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.1</ApplicationVersion>
@@ -136,7 +136,9 @@
     <Reference Include="RestSharp, Version=110.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.110.2.0\lib\net471\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -216,6 +218,9 @@
     <Compile Include="Datos\APERTURA_SUCURSAL_MANUAL.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datos\BITACORA_ENVIO_SWIFT.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Datos\BLOQUEO_CUENTAS_DINAMICO.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
@@ -240,17 +245,46 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CatalogoBd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datos\CERTIFICADO_DEPOSITO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Datos\CLIENTE.vb">
       <DependentUpon>CatalogoBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Datos\Cliente_Funcionario.vb" />
+    <Compile Include="Datos\CODIGO_OPERACION_CED.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\COMPRA_CD.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\COMPRA_TD_OVERNIGHT.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Datos\CONCEPTO.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
-    <Compile Include="Datos\COTITULAR.vb">
-      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    <Compile Include="Datos\CONCEPTO_DEFINIDO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Datos\CUENTA_EJE.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\DEPOSITO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\DEPOSITO_CED.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\DEPOSITO_PME.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\DetalleDocumento.vb" />
+    <Compile Include="Datos\DETALLE_AUTORIZACION.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\DETALLE_INSTRUMENTO.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Datos\DETALLE_STATUS.vb">
@@ -258,6 +292,13 @@
     </Compile>
     <Compile Include="Datos\DIAS_FERIADOS.vb">
       <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\ESTADO_AUTORIZACION.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\EVENTO_OPERACION.vb" />
+    <Compile Include="Datos\EVENTO_PRODUCTO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Datos\FUNCIONARIO.vb">
       <DependentUpon>FuncionarioBd.tt</DependentUpon>
@@ -277,6 +318,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FuncionarioBd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datos\GridOperacion.vb" />
+    <Compile Include="Datos\HOLD.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\HOLD_RETIRO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Datos\Holiday.vb" />
     <Compile Include="Datos\OPERACION.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
@@ -284,10 +332,37 @@
     <Compile Include="Datos\OPERACION_DEFINIDA.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datos\OPERACION_PIU.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\OPERACION_PIU_BATCH.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\OPERACION_SWIFT.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\OPERA_SUCURSAL.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\ORIGEN_CD.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Datos\PRODUCTO.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Datos\PRODUCTO_CONTRATADO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\RENOVACION_CD.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\RETIRO_CED.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\RETIRO_ORDEN_PAGO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\RETIRO_PME.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Datos\STATUS_BLOQUEO_GROUP.vb" />
@@ -309,11 +384,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datos\TIPO_CD.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Datos\TIPO_CUENTA_EJE.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TIPO_DOCUMENTO.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TIPO_EVENTO_OPERACION.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TIPO_MONEDA.vb">
+      <DependentUpon>TicketBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\TRASPASO.vb">
       <DependentUpon>TicketBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Datos\UNIDAD_ORGANIZACIONAL.vb">
       <DependentUpon>FuncionarioBd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\USUARIO.vb">
+      <DependentUpon>CatalogoBd.tt</DependentUpon>
     </Compile>
     <Compile Include="Esquema\CambioPermisos.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -335,6 +428,180 @@
       <DependentUpon>AperturaCuenta.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\AperturaCuenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ComOrdPag.Designer.vb">
+      <DependentUpon>ComOrdPag.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ComOrdPag.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConRetEsp.Designer.vb">
+      <DependentUpon>ConRetEsp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConRetEsp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsDepEsp.Designer.vb">
+      <DependentUpon>ConsDepEsp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsDepEsp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsHold.Designer.vb">
+      <DependentUpon>ConsHold.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsHold.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsProd.Designer.vb">
+      <DependentUpon>ConsProd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsProd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsRetDepDIRECTOS.Designer.vb">
+      <DependentUpon>ConsRetDepDIRECTOS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsRetDepDIRECTOS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaApertura.Designer.vb">
+      <DependentUpon>ConsultaApertura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaApertura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaApTraspasada.Designer.vb">
+      <DependentUpon>ConsultaApTraspasada.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaApTraspasada.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaCD.Designer.vb">
+      <DependentUpon>ConsultaCD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaCD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDep.Designer.vb">
+      <DependentUpon>ConsultaDep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDep24Horas.Designer.vb">
+      <DependentUpon>ConsultaDep24Horas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDep24Horas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepAreaInterna.Designer.vb">
+      <DependentUpon>ConsultaDepAreaInterna.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepAreaInterna.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepCD.Designer.vb">
+      <DependentUpon>ConsultaDepCD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepCD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepDirecto.Designer.vb">
+      <DependentUpon>ConsultaDepDirecto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepDirecto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepSBF.Designer.vb">
+      <DependentUpon>ConsultaDepSBF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepSBF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepTrasp.Designer.vb">
+      <DependentUpon>ConsultaDepTrasp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaDepTrasp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaKapiti.Designer.vb">
+      <DependentUpon>ConsultaKapiti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaKapiti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Consultaret.Designer.vb">
+      <DependentUpon>Consultaret.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Consultaret.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetAreaInterna.Designer.vb">
+      <DependentUpon>ConsultaRetAreaInterna.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetAreaInterna.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetCom.Designer.vb">
+      <DependentUpon>ConsultaRetCom.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetCom.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetDepTDD.Designer.vb">
+      <DependentUpon>ConsultaRetDepTDD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetDepTDD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetDirecto.Designer.vb">
+      <DependentUpon>ConsultaRetDirecto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetDirecto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaReten.Designer.vb">
+      <DependentUpon>ConsultaReten.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaReten.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetOrdPago.Designer.vb">
+      <DependentUpon>ConsultaRetOrdPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetOrdPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetOrdPagoMT103.Designer.vb">
+      <DependentUpon>ConsultaRetOrdPagoMT103.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaRetOrdPagoMT103.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\consultaretpdcheq.Designer.vb">
+      <DependentUpon>consultaretpdcheq.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\consultaretpdcheq.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaTDOvernight.Designer.vb">
+      <DependentUpon>ConsultaTDOvernight.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaTDOvernight.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsultaTraspasos.Designer.vb">
+      <DependentUpon>ConsultaTraspasos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsultaTraspasos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ConsVenTDOvernight.Designer.vb">
+      <DependentUpon>ConsVenTDOvernight.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ConsVenTDOvernight.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmAltaFuncs.Designer.vb">
@@ -365,6 +632,12 @@
       <DependentUpon>frmComplementoAICED.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmComplementoAICED.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConsRetAclaracion.Designer.vb">
+      <DependentUpon>frmConsRetAclaracion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmConsRetAclaracion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmConsultaSaldosMov.Designer.vb">
@@ -527,6 +800,12 @@
       <DependentUpon>RepCtasBloqueadas.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\RepCtasBloqueadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\RetOrdPagDiv.Designer.vb">
+      <DependentUpon>RetOrdPagDiv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\RetOrdPagDiv.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\VerPersonas.Designer.vb">
@@ -1241,6 +1520,33 @@
     <EmbeddedResource Include="Formularios\AperturaCuenta.resx">
       <DependentUpon>AperturaCuenta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsHold.resx">
+      <DependentUpon>ConsHold.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsProd.resx">
+      <DependentUpon>ConsProd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsultaApertura.resx">
+      <DependentUpon>ConsultaApertura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsultaDep.resx">
+      <DependentUpon>ConsultaDep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsultaDepAreaInterna.resx">
+      <DependentUpon>ConsultaDepAreaInterna.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Consultaret.resx">
+      <DependentUpon>Consultaret.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsultaRetDepTDD.resx">
+      <DependentUpon>ConsultaRetDepTDD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsultaRetOrdPago.resx">
+      <DependentUpon>ConsultaRetOrdPago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsultaTraspasos.resx">
+      <DependentUpon>ConsultaTraspasos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAltaFuncs.resx">
       <DependentUpon>frmAltaFuncs.vb</DependentUpon>
     </EmbeddedResource>
@@ -1860,6 +2166,8 @@
     <Content Include="Resources\FondoBBVA.JPG" />
     <Content Include="Resources\Imagen_iconoBBVA.ico" />
     <Content Include="Resources\Impresora.png" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\lupa.png" />
     <Content Include="Resources\Salir.png" />
     <None Include="Resources\PrincipalTicket.jpg" />
   </ItemGroup>

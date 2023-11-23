@@ -119,8 +119,8 @@ IniciaTrans:
 
                 gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
                 gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
-                gs_Sql = gs_Sql & " values (getdate(),1,'ALTA DE USUARIO','" & Trim(UCase(usuario)) & "', "
-                gs_Sql = gs_Sql & "'" & Trim(usuario) & "',1) "
+                gs_Sql = gs_Sql & " values (getdate(),1,'ALTA DE USUARIO','" & Trim(UCase(userId)) & "', "
+                gs_Sql = gs_Sql & "'" & Trim(userId) & "',1) "
                 'dbExecQuery gs_Sql
                 If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then 'If dbError Then
                     'dbEndQuery
@@ -288,7 +288,7 @@ IniciaTrans:
                         gs_Sql = gs_Sql & "(usuario, fecha_modificacion, "
                         gs_Sql = gs_Sql & "usuario_valida, aplicacion, nombre_pc, password) "
                         gs_Sql = gs_Sql & "VALUES (" & iUsuario & ", getdate(), "
-                        gs_Sql = gs_Sql & usuario & ", " & NumAplicacion
+                        gs_Sql = gs_Sql & userId & ", " & NumAplicacion
                         gs_Sql = gs_Sql & ", '" & gnGetComputerName() & "', 'STjeoM@@^Ss\Ua^Ss\Ve')"
                         'dbExecQuery gs_Sql
                         If objDatasource.insertar(gs_Sql) <= 0 Then 'If Not IsdbError Then
@@ -302,7 +302,7 @@ IniciaTrans:
                         gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
                         gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion)"
                         gs_Sql = gs_Sql & " values (getdate(),7,'ACT. DE USUARIO ELIMINADO','" & Trim(UCase(UsuarioElim)) & "', "
-                        gs_Sql = gs_Sql & "'" & Trim(usuario) & "',1) "
+                        gs_Sql = gs_Sql & "'" & Trim(userId) & "',1) "
                         'dbExecQuery gs_Sql
                         If objDatasource.insertar(gs_Sql) <= 0 Then 'If dbError Then
                             'dbEndQuery

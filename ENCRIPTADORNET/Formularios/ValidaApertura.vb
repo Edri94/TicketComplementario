@@ -149,10 +149,10 @@
             End If
 
             'Actualiza status de operacion
-            Reg_operacion = d.ValidaOperacion(FTicket, usuario)
+            Reg_operacion = d.ValidaOperacion(FTicket, userId)
 
             'Inserta evento operacion
-            Reg_evento = d.InsertaEventoOperacionVal(FTicket, usuario)
+            Reg_evento = d.InsertaEventoOperacionVal(FTicket, userId)
 
             'registro para Swift
             Reg_swift = d.InsertaBitacoraSwift(FTicket)

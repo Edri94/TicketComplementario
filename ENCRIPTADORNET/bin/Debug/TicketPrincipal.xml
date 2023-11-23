@@ -42,6 +42,16 @@ TicketPrincipal
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:Ticket.My.Resources.Resources.loading">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Ticket.My.Resources.Resources.lupa">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Ticket.My.Resources.Resources.Principal">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -107,11 +117,98 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member>
+<member name="M:Ticket.frmConsultaSaldosMov.buscaApertura(System.String,System.Int32)">
+ <summary>
+ Busca el movimiento de apertura
+ </summary>
+ <param name="cuenta"></param>
+ <param name="operacion_glbl"></param>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.buscaCancelacion(System.String,System.Int16,System.Int16)">
+ <summary>
+ Busca el movimiento de cancelación.
+ </summary>
+ <param name="ctaCliente"></param>
+ <param name="sp"></param>
+ <param name="p"></param>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.cargaApertura">
+ <summary>
+ Carga en un arreglo el movimiento de apertura. 
+ </summary>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.LimpiaCampos">
+ <summary>
+ Limpia campos llenados 
+ </summary>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.MotivoCtaCancelada(Ticket.PRODUCTO_CONTRATADO)">
+ <summary>
+ 
+ </summary>
+ <param name="producto"></param>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.LlenaCampos">
+ <summary>
+ 
+ </summary>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.LlenaComboAgencias">
+ <summary>
+ 
+ </summary>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.ActualizaGridProductoConcOper">
+ <summary>
+ 
+ </summary>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.btnSaldoDisp_Click(System.Object,System.EventArgs)">
+ <summary>
+ 
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.frmConsultaSaldosMov_Load(System.Object,System.EventArgs)">
+ <summary>
+ 
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.indicaSaldoCargado(System.Int32)">
+ <summary>
+ Indica que tipo de saldos estan cargados en el sistema.
+ </summary>
+ <param name="agencia"></param>
+</member>
 <member name="M:Ticket.frmConsultaSaldosMov.TieneVencimeintos(Ticket.PRODUCTO_CONTRATADO)">
  <summary>
  Determinar si una cuenta tiene vencimientos de time deposit fecha valor hoy
  </summary>
  <returns></returns>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.ObtenSaldoDepCom(Ticket.PRODUCTO_CONTRATADO)">
+ <summary>
+ Calcula el saldo disponible para una cuenta eje de Depósitos comprometidos
+ </summary>
+ <param name="producto"></param>
+ <returns></returns>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.ObtenSaldo(Ticket.PRODUCTO_CONTRATADO)">
+ <summary>
+ Calcula el saldo disponible para una cuenta eje
+ </summary>
+ <param name="producto"></param>
+ <returns></returns>
+</member>
+<member name="M:Ticket.frmConsultaSaldosMov.gridOperaciones_CellContentDoubleClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ Busca el tipo de operacion en base a un numero de operacion
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
 </members>
 </doc>

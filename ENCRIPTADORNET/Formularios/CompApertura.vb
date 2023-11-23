@@ -164,10 +164,10 @@
             End If
 
             'Actualiza status de operacion
-            Reg_operacion = d.ActualizaOperacion(FTicket, usuario)
+            Reg_operacion = d.ActualizaOperacion(FTicket, userId)
 
             'Inserta evento operacion
-            Reg_evento = d.InsertaEventoOperacion(FTicket, usuario)
+            Reg_evento = d.InsertaEventoOperacion(FTicket, userId)
 
             If Reg_clientes > 0 And Reg_DireccionEnv > 0 And Reg_operacion > 0 And Reg_evento > 0 Then
                 MsgBox("La apertura para la opercación " & FTicket.ToString() & " ha sido completada", vbInformation, "Actualización datos complemento")

@@ -160,4 +160,12 @@ C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\bin\Debug\Newtonsoft.Json.xm
 C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\bin\Debug\ExcelDataReader.dll
 C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\bin\Debug\ExcelDataReader.pdb
 C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\bin\Debug\ExcelDataReader.xml
-C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\TicketComplementario.vbproj.AssemblyReference.cache
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsProd.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsHold.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaDep.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.Consultaret.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaApertura.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaRetOrdPago.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaTraspasos.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaRetDepTDD.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaDepAreaInterna.resources

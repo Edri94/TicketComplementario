@@ -1483,7 +1483,7 @@ Public Class frmManntoCuenta
             lsGsSql &= " (cuenta_cliente, operacion_definida, monto, usuario, fecha,"
             lsGsSql &= " datos_referencia, comentario_peticion, comentario_respuesta, status_autorizacion, autorizacion, aplicacion)"
             lsGsSql &= " values ('" & Trim(txtCuenta.Text) & "'," & gn_Operacion_Definida
-            lsGsSql &= ",  0 , " & usuario & ", getdate()"
+            lsGsSql &= ",  0 , " & userId & ", getdate()"
             lsGsSql &= ", 'Autorizacion Manto de Fideicomiso', null,'AMFIDEICOMISOS',0,0,2)"
             Respuesta = 0
 
@@ -1587,7 +1587,7 @@ Public Class frmManntoCuenta
 
             Respuesta = 0
             'inserta en EVENTO_PRODUCTO
-            Respuesta = d.InsertaEventoProducto(mnProdCon, d.InvierteFecha_yyymmdd(gs_FechaHoy), lsHora, mnStatusCta, usuario)
+            Respuesta = d.InsertaEventoProducto(mnProdCon, d.InvierteFecha_yyymmdd(gs_FechaHoy), lsHora, mnStatusCta, userId)
             If Respuesta <= 0 Then
                 sTablaError = "EVENTO_PRODUCTO"
                 MsgBox("Hubo un error al actualizar la tabla: " & sTablaError, vbInformation, "Actualiza" & sTablaError)
@@ -1622,7 +1622,7 @@ Public Class frmManntoCuenta
                             gs_Sql = "Insert into MANTENIMIENTO_CUENTA (producto_contratado, tipo_mantenimiento, " &
                                                  "fecha_mantenimiento, fecha_operacion, status_mantenimiento, usuario) " &
                                     "VALUES (" & mnProdCon & "," & strOpciones(i) & "," & "getdate(),'" &
-                                                d.InvierteFecha_yyymmdd(lsFechaOriginal) & "'," & "4," & usuario & ")"
+                                                d.InvierteFecha_yyymmdd(lsFechaOriginal) & "'," & "4," & userId & ")"
 
                             Respuesta = d.InsQuery(gs_Sql)
                             If Respuesta <= 0 Then
@@ -2192,7 +2192,7 @@ Salida:
                       " (producto_contratado, tipo_mantenimiento, fecha_mantenimiento, fecha_operacion, status_mantenimiento, usuario) " &
                       " VALUES (" & mnProdCon & ","
         gs_sql_det2 = ""
-        gs_sql_det3 = "getdate(),'" & d.InvierteFecha_yyymmdd(lsFechaOriginal) & "',4," & usuario & ")"
+        gs_sql_det3 = "getdate(),'" & d.InvierteFecha_yyymmdd(lsFechaOriginal) & "',4," & userId & ")"
 
         If Opcion = 2 Then
             'inserta registros si el boleano esta activo

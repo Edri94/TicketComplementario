@@ -2350,8 +2350,9 @@ errLogOn:
         lsGsSql &= sRegistro & ", "
         lsGsSql &= "'" & Trim$(sComentario) & "', "
         lsGsSql &= "getdate(), "
-        lsGsSql &= usuario & ", "
+        lsGsSql &= userId & ", "
         lsGsSql &= iStaus & " )"
+
 
         Registro = insertar(lsGsSql)
         Return Registro
@@ -2490,7 +2491,7 @@ errLogOn:
                             lsGsSql2 = lsGsSql
                             lnUltimoChq = lnUltimoChq + 100
                             sLastPart = Right(CStr(lnUltimoChq), LnLongCHQ) & ", "
-                            lsGsSql2 &= sLastPart & lnStatus & ", " & usuario & ", 1, '" &
+                            lsGsSql2 &= sLastPart & lnStatus & ", " & userId & ", 1, '" &
                                     Trim$(sNumCR) & "', '  ', " & LnLongCHQ & ")"
 
                             lsGsSql2 &= "     
@@ -2528,7 +2529,7 @@ errLogOn:
 
                 lsGsSql &= Val(sNumCheques) & ", "
                 lsGsSql &= Right(CStr(lnUltimoChq + Val(sNumCheques)), LnLongCHQ) & ", "
-                lsGsSql &= lnStatus & ", " & usuario & ", 1, '" &
+                lsGsSql &= lnStatus & ", " & userId & ", 1, '" &
                     Trim$(sNumCR) & "', '  ', " & LnLongCHQ & " )"
                 lsGsSql &= "     
                 Select @@Identity"
@@ -2870,7 +2871,7 @@ errLogOn:
         Dim iUsuario As Integer
 
         lsGsSql = "Select login from CATALOGOS..USUARIO "
-        lsGsSql &= "where usuario = " & usuario
+        lsGsSql &= "where usuario = " & userId
         dtUsuario = Consulta(lsGsSql, "LlenaTipoFuente")
 
         lsGsSql = "Select usuario From GOS..USUARIO "

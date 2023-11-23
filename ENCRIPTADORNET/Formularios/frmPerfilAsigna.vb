@@ -495,7 +495,7 @@
                                     ls_sql = ls_sql & "(usuario, fecha_modificacion, masc_permisos, "
                                     ls_sql = ls_sql & "masc_autorizaciones, usuario_valida, aplicacion, nombre_pc) "
                                     ls_sql = ls_sql & "VALUES (" & ln_UsuarioActualiza & ", getdate(), '"
-                                    ls_sql = ls_sql & ls_TotalPermisos & "', '" & ls_TotalAutoriza & "', " & usuario & ", " & ContApp
+                                    ls_sql = ls_sql & ls_TotalPermisos & "', '" & ls_TotalAutoriza & "', " & userId & ", " & ContApp
                                     ls_sql = ls_sql & ", '" & gnGetComputerName() & "')"
                                     Do
                                         'dbEndQuery
@@ -518,7 +518,7 @@
                                 ls_sql = ls_sql & "(usuario, fecha_modificacion, masc_permisos, "
                                 ls_sql = ls_sql & "masc_autorizaciones, usuario_valida, aplicacion, nombre_pc) "
                                 ls_sql = ls_sql & "VALUES (" & ln_UsuarioActualiza & ", getdate(), '"
-                                ls_sql = ls_sql & ls_TotalPermisos & "', '" & ls_TotalAutoriza & "', " & usuario & ", " & NumAplicacion
+                                ls_sql = ls_sql & ls_TotalPermisos & "', '" & ls_TotalAutoriza & "', " & userId & ", " & NumAplicacion
                                 ls_sql = ls_sql & ", '" & gnGetComputerName() & "')"
                                 Do
                                     'dbEndQuery
@@ -545,7 +545,7 @@
                                     gs_Sql = gs_Sql & "(usuario, fecha_modificacion, "
                                     gs_Sql = gs_Sql & "usuario_valida, aplicacion, nombre_pc, perfil) "
                                     gs_Sql = gs_Sql & "VALUES (" & ln_UsuarioActualiza & ", getdate(), "
-                                    gs_Sql = gs_Sql & usuario & ", " & ContApp
+                                    gs_Sql = gs_Sql & userId & ", " & ContApp
                                     gs_Sql = gs_Sql & ", '" & gnGetComputerName() & "', " & mn_PerfilAsignado & ")"
                                     'dbExecQuery gs_Sql
                                     NumRegistros = objDatasource.insertar(gs_Sql)
@@ -559,7 +559,7 @@
                                 gs_Sql = gs_Sql & "(usuario, fecha_modificacion, "
                                 gs_Sql = gs_Sql & "usuario_valida, aplicacion, nombre_pc, perfil) "
                                 gs_Sql = gs_Sql & "VALUES (" & ln_UsuarioActualiza & ", getdate(), "
-                                gs_Sql = gs_Sql & usuario & ", " & NumAplicacion
+                                gs_Sql = gs_Sql & userId & ", " & NumAplicacion
                                 gs_Sql = gs_Sql & ", '" & gnGetComputerName() & "', " & mn_PerfilAsignado & ")"
                                 'dbExecQuery gs_Sql
                                 NumRegistros = objDatasource.insertar(gs_Sql)
@@ -594,7 +594,7 @@
                             gs_Sql = "Insert into CATALOGOS..BITACORA_USUARIO "
                             gs_Sql = gs_Sql & "(FECHA_MOVIMIENTO,ESTATUS,Comentario,Usuario,usuario_valida,Aplicacion,Permisos)"
                             gs_Sql = gs_Sql & " values (getdate(),2,'PERMISOS PARA USUARIO','" & Trim(UCase(ln_UsuarioActualiza)) & "', "
-                            gs_Sql = gs_Sql & "'" & Trim(usuario) & "',9, '"
+                            gs_Sql = gs_Sql & "'" & Trim(userId) & "',9, '"
                             gs_Sql = gs_Sql & Trim(Nom_perfil) & "')"
                             'dbExecQuery gs_Sql
                             NumRegistros = objDatasource.insertar(gs_Sql)

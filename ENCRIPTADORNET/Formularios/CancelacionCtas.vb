@@ -189,7 +189,7 @@
                 'Guarda los datos de la cancelación/reactivación
                 '********************************************************
                 sCausa = txCausa.Text
-                RegDatos = d.InsertaDatosReactivaCanc(sProductoContratado, sStatusProducto, usuario, sCausa)
+                RegDatos = d.InsertaDatosReactivaCanc(sProductoContratado, sStatusProducto, userId, sCausa)
                 'MsgBox("RegDatos")
 
 
@@ -795,7 +795,7 @@
     End Sub
 
     Private Sub CancelacionCtas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        gn_Usuario = usuario
+        gn_Usuario = userId
         Me.CenterToScreen()
     End Sub
 

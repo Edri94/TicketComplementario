@@ -391,7 +391,7 @@ IniciaTrans:
             End If
             'dbEndQuery
             gsSql = "INSERT INTO BITACORA_MANT_TKT (USUARIO, TERMINAL, FECHA_HORA, OPERACION, NOMBRE_ANT, MONTO_ANT, FECHA_ANT, STATUS_ANT_OPE, STATUS_ANT_PC, NOMBRE_ACT, MONTO_ACT, FECHA_ACT, STATUS_ACT_OPE, STATUS_ACT_PC) " &
-                        "VALUES ('" & usuario & "'," &
+                        "VALUES ('" & userId & "'," &
                                 "'" & Environment.MachineName & "'," &
                                 "GETDATE(),'" &
                                 msfgOperaciones1.Rows(intContador).Cells(0).Value & "','" &

@@ -40,7 +40,7 @@
             End If
             'Validacion de que ya existe el autorizado FIN*******************************************************
 
-            Reg = d.InsertaAutorizado(EAut, usuario)
+            Reg = d.InsertaAutorizado(EAut, userId)
 
             If Reg > 0 Then
                 cargaGridView()
@@ -128,7 +128,7 @@
             EAut.Paterno = txApellidoPat.Text.Trim()
             EAut.Materno = txApellidoMat.Text.Trim()
 
-            Reg = d.ActualizaAutorizado(EAut, usuario)
+            Reg = d.ActualizaAutorizado(EAut, userId)
 
             If Reg > 0 Then
                 cargaGridView()

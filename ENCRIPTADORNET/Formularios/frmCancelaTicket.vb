@@ -215,9 +215,9 @@
         gs_Sql = gs_Sql & " ( " & nOperacion & ", '" & Format(CDate(gs_FechaHoy), "yyyy-MM-dd") & " " & gs_HoraSistema & "', "
         gs_Sql = gs_Sql & " 250, '"
         If StrComp(Trim(txtComentario.Text), "", vbTextCompare) <> 0 Then
-            gs_Sql = gs_Sql & Trim(txtComentario.Text) & "', " & usuario & ")"
+            gs_Sql = gs_Sql & Trim(txtComentario.Text) & "', " & userId & ")"
         Else
-            gs_Sql = gs_Sql & nOperacion & "', " & usuario & ")"
+            gs_Sql = gs_Sql & nOperacion & "', " & userId & ")"
         End If
         'dbExecQuery gs_Sql
         If objDatasource.EjecutaComandoTransaccion(gs_Sql) = False Then ''If dbError Then
