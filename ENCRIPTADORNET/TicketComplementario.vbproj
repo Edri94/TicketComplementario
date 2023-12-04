@@ -1538,6 +1538,9 @@
     <EmbeddedResource Include="Formularios\Consultaret.resx">
       <DependentUpon>Consultaret.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ConsultaRetAreaInterna.resx">
+      <DependentUpon>ConsultaRetAreaInterna.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ConsultaRetDepTDD.resx">
       <DependentUpon>ConsultaRetDepTDD.vb</DependentUpon>
     </EmbeddedResource>

@@ -169,3 +169,4 @@ C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaRet
 C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaTraspasos.resources
 C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaRetDepTDD.resources
 C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaDepAreaInterna.resources
+C:\Users\MI05332\source\repos\Ticket\ENCRIPTADORNET\obj\Debug\Ticket.ConsultaRetAreaInterna.resources

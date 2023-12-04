@@ -1915,7 +1915,7 @@ Public Class frmConsultaSaldosMov
                         ConsultaDepAreaInterna.ConsultaDepAreaInterna(num_operacion, cuenta)
                         ConsultaDepAreaInterna.ShowDialog()
                     Case 28
-                        MessageBox.Show("Formulario en construccion")
+                        ConsultaRetAreaInterna.ConsultaRetAreaInterna(num_operacion, cuenta, linea)
                         ConsultaRetAreaInterna.Show()
                     Case 29
                         MessageBox.Show("Formulario en construccion")
